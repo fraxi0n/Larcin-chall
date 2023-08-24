@@ -1,0 +1,42 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# IDE
+.vscode/
+.idea/
+
+# Compiled output
+build/
+dist/
+
+# Environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+log.txt
+logs/
+
+# macOS files
+.DS_Store
+
+# Editor and OS-specific files
+*.sublime-project
+*.sublime-workspace
+*.idea/
+*.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+*.bak
+Thumbs.db
+
+# Compiled binary addons (e.g. node-sass)
+build/Release
