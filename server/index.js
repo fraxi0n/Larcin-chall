@@ -3,6 +3,7 @@ const cors = require('cors'); // Import the cors middleware
 
 const Map= require('./mapGen'); 
 
+
 // const Api = require('./resources/api_Mr/api.router')
 const mysql = require('mysql');
 const app = express();
@@ -48,8 +49,13 @@ const app = express();
     });
 
     app.get('/test', (req, res) => {
-        res.send(Map.gen(10));
+        res.send(Map.gen(100));
     });
+
+    app.get('/dayly', (req, res) => {
+        res.send(Map.createDaylySeed());
+    });
+
 
 
     

@@ -288,25 +288,30 @@ var finder = new PF.AStarFinder({
     
         function createDaylySeed ()
     {
-        daylySeed.date= new Date.now
+        // daylySeed.date= new Date.now
         daylySeed.precis=[]
         daylySeed.mortel=[]
         daylySeed.eclair=[]
         
         testDif = lvlDif.precis.base
     
-        for ( let i = 0; i <50 ;  i++)
+        for ( let i = 0; i <5 ;  i++)
         {
-            CreateMap(testDif)
-            daylySeed.precis.push( codingSeed() )
+           
+            daylySeed.precis.push( gen(testDif))
             testDif += lvlDif.precis.inc
         }
+
+        console .log (daylySeed.precis)
+        console.table(daylySeed.precis)
+
+        return  daylySeed.precis
     
         testDif = lvlDif.mortel.base
     
         for ( let i = 0; i <50 ;  i++)
         {
-            CreateMap(testDif)
+            gen(testDif)
             daylySeed.mortel.push( codingSeed() )
             testDif += lvlDif.mortel.inc
         }
@@ -315,7 +320,7 @@ var finder = new PF.AStarFinder({
     
         for ( let i = 0; i <50 ;  i++)
         {
-            CreateMap(testDif)
+            gen(testDif)
             daylySeed.eclair.push( codingSeed() )
             testDif += lvlDif.eclair.inc
         }
@@ -332,4 +337,4 @@ var finder = new PF.AStarFinder({
 
 
 
-module.exports = {gen};
+module.exports = {gen, createDaylySeed};
