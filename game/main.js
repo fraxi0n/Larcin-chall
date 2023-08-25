@@ -3,6 +3,8 @@ let ctx = canvas.getContext("2d");
 ctx.font = "25px myFont";
 let derniereUpdate = Date.now()
 let dt
+let fetchedMap 
+
 
 let maintenant
 
@@ -23,16 +25,13 @@ function init() {
     fetch('http://127.0.0.1:8000/test')
   .then(response => response.json()) // Convert response to JSON
   .then(data => {
-    const fetchedMap = data
-    console.table(data)
-  }).then ( load())
-
-//   load()
-
-
+    fetchedMap= data
+    // console.table(1,fetchedMap)
+    load()
     requestAnimationFrame(run)
+  })
 
-  
+
 
     //interval= setInterval(run,1000/60);
 

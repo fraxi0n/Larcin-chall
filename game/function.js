@@ -260,37 +260,65 @@ function loadMap ()
     // fetch loadmap
 
 
-    map= [[ ,,,,,],
-    [,1,1,2,2,1,2,2,1,1],
-    [,1,2,1,1,2,1,1,2,1],
-    [,1,2,1,5,1,4,1,2,1],
-    [,1,1,2,1,1,1,2,1,1],
-    [,1,1,1,2,1,2,1,1,1],
-    [,1,1,1,1,2,1,1,1,1],]
+console.log(136546854654,lvl)
+
+    if (lvl == 0 )  
+    {
+        map= [[ ,,,,,],
+        [,1,1,2,2,1,2,2,1,1],
+        [,1,2,1,1,2,1,1,2,1],
+        [,1,2,1,5,1,4,1,2,1],
+        [,1,1,2,1,1,1,2,1,1],
+        [,1,1,1,2,1,2,1,1,1],
+        [,1,1,1,1,2,1,1,1,1],]
+
+    }
+    else
+    {
+    map = fetchedMap
+
+
+        // map = [fetchedMap][lvl-1] 
+
+    }  // map= [[null,null,null,null,null,null,null,null,null,null],
+    // [null,1,1,2,2,1,2,2,1,1],
+    // [null,1,2,1,1,2,1,1,2,1],
+    // [null,1,2,1,5,1,4,1,2,1],
+    // [null,1,1,2,1,1,1,2,1,1],
+    // [null,1,1,1,2,1,2,1,1,1],
+    // [null,1,1,1,1,2,1,1,1,1],]
+
+    // map = fetchedMap
+    // console.table (map)
+    // console.table (fetchedMap)
 
 
     map.largeur = map[1].length-1
     map.hauteur = map.length-1
     map.t=  map.largeur + map.hauteur
 
-    for ( let i = 1; i<=map.length+1 ; i++  )
+    for ( let i = 1; i<=map.length-1 ; i++  )
     {
 
-        // console .log( map[i])
+         console .log( "map [i]" , map[i])
+         console .log( "i" ,i)
+
         if (map[i].includes(4))
         {
             line = map[i] 
         
-            for ( let j = 1;  j<=line.length+1 ; j++  )
+            for ( let j = 1;  j<=line.length -1; j++  )
             {
 
                 if (map[i][j] == 4)
                 {
                     Larcin.x = j
                     Larcin.y = i
-                    map[j][i] = 1
-                    j=100
-                    i=100
+                    console.log(j, i)
+                    console.table(map)
+                    map[i][j] = 1
+                    // j=100
+                    // i=100
             }
 
         }
@@ -302,7 +330,7 @@ function loadMap ()
 
 function CreateMap (pDif)
 {
-    
+
     
     map=[]
 

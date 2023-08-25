@@ -1,10 +1,5 @@
-function load (pMap)
+function load ()
 {
-
-    // const map = pMap
-
-    console.log ("iciiii " , pMap)
-
     
     document.addEventListener("keydown", KeyDown, false)
     document.addEventListener("keyup", KeyUp, false)  
@@ -36,9 +31,8 @@ function load (pMap)
     iMap=0
 
 
-
-    loadMap()
     lvl = 0
+    loadMap()
     deathCount = 0
 
     testDif = 0
@@ -46,7 +40,7 @@ function load (pMap)
 
     oX= 1200/2 - 64*map.largeur/2 -64
     oY= 675/2 - 64*map.hauteur/2 -64
-    
+     
 
 }
 
