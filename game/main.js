@@ -22,7 +22,7 @@ function run(){
 
 function init() {
 
-    fetch('http://127.0.0.1:8000/test')
+    fetch('http://127.0.0.1:8000/daily')
   .then(response => response.json()) // Convert response to JSON
   .then(data => {
     fetchedMap= data

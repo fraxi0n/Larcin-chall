@@ -52,8 +52,8 @@ const app = express();
         res.send(Map.gen(100));
     });
 
-    app.get('/dayly', (req, res) => {
-        res.send(Map.createDaylySeed());
+    app.get('/daily', (req, res) => {
+        res.send(Map.createDailySeed());
     });
 
 

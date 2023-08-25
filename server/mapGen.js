@@ -286,7 +286,7 @@ var finder = new PF.AStarFinder({
     
     
     
-        function createDaylySeed ()
+        function createDailySeed ()
     {
         // daylySeed.date= new Date.now
         daylySeed.precis=[]
@@ -337,4 +337,4 @@ var finder = new PF.AStarFinder({
 
 
 
-module.exports = {gen, createDaylySeed};
+module.exports = {gen, createDailySeed};
