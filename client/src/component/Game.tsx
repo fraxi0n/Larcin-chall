@@ -1,15 +1,15 @@
-import React, {  useState , useRef, useEffect  } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 // import './button-icon.scss';
 
-type Props = { 
-    type : string
+type Props = {
+  type: string
 };
-const Game = ({type}: Props) => {
-//   const [isOpen , setIsOpen] = useState(false)
+const Game = ({ type }: Props) => {
+  //   const [isOpen , setIsOpen] = useState(false)
 
-// const canvasRef = useRef(null);
+  // const canvasRef = useRef(null);
 
-// useEffect(() => {
+  // useEffect(() => {
   //   const canvas = canvasRef.current ù
   //   if (canvas  instanceof HTMLCanvasElement ) {
   //     const ctx = canvas.getContext('2d');
@@ -17,16 +17,16 @@ const Game = ({type}: Props) => {
   //   }
   // }, []);
 
-  
-  
- 
 
-  
+
+
+
+
   return (
     <>
 
-<iframe
-        src="http://127.0.0.1:5500/index.html?mod=1&id=1"  // Replace with your desired URL
+      <iframe
+        src="http://127.0.0.1:5500/game/index.html?mod=1&id=1"  // Replace with your desired URL
         title="Embedded Content"
         width="95%"                   // Set the width as per your requirement
         height="1000px"                  // Set the height as per your requirement
@@ -34,16 +34,15 @@ const Game = ({type}: Props) => {
         allowFullScreen              // Enable fullscreen mode if needed
       ></iframe>
 
-    
 
 
 
-    {/* <canvas //ref={canvasRef}
+
+      {/* <canvas //ref={canvasRef}
      id="canvas" width="1200" height= "675" style={{backgroundColor: "black"}} ></canvas> */}
-    
+
     </>
-    );
-  };
-  
-  export default Game;
-  
+  );
+};
+
+export default Game;
