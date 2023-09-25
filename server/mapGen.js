@@ -195,6 +195,7 @@ function gen(pDif) {
                         Ry = RandomINT(1, map.hauteur)
                     }
                 }
+
             }
 
             while (map[Ry][Rx] == 3 || map[Ry][Rx] == 5 || map[Ry][Rx] == 4)
@@ -219,8 +220,8 @@ function gen(pDif) {
             grid = new PF.Grid(matrix);
             path = finder.findPath(Larcin.dX - 1, Larcin.dY - 1, porte.x - 1, porte.y - 1, grid)
 
-            console.log(path)
-            console.table(path)
+            // console.log("pathfinding :")
+            // console.table(path)
 
             if (path.length == 0) {
                 map[Ry][Rx] = 1
@@ -230,7 +231,7 @@ function gen(pDif) {
             }
             Secu++
         }
-        while ((pDif) == "NO")
+        while (MapOK(pDif) == "NO")
     }
     while (MapOK(pDif) == "REBOOT")
 
