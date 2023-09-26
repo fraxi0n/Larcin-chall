@@ -1,38 +1,113 @@
 <html>
+
 <head>
-  <link rel="shortcut icon" href= "icon.ico">
+  <link rel="shortcut icon" href="icon.ico">
+
+  <link rel="stylesheet" href=" style.css">
+
+
 </head>
 
 
 
+
+
 <body>
+  <div class="img-background">
+    <div class="grey-filter">
 
-  <?php echo "salutation" ?>
+      <title> Larcin Challenge
+      </title>
 
-  <title>
-    youhou
+      <div id="login" class="login-reg-box">
 
-  </title>
-<canvas id="canvas" width="1200" height= "675" style="background-color: black;"></canvas>
+        <h2>Log in</h2>
+        <form id="loginForm" action="login.php" method="POST">
+          <label for="loginEmail">Email:</label>
+          <input type="email" id="loginEmail" name="loginEmail" required>
+          <br>
+          <label for="loginPassword">Password:</label>
+          <input type="password" id="loginPassword" name="loginPassword" required>
+          <br>
+          <input type="submit" value="Login">
+        </form>
+        <p>First robbery ? <a href="#" class="toggleForms"> Register</a></p>
 
-<style>
-    @font-face {
-      font-family: 'myFont';
-      
-      src: url('font.ttf');
-      
-    }
-</style>
+      </div>
+
+      <div id="register" class="hidden login-reg-box">
 
 
-<script src="./bower_components\pathfinding\pathfinding-browser.min.js"></script>
-<script src= "./libFraxion.js"></script>
-<script src= "./preload.js"></script>
-<script src= "./function.js"></script>
-<script src= "./game.js"></script>
-<script src= "./main.js"></script>
+        <h2>Registration</h2>
+        <form id="registrationForm" action="register.php" method="POST">
+          <label for="regName">Name:</label>
+          <input type="text" id="regName" name="regName" required>
+          <br>
+          <label for="regEmail">Email:</label>
+          <input type="email" id="regEmail" name="regEmail" required>
+          <br>
+          <label for="regPassword">Password:</label>
+          <input type="password" id="regPassword" name="regPassword" required>
+          <br>
+          <input type="submit" value="Register">
+        </form>
+        <p>Already a crime genius ? <a href="#" class="toggleForms"> Log in </a></p>
+
+      </div>
+
+
+      <script>
+        let isLoginDisplayed = true
+        const toggleFormsLinks = document.getElementsByClassName("toggleForms");
+        const loginForm = document.getElementById("login");
+        const registrationForm = document.getElementById("register");
+
+
+        const toggleForms = () => {
+          if (isLoginDisplayed) {
+            loginForm.classList.add("hidden")
+            registrationForm.classList.remove("hidden")
+            isLoginDisplayed = !isLoginDisplayed
+          } else {
+            loginForm.classList.remove("hidden")
+            registrationForm.classList.add("hidden")
+            isLoginDisplayed = !isLoginDisplayed
+          }
+
+        };
+
+
+        toggleFormsLinks[0].addEventListener("click", toggleForms)
+        toggleFormsLinks[1].addEventListener("click", toggleForms)
+
+
+      </script>
+
+
+      <canvas class="hidden" id="canvas" width="1200" height="675" style="background-color: black;"></canvas>
+
+      <!-- <div>
+    <form>
+      <input id="input_champ" form="text" method="post" placeholder="/PROFILE /WEBSITE /LABORATORY /GAME">
+      </input">
+
+
+  </div> -->
+
+      <!-- <style href="style.css"> -->
+
+      </style>
+
+
+      <script src="./bower_components\pathfinding\pathfinding-browser.min.js"></script>
+      <script src="./libFraxion.js"></script>
+      <script src="./preload.js"></script>
+      <script src="./function.js"></script>
+      <script src="./game.js"></script>
+      <script src="./main.js"></script>
+    </div>
+  </div>
 
 </body>
 
 </html>
-
