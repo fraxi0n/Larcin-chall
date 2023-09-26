@@ -29,7 +29,7 @@
           <label for="loginPassword">Password:</label>
           <input type="password" id="loginPassword" name="loginPassword" required>
           <br>
-          <input type="submit" value="Login">
+          <input id="submitLogin" type="submit" value="Login">
         </form>
         <p>First robbery ? <a href="#" class="toggleForms"> Register</a></p>
 
@@ -49,7 +49,7 @@
           <label for="regPassword">Password:</label>
           <input type="password" id="regPassword" name="regPassword" required>
           <br>
-          <input type="submit" value="Register">
+          <input id="submitRegister" type="submit" value="Register">
         </form>
         <p>Already a crime genius ? <a href="#" class="toggleForms"> Log in </a></p>
 
@@ -62,7 +62,7 @@
     </div>
   </div>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="scripts/authentication.js"></script>
   <script src="./bower_components\pathfinding\pathfinding-browser.min.js"></script>
   <script src="scripts/libFraxion.js"></script>

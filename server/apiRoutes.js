@@ -17,5 +17,20 @@ router.get('/daily', (req, res) => {
     res.send(Map.createDailySeed());
 });
 
+// Serve the HTML form
+// router.get('/', (req, res) => {
+//     res.sendFile('../game/index.html');
+// });
+
+router.post('/register', (req, res) => {
+
+    // let newUser = JSON.parse(req.body)
+
+    console.log(req.body)
+
+
+    res.send(req.body);
+});
+
 
 module.exports = router;

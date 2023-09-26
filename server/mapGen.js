@@ -43,7 +43,7 @@ lvlDif.eclair.inc = 10
 
 function gen(pDif) {
 
-    console.log(" ------------MAP GEN START---------------")
+    // console.log(" ------------MAP GEN START---------------")
     function MapOK(pDif) {
         mapOK = "NO"
 
@@ -62,15 +62,15 @@ function gen(pDif) {
 
         if (path.length >= distPorte + 2 + a && 15 + b <= Math.floor(laserCount / (map.hauteur * map.largeur) * 100)) {
             mapOK = "YES"
-            console.log(path.length, Math.floor(laserCount / (map.hauteur * map.largeur) * 100))
+            // console.log(path.length, Math.floor(laserCount / (map.hauteur * map.largeur) * 100))
         }
 
         if (path.length >= distPorte + 4 + c || 30 + d <= Math.floor(laserCount / (map.hauteur * map.largeur) * 100) || Secu > 200) {
             mapOK = "REBOOT"
-            console.log("REBOOT")
+            // console.log("REBOOT")
         }
 
-        console.log(mapOK)
+        // console.log(mapOK)
 
         return mapOK
 
@@ -270,14 +270,12 @@ function createDailySeed() {
 
     testDif = lvlDif.precis.base
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 10; i++) {
 
         daylySeed.precis.push(gen(testDif))
         testDif += lvlDif.precis.inc
     }
 
-    // console.log(daylySeed.precis)
-    // console.table(daylySeed.precis)
 
     return daylySeed.precis
 
