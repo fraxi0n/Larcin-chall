@@ -44,3 +44,11 @@ body {
     padding: 2rem 4rem;
     border: 2px solid rgba(42, 43, 39, 0.87);
 }
+
+canvas {
+    width: 1200px;
+    height: 675px;
+    background-color: black;
+
+
+}

@@ -1,6 +1,6 @@
-let canvas = document.getElementById("canvas");
-let ctx = canvas.getContext("2d");
-ctx.font = "25px myFont";
+
+let ctx
+// ctx.font = "25px myFont";
 let derniereUpdate = Date.now()
 let dt
 let fetchedMap
@@ -9,6 +9,10 @@ let fetchedMap
 let maintenant
 
 function run() {
+  canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
+  ctx.font = "25px myFont";
+
 
   requestAnimationFrame(run);
   maintenant = Date.now()
@@ -21,6 +25,14 @@ function run() {
 }
 
 function initGame() {
+
+  console.log("LEZGOOO")
+
+
+  canvas = document.getElementById("canvas");
+  ctx = canvas.getContext("2d");
+  ctx.font = "25px myFont";
+
 
   //gamemod = game
   fetch('http://127.0.0.1:8000/daily')

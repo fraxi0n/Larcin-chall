@@ -8,6 +8,8 @@
 
 const urlAPI = 'http://127.0.0.1:8000/';
 
+let PlayerID
+
 
 
 
@@ -28,18 +30,11 @@ const passwordInputLogin = document.getElementById("loginPassword");
 const emailInputRegister = document.getElementById("regEmail");
 const passwordInputRegister = document.getElementById("regPassword");
 const nameInputRegister = document.getElementById("regName");
+const root = document.getElementById("root");
+
 
 const userEmailLogin = emailInputLogin.value;
 const userPasswordLogin = passwordInputLogin.value;
-
-
-
-
-// const userEmailLogin = emailInput.value;
-// const userPasswordLogin = passwordInput.value;
-// const userEmailRegister = emailInputRegister.value;
-// const userPasswordRegister = passwordInputRegister.value;
-// const userNameRegister = nameInputRegister.value;
 
 
 const toggleForms = () => {
@@ -58,41 +53,91 @@ const toggleForms = () => {
 toggleFormsLinks[0].addEventListener("click", toggleForms)
 toggleFormsLinks[1].addEventListener("click", toggleForms)
 
+const login = (e) => {
+    e.preventDefault()
+    console.log("login clic")
+    // todo login
+    runGame()
+}
 
 
+const register = async (e) => {
+    e.preventDefault()
+    try {
+        const userEmailRegister = emailInputRegister.value;
+        const userNameRegister = nameInputRegister.value;
+        const userPasswordRegister = passwordInputRegister.value;
 
+        const encoder = new TextEncoder();
+        const data = encoder.encode(userPasswordRegister);
+        const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
 
+        // Create the registration request body
+        const registerBody = {
+            name: userNameRegister,
+            email: userEmailRegister,
+            password: hashedPassword,
+        };
 
+        const response = await axios.post(urlAPI + 'register', registerBody, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
 
+        console.log('Response:', response.data);
 
-const register = () => {
+        if (response.status === 200) {
+            PlayerID = response.data.ID
+            console.log(PlayerID)
 
-    const userEmailRegister = emailInputRegister.value;
-    const userPasswordRegister = passwordInputRegister.value;
-    const userNameRegister = nameInputRegister.value;
+            hasPlayerPlayed(PlayerID)
 
-    registerBody = {
-        name: userNameRegister,
-        email: userEmailRegister,
-        password: userPasswordRegister
-    }
+            runGame()
 
-    console.log('envoi', registerBody)
-
-    console.log("lezgong")
-    axios.post(urlAPI + 'register', registerBody, {
-        headers: {
-            'Content-Type': 'application/json', // Set the appropriate content type for your API
         }
 
-    })
-        .then(response => {
-            console.log('Response:', response.data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+    } catch (error) {
+        console.error('Error:', error);
+    }
 
 }
 
 submitRegister.addEventListener("click", register)
+submitLogin.addEventListener("click", login)
+
+
+const hasPlayerPlayed = (pID) => {
+
+    // requete pour voir si ya un score présent pour l'id du joueur + la map 
+    if (pID) {
+        runGame()
+    }
+}
+
+let canvas
+const runGame = () => {
+
+    loginForm.classList.add("hidden")
+    registrationForm.classList.add("hidden")
+
+
+    canvas = document.createElement("canvas");
+    canvas.id = "canvas";
+    // canvas.classList.add("hidden")
+    canvas.width = "1200";
+    canvas.height = "675";
+    canvas.style.backgroundColor = "black";
+
+    // Ajoutez le canvas à la racine du body
+    root.appendChild(canvas);
+
+    // document.createElement("canvas")
+
+
+
+    initGame()
+
+}

@@ -14,7 +14,9 @@
 
 <body>
   <div class="img-background">
-    <div class="grey-filter">
+    <div id="root" class="grey-filter">
+
+      <!-- <canvas id="canvas" width="1200" height="675" style="background-color: black;"></canvas> -->
 
       <title> Larcin Challenge
       </title>
@@ -22,14 +24,14 @@
       <div id="login" class="login-reg-box">
 
         <h2>Log in</h2>
-        <form id="loginForm" action="login.php" method="POST">
+        <form id="loginForm" method="POST">
           <label for="loginEmail">Email:</label>
           <input type="email" id="loginEmail" name="loginEmail" required>
           <br>
           <label for="loginPassword">Password:</label>
           <input type="password" id="loginPassword" name="loginPassword" required>
           <br>
-          <input id="submitLogin" type="submit" value="Login">
+          <input id="submitLogin" type="button" value="Log in">
         </form>
         <p>First robbery ? <a href="#" class="toggleForms"> Register</a></p>
 
@@ -39,7 +41,7 @@
 
 
         <h2>Registration</h2>
-        <form id="registrationForm" action="register.php" method="POST">
+        <form id="registrationForm" method="POST">
           <label for="regName">Name:</label>
           <input type="text" id="regName" name="regName" required>
           <br>
@@ -49,16 +51,11 @@
           <label for="regPassword">Password:</label>
           <input type="password" id="regPassword" name="regPassword" required>
           <br>
-          <input id="submitRegister" type="submit" value="Register">
+          <input id="submitRegister" type="button" value="Register">
         </form>
         <p>Already a crime genius ? <a href="#" class="toggleForms"> Log in </a></p>
 
       </div>
-
-
-      <canvas class="hidden" id="canvas" width="1200" height="675" style="background-color: black;"></canvas>
-
-
     </div>
   </div>
 
@@ -70,6 +67,7 @@
   <script src="scripts/function.js"></script>
   <script src="scripts/game.js"></script>
   <script src="scripts/main.js"></script>
+
 </body>
 
 </html>
