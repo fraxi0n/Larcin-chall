@@ -29,12 +29,10 @@ function KeyDown(t) {
         t.preventDefault()
     }
 
-    if (t.code == "Escape") {
-        GameMod = "MENU"
-        score = false
-
-
-    }
+    // if (t.code == "Escape") {
+    //     GameMod = "MENU"
+    //     score = false
+    // }
 
 
     if (GameMod == "MENU") {
@@ -49,40 +47,39 @@ function KeyDown(t) {
             if (curseur.pos == 4) { curseur.pos = 1 }
         }
 
-        if (t.code == "Enter") {
-            if (curseur.pos == 1) {
-                GameMod = "PRECIS"
-                testDif = 0
-                time = 90
+        // if (t.code == "Enter") {
+        //     if (curseur.pos == 1) {
+        //         GameMod = "PRECIS"
+        //         testDif = 0
+        //         time = 90
 
 
-            }
-            if (curseur.pos == 2) {
-                GameMod = "MORTEL"
-                testDif = 40
-                time = 180
-            }
-            if (curseur.pos == 3) {
-                GameMod = "RAPIDE"
-                testDif = 20
-                time = 30
-            }
-
-            deathCount = 0
-            lvl = 1
-            laserON = true
-            CreateMap(testDif)
-        }
+        //     }
+        //     if (curseur.pos == 2) {
+        //         GameMod = "MORTEL"
+        //         testDif = 40
+        //         time = 180
+        //     }
+        //     if (curseur.pos == 3) {
+        //         GameMod = "RAPIDE"
+        //         testDif = 20
+        //         time = 30
+        //     }
+        //     deathCount = 0
+        //     lvl = 1
+        //     laserON = true
+        //     CreateMap(testDif)
+        // }
 
 
     }
     else // IN GAME
     {
 
-        if (score == true && t.code == "Enter") {
-            score = false
-            GameMod = "MENU"
-        }
+        // if (score == true && t.code == "Enter") {
+        //     score = false
+        //     GameMod = "MENU"
+        // }
 
 
 

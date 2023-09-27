@@ -126,15 +126,11 @@ const runGame = () => {
 
     canvas = document.createElement("canvas");
     canvas.id = "canvas";
-    // canvas.classList.add("hidden")
     canvas.width = "1200";
     canvas.height = "675";
     canvas.style.backgroundColor = "black";
-
-    // Ajoutez le canvas à la racine du body
     root.appendChild(canvas);
 
-    // document.createElement("canvas")
 
 
 

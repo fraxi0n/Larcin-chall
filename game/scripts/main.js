@@ -50,4 +50,4 @@ function initGame() {
 
 }
 
-initGame() // a bouger 
+// initGame() // a bouger 
