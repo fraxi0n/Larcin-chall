@@ -17,8 +17,7 @@ function run() {
   requestAnimationFrame(run);
   maintenant = Date.now()
   dt = (maintenant - derniereUpdate) / 1000
-  // console.log(maintenant, derniereUpdate)
-  // console.log(canvas, ctx)
+  //console .log (maintenant,derniereUpdate)
   derniereUpdate = maintenant
   update(dt);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -39,15 +38,19 @@ function initGame() {
   fetch('http://127.0.0.1:8000/daily')
     .then(response => response.json()) // Convert response to JSON
     .then(data => {
-      fetchedMap = data
-      // console.table(1, fetchedMap)
+
+      // const jsonString = JSON.stringify(data);
+      fetchedMap = JSON.parse(data.map)
+      console.table(fetchedMap)
+      console.table(fetchedMap[1])
+
       load()
       requestAnimationFrame(run)
     })
 
 
 
-  // interval= setInterval(run,1000/60);
+  //interval= setInterval(run,1000/60);
 
 }
 
