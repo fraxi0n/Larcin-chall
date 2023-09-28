@@ -17,7 +17,8 @@ function run() {
   requestAnimationFrame(run);
   maintenant = Date.now()
   dt = (maintenant - derniereUpdate) / 1000
-  //console .log (maintenant,derniereUpdate)
+  // console.log(maintenant, derniereUpdate)
+  // console.log(canvas, ctx)
   derniereUpdate = maintenant
   update(dt);
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -29,9 +30,9 @@ function initGame() {
   console.log("LEZGOOO")
 
 
-  canvas = document.getElementById("canvas");
-  ctx = canvas.getContext("2d");
-  ctx.font = "25px myFont";
+  // canvas = document.getElementById("canvas");
+  // ctx = canvas.getContext("2d");
+  // ctx.font = "25px myFont";
 
 
   //gamemod = game
@@ -39,14 +40,14 @@ function initGame() {
     .then(response => response.json()) // Convert response to JSON
     .then(data => {
       fetchedMap = data
-      // console.table(1,fetchedMap)
+      // console.table(1, fetchedMap)
       load()
       requestAnimationFrame(run)
     })
 
 
 
-  //interval= setInterval(run,1000/60);
+  // interval= setInterval(run,1000/60);
 
 }
 

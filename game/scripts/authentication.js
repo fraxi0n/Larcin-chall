@@ -13,8 +13,6 @@ let PlayerID
 
 
 
-
-
 let isLoginDisplayed = true
 const toggleFormsLinks = document.getElementsByClassName("toggleForms");
 const loginForm = document.getElementById("login");
@@ -33,8 +31,6 @@ const nameInputRegister = document.getElementById("regName");
 const root = document.getElementById("root");
 
 
-const userEmailLogin = emailInputLogin.value;
-const userPasswordLogin = passwordInputLogin.value;
 
 
 const toggleForms = () => {
@@ -53,11 +49,67 @@ const toggleForms = () => {
 toggleFormsLinks[0].addEventListener("click", toggleForms)
 toggleFormsLinks[1].addEventListener("click", toggleForms)
 
-const login = (e) => {
+const encoder = new TextEncoder();
+
+const login = async (e) => {
     e.preventDefault()
-    console.log("login clic")
     // todo login
-    runGame()
+
+
+    try {
+        const userEmailLogin = emailInputLogin.value;
+        const userPasswordLogin = passwordInputLogin.value;
+
+
+
+        const data = encoder.encode(userPasswordLogin);
+        const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        const hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+
+        // Create the registration request body
+        const loginBody = {
+            email: userEmailLogin,
+            password: hashedPassword,
+        };
+
+        const response = await axios.post(urlAPI + 'login', loginBody, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        console.log('Response:', response.data);
+
+
+        if (response.status === 200) {
+            PlayerID = response.data.ID
+            console.log(PlayerID)
+
+            hasPlayerPlayed(PlayerID)
+
+            runGame()
+
+        }
+
+
+
+    }
+    catch (error) {
+        console.error('Error:', error);
+    }
+
+
+
+
+
+
+
+    // runGame()
+
+
+
+
 }
 
 
@@ -68,7 +120,6 @@ const register = async (e) => {
         const userNameRegister = nameInputRegister.value;
         const userPasswordRegister = passwordInputRegister.value;
 
-        const encoder = new TextEncoder();
         const data = encoder.encode(userPasswordRegister);
         const hashBuffer = await crypto.subtle.digest("SHA-256", data);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -95,7 +146,7 @@ const register = async (e) => {
 
             hasPlayerPlayed(PlayerID)
 
-            runGame()
+
 
         }
 
@@ -123,16 +174,12 @@ const runGame = () => {
     loginForm.classList.add("hidden")
     registrationForm.classList.add("hidden")
 
-
     canvas = document.createElement("canvas");
     canvas.id = "canvas";
     canvas.width = "1200";
     canvas.height = "675";
     canvas.style.backgroundColor = "black";
     root.appendChild(canvas);
-
-
-
 
     initGame()
 

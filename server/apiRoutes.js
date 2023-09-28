@@ -22,11 +22,6 @@ connection.connect((error) => {
 });
 
 
-// Define a sample route
-router.get('/sample', (req, res) => {
-    res.json({ message: 'This is a sample API route.' });
-});
-
 router.get('/test', (req, res) => {
     res.send(Map.gen(100));
 });
@@ -41,6 +36,37 @@ router.get('/daily', (req, res) => {
 //     res.sendFile('../game/index.html');
 // });
 
+
+
+router.post('/login', (req, res) => {
+
+    // let newUser = JSON.parse(req.body)
+    console.log(req.body, typeof req.body)
+
+    const sql = 'SELECT id FROM users WHERE (email = ? OR username = ?) AND hashpassword = ?';
+
+
+    // Execute the SQL query with the user information
+    connection.query(sql, [req.body.email, req.body.email, req.body.password], (error, results, fields) => {
+        if (error) {
+            console.error('Error querying user:', error);
+            res.status(400).send('Error in the query'); // Sending a 400 response with an error message
+        } else {
+            if (results.length > 0) {
+                const userId = results[0].id; // Assuming the column name is "ID" in the database
+
+                console.log('User found with ID:', userId);
+                res.status(200).send({ userId });
+            } else {
+                console.log('User not found');
+                res.status(404).send('User not found'); // Sending a 404 response if the user is not found
+            }
+        }
+    })
+
+});
+
+
 router.post('/register', (req, res) => {
 
     // let newUser = JSON.parse(req.body)
@@ -48,8 +74,6 @@ router.post('/register', (req, res) => {
 
     const sql = 'INSERT INTO users (id, username, hashpassword, email) VALUES (?, ?, ?, ?)';
     const ID = Date.now()
-
-
 
     // Execute the SQL query with the user information
     connection.query(sql, [ID, req.body.name, req.body.password, req.body.email,], (error, results, fields) => {
@@ -64,6 +88,9 @@ router.post('/register', (req, res) => {
 
     })
 }),
+
+
+
 
 
     module.exports = router;
