@@ -26,12 +26,13 @@ const Game = ({type}: Props) => {
     <>
 
 <iframe
-        src="http://127.0.0.1:5500/index.html?mod=1&id=1"  // Replace with your desired URL
+        src="http://127.0.0.1:5500/game/index.html?mod=1&id=1"  // Replace with your desired URL
+        // src="http:../../../game/index.html"  // Replace with your desired URL
         title="Embedded Content"
         width="95%"                   // Set the width as per your requirement
         height="1000px"                  // Set the height as per your requirement
         frameBorder="0"               // Optionally, you can set frameBorder to 0 for no border
-        allowFullScreen              // Enable fullscreen mode if needed
+        allowFullScreen     // Enable fullscreen mode if needed
       ></iframe>
 
     

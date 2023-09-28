@@ -38,8 +38,8 @@ function load ()
     testDif = 0
     time = 90 
 
-    oX= 1200/2 - 64*map.largeur/2 -64
-    oY= 675/2 - 64*map.hauteur/2 -64
+    oX= 1200/2 - 64*mapLargeur/2 -64
+    oY= 675/2 - 64*mapHauteur/2 -64
      
 
 }
@@ -204,9 +204,9 @@ function draw (pCtx)
         pCtx.fillText( lvl , 620+5 +32, 35)
 
 
-        for ( let Sy = 1; Sy <= map.hauteur; Sy++ )
+        for ( let Sy = 1; Sy <= mapHauteur; Sy++ )
         {
-            for (let Sx = 1; Sx <= map.largeur; Sx++)
+            for (let Sx = 1; Sx <= mapLargeur; Sx++)
             {
             
                 if ( map[Sy][Sx] == 3 && laserON == false )

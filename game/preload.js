@@ -57,8 +57,8 @@ var matrix = []
 
 
 
-map.largeur = 1
-map.hauteur =1
+mapLargeur = 1
+mapHauteur =1
 
 // map[x][y] = 0 
 
