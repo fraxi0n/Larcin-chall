@@ -198,7 +198,15 @@ function LarcinWin() {
 
     }
 
-    lvl++
+
+
+    lvl++;
+
+    updateScore(lvl)
+
+
+
+
 
     // inserer vérif ici ??
     /*

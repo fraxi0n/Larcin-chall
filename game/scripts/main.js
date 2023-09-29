@@ -1,6 +1,5 @@
 
 let ctx
-// ctx.font = "25px myFont";
 let derniereUpdate = Date.now()
 let dt
 let fetchedMap
@@ -35,23 +34,13 @@ function initGame() {
 
 
   //gamemod = game
-  fetch('http://127.0.0.1:8000/daily')
-    .then(response => response.json()) // Convert response to JSON
-    .then(data => {
 
-      // const jsonString = JSON.stringify(data);
-      fetchedMap = JSON.parse(data.map)
-      console.table(fetchedMap)
-      console.table(fetchedMap[1])
 
-      load()
-      requestAnimationFrame(run)
-    })
+  load()
+  requestAnimationFrame(run)
 
 
 
   //interval= setInterval(run,1000/60);
 
 }
-
-// initGame() // a bouger 

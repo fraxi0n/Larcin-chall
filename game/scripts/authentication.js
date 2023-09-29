@@ -9,6 +9,7 @@
 const urlAPI = 'http://127.0.0.1:8000/';
 
 let PlayerID
+let MapID
 
 
 
@@ -60,8 +61,6 @@ const login = async (e) => {
         const userEmailLogin = emailInputLogin.value;
         const userPasswordLogin = passwordInputLogin.value;
 
-
-
         const data = encoder.encode(userPasswordLogin);
         const hashBuffer = await crypto.subtle.digest("SHA-256", data);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
@@ -83,33 +82,15 @@ const login = async (e) => {
 
 
         if (response.status === 200) {
-            PlayerID = response.data.ID
-            console.log(PlayerID)
+            PlayerID = response.data.userId
 
             hasPlayerPlayed(PlayerID)
-
-            runGame()
-
         }
-
-
 
     }
     catch (error) {
         console.error('Error:', error);
     }
-
-
-
-
-
-
-
-    // runGame()
-
-
-
-
 }
 
 
@@ -142,12 +123,8 @@ const register = async (e) => {
 
         if (response.status === 200) {
             PlayerID = response.data.ID
-            console.log(PlayerID)
 
-            hasPlayerPlayed(PlayerID)
-
-
-
+            hasPlayerPlayed()
         }
 
     } catch (error) {
@@ -160,12 +137,46 @@ submitRegister.addEventListener("click", register)
 submitLogin.addEventListener("click", login)
 
 
-const hasPlayerPlayed = (pID) => {
+const hasPlayerPlayed = () => {
 
-    // requete pour voir si ya un score présent pour l'id du joueur + la map 
-    if (pID) {
-        runGame()
-    }
+    fetch('http://127.0.0.1:8000/daily')
+        .then(response => response.json()) // Convert response to JSON
+        .then(data => {
+
+            // const jsonString = JSON.stringify(data);
+            fetchedMap = JSON.parse(data.map)
+            MapID = data.id
+        }).then(() =>
+
+
+
+            fetch(`http://127.0.0.1:8000/score?MapID=${MapID}&PlayerID=${PlayerID}`)
+                .then(
+                    response => {
+
+                        if (response.status == 422) {
+                            console.log(response)
+                            alert("Vous avez déjà réalisé le défi d'aujourdhui, revenez demain !")
+
+                        }
+
+
+                        if (response.status == 200) {
+
+                            axios.post(urlAPI + 'score', { PlayerID, MapID }, {
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                },
+                            }).then(response => { console.log("ok pour jouer", response) })
+                            runGame()
+                        }
+                    })
+                .catch(error => {
+                    console.log(error)
+
+                })
+        )
+
 }
 
 let canvas
@@ -184,3 +195,17 @@ const runGame = () => {
     initGame()
 
 }
+
+const updateScore = async (MapID, PlayerID, pScore) => {
+    try {
+        const response = await axios.patch(urlAPI + 'score', { MapID, PlayerID, pScore }, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        console.log('Response:', response.data);
+    } catch (error) {
+        console.error('Error updating score:', error);
+    }
+};

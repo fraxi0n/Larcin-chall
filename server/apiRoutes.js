@@ -150,6 +150,76 @@ router.post('/daily', (req, res) => {
 })
 
 
+// API route
+router.get('/score', (req, res) => {
+    const { MapID, PlayerID } = req.query;
+    const sql = 'SELECT * FROM score WHERE map_id = ? AND user_id = ?';
+
+    connection.query(sql, [MapID, PlayerID], (error, results) => {
+        if (error) {
+            console.error('Error retrieving scores:', error);
+            res.status(500).json({ message: 'Error retrieving scores' });
+        } else {
+
+            console.log(results.length)
+
+            if (results.length === 0) {
+                console.log('Scores retrieved successfully');
+                res.status(200).json({ message: ' not existing, can create', scores: results })
+            }
+            else {
+                res.status(422).json({ message: 'already existing ', scores: results })
+
+            }
+        }
+    });
+});
+
+
+router.post('/score', (req, res) => {
+    const { PlayerID, MapID } = req.body;
+
+
+    const newScore = {
+        user_id: PlayerID,
+        map_id: MapID,
+        score: 0
+    };
+
+    connection.query('INSERT INTO score SET ?', newScore, (error, results) => {
+        if (error) {
+            console.error('Error adding new score:', error);
+            res.status(500).json({ message: 'Error adding new score' });
+        } else {
+            console.log('New score added successfully');
+            res.json({ message: 'Score added successfully', score: newScore });
+        }
+    });
+});
+
+router.patch('/score', (req, res) => {
+    const { MapID, PlayerID, pScore } = req.body;
+
+    connection.query(
+        'UPDATE score SET score = ? WHERE map_id = ? AND user_id = ?',
+        [pScore, MapID, PlayerID],
+        (error, results) => {
+            if (error) {
+                console.error('Error updating score:', error);
+                res.status(500).json({ message: 'Error updating score' });
+            } else {
+                console.log('Score updated successfully');
+                res.json({ message: 'Score updated successfully' });
+            }
+        }
+    );
+});
+
+
+
+
+
+
 
 
 
