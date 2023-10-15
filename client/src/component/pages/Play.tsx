@@ -6,22 +6,20 @@ import Game from '../Game';
 const Play = () => {
   return (<>
 
-      <header className="App-header">
+    <header className="App-header">
 
-          <Navbar></Navbar>
-          
-
+      <Navbar></Navbar>
 
 
-          PLAY
 
-          
 
-      </header>
-      <body style={{height: "90%" , width : "100%" } }>
+
+
+    </header>
+    <body style={{ height: "90%", width: "100%" }}>
       <Game type={"rapide"} ></Game >
-      </body>
-      </>
+    </body>
+  </>
 
   );
 }

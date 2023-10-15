@@ -151,7 +151,7 @@ router.post('/daily', (req, res) => {
 
 
 // API route
-router.get('/score', (req, res) => {
+router.get('/has_score', (req, res) => {
     const { MapID, PlayerID } = req.query;
     const sql = 'SELECT * FROM score WHERE map_id = ? AND user_id = ?';
 
@@ -200,6 +200,8 @@ router.post('/score', (req, res) => {
 router.patch('/score', (req, res) => {
     const { MapID, PlayerID, pScore } = req.body;
 
+    console.log(" score dans body =", pScore)
+
     connection.query(
         'UPDATE score SET score = ? WHERE map_id = ? AND user_id = ?',
         [pScore, MapID, PlayerID],
@@ -208,11 +210,62 @@ router.patch('/score', (req, res) => {
                 console.error('Error updating score:', error);
                 res.status(500).json({ message: 'Error updating score' });
             } else {
+
+
                 console.log('Score updated successfully');
                 res.json({ message: 'Score updated successfully' });
             }
         }
     );
+});
+
+router.get('/leaderboard', (req, res) => {
+
+    const { MapID, PlayerID } = req.query;
+    const sql1 = 'SELECT * FROM score WHERE map_id = ? ORDER BY score DESC LIMIT 10';
+
+    // const sql = 'SELECT user_  user FROM score WHERE map_id = ? ';
+
+
+    connection.query(sql1, [MapID, PlayerID], (error, results) => {
+        if (error) {
+            console.error('Error retrieving scores:', error);
+            res.status(500).json({ message: 'Error retrieving scores' });
+        } else {
+
+            const sql2 = 'SELECT username FROM users WHERE id = ?';
+
+
+
+            const queryPromises = results.map((result) => {
+
+
+                return new Promise((resolve, reject) => {
+
+
+                    connection.query(sql2, [result.user_id], (error, usernameResults) => {
+                        if (error) {
+                            reject(error);
+                        } else {
+                            const username = usernameResults[0].username; // Assuming the username is in the first row of the results
+                            resolve({ username: username, score: result.score });
+                        }
+                    });
+                });
+            });
+
+            // Wait for all Promises to resolve
+            Promise.all(queryPromises)
+                .then((updatedResults) => {
+                    // All queries have completed, and the results are updated
+                    res.status(200).json({ results: updatedResults });
+                })
+                .catch((error) => {
+                    console.error("Error fetching usernames: " + error);
+                    res.status(500).json({ error: "An error occurred" });
+                });
+        }
+    });
 });
 
 

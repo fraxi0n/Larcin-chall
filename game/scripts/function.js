@@ -198,28 +198,11 @@ function LarcinWin() {
 
     }
 
-
-
     lvl++;
 
     updateScore(lvl)
 
 
-
-
-
-    // inserer vérif ici ??
-    /*
-
-    userId = récup dans l'url mettre dans une variable 
-    mapid  = récup dans l'url puis extraire ( juste le mod suffit)
-
-
-
-        get() statut de user id = game précis 
-        get() statut scores.score map + userid 
-
-    */
 
 
 

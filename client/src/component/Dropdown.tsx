@@ -1,56 +1,58 @@
 import React, { ReactElement, useState } from 'react';
+import { Link } from 'react-router-dom';
+
 // import './button-icon.scss';
 
 type Props = {
-  isDisable : boolean;
-  textTitle : string;
-  textContents : string[] ; 
-  remWidth?: number ;
-  children?: ReactElement<any,any>
+  isDisable: boolean;
+  textTitle: string;
+  textContents: string[];
+  remWidth?: number;
+  children?: ReactElement<any, any>
   // children : chil
 };
-const Dropdown = ({ isDisable, textTitle , textContents , remWidth, children  }: Props) => {
-  
-  const [isOpen , setIsOpen] = useState(false)
-  
+const Dropdown = ({ isDisable, textTitle, textContents, remWidth, children }: Props) => {
+
+  const [isOpen, setIsOpen] = useState(false)
+
   const getWidth = () => {
-    
-    if (!remWidth) 
-    {
+
+    if (!remWidth) {
       return "auto"
     }
-    
-    return remWidth+"rem"
-    
+
+    return remWidth + "rem"
+
   }
-  
+
   return (
     <div
-    style={{position : "relative"}}
-    onMouseEnter={()=>  {  !isDisable&&setIsOpen(true) }}
-    onMouseLeave={()=>  { setIsOpen(false) }}
+      style={{ position: "relative" }}
+      onMouseEnter={() => { !isDisable && setIsOpen(true) }}
+      onMouseLeave={() => { setIsOpen(false) }}
     >
-    
-    <button 
-    disabled={isDisable}
-    style={{ width : getWidth()   }}
-    
-    
-    >
-    {textTitle}
-    
-    </button>
-    
-    {isOpen&& textContents.map( (content, i) => { 
-      return  <button style={{ width : getWidth()  , position: "absolute" , left: "0" , top: (i+1)*3.5+"rem"}}> {content} </button> })
-      
-    }
-    
+
+      <button
+        disabled={isDisable}
+        style={{ width: getWidth() }}
+
+
+      >
+        {textTitle}
+
+      </button>
+
+      {isOpen && textContents.map((content, i) => {
+        return <Link to="/play">
+          <button style={{ width: getWidth(), position: "absolute", left: "0", top: (i + 1) * 3.5 + "rem" }}> {content} </button>
+        </Link>
+
+      })}
+
     </div>
-    
-    
-    );
-  };
-  
-  export default Dropdown;
-  
+
+
+  );
+};
+
+export default Dropdown;

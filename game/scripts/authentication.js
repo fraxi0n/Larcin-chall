@@ -150,7 +150,7 @@ const hasPlayerPlayed = () => {
 
 
 
-            fetch(`http://127.0.0.1:8000/score?MapID=${MapID}&PlayerID=${PlayerID}`)
+            fetch(`http://127.0.0.1:8000/has_score?MapID=${MapID}&PlayerID=${PlayerID}`)
                 .then(
                     response => {
 
@@ -196,7 +196,7 @@ const runGame = () => {
 
 }
 
-const updateScore = async (MapID, PlayerID, pScore) => {
+const updateScore = async (pScore) => {
     try {
         const response = await axios.patch(urlAPI + 'score', { MapID, PlayerID, pScore }, {
             headers: {
