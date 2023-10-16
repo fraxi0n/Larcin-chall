@@ -121,11 +121,66 @@ router.post('/register', (req, res) => {
         });
     });
 
+// router.get('/map', (req, res) => {
+//     const query = 'SELECT * FROM map ORDER BY id DESC';
+//     // Execute the query using your SQL library
+//     connection.query(query, [numMap], (error, results) => {
+//         if (error) {
+
+//             console.error('Error fetching data:', error);
+//             res.status(500).send('Error fetching data');
+
+//             if (results.length > 0) {
+
+//                 if (results.length > numMap) {
+//                     const mapSearched = results[numMap];
+//                     res.json(mapSearched);
+//                 }
+
+//                 else {
+//                     res.status(404).send('map limit reached ');
+//                 }
+
+
+//             } else {
+//                 res.status(404).send('No data found');
+//             }
+//         }
+//     });
+// });
+
+router.get('/map', (req, res) => {
+    const query = 'SELECT * FROM map ORDER BY id DESC';
+
+    // Execute the query using your SQL library
+    connection.query(query, (error, results) => {
+        if (error) {
+            console.error('Error fetching data:', error);
+            res.status(500).send('Error fetching data');
+        } else {
+            if (results.length > 0) {
+                const numMap = req.query.numMap; // Assuming numMap is a query parameter
+
+                if (numMap < results.length) {
+                    const mapSearched = results[numMap];
+                    res.json(mapSearched);
+                } else {
+                    console.log("Map limit reached")
+                    res.status(400).send('Map limit reached');
+                }
+            } else {
+
+                res.status(404).send('No data found');
+            }
+        }
+    });
+});
+
+
 
 
 
 router.post('/daily', (req, res) => {
-
     const date = new Date()
 
 
@@ -150,7 +205,6 @@ router.post('/daily', (req, res) => {
 })
 
 
-// API route
 router.get('/has_score', (req, res) => {
     const { MapID, PlayerID } = req.query;
     const sql = 'SELECT * FROM score WHERE map_id = ? AND user_id = ?';
@@ -222,50 +276,63 @@ router.patch('/score', (req, res) => {
 router.get('/leaderboard', (req, res) => {
 
     const { MapID, PlayerID } = req.query;
+
+
+    const sqlCount = 'SELECT COUNT(*) AS total_rows FROM score WHERE map_id = ?';
     const sql1 = 'SELECT * FROM score WHERE map_id = ? ORDER BY score DESC LIMIT 10';
 
-    // const sql = 'SELECT user_  user FROM score WHERE map_id = ? ';
-
-
-    connection.query(sql1, [MapID, PlayerID], (error, results) => {
+    connection.query(sqlCount, [MapID], (error, countResults) => {
         if (error) {
-            console.error('Error retrieving scores:', error);
+            console.error('Error retrieving total row count:', error);
             res.status(500).json({ message: 'Error retrieving scores' });
         } else {
 
-            const sql2 = 'SELECT username FROM users WHERE id = ?';
+            // const totalRows = countResults[0].total_rows;
 
 
 
-            const queryPromises = results.map((result) => {
+
+            connection.query(sql1, [MapID], (error, results) => {
+                if (error) {
+                    console.error('Error retrieving scores:', error);
+                    res.status(500).json({ message: 'Error retrieving scores' });
+                } else {
+
+                    const sql2 = 'SELECT username FROM users WHERE id = ?';
 
 
-                return new Promise((resolve, reject) => {
+
+                    const queryPromises = results.map((result) => {
 
 
-                    connection.query(sql2, [result.user_id], (error, usernameResults) => {
-                        if (error) {
-                            reject(error);
-                        } else {
-                            const username = usernameResults[0].username; // Assuming the username is in the first row of the results
-                            resolve({ username: username, score: result.score });
-                        }
+                        return new Promise((resolve, reject) => {
+
+
+                            connection.query(sql2, [result.user_id], (error, usernameResults) => {
+                                if (error) {
+                                    reject(error);
+                                } else {
+                                    const username = usernameResults[0].username; // Assuming the username is in the first row of the results
+                                    resolve({ username: username, score: result.score });
+                                }
+                            });
+                        });
                     });
-                });
-            });
 
-            // Wait for all Promises to resolve
-            Promise.all(queryPromises)
-                .then((updatedResults) => {
-                    // All queries have completed, and the results are updated
-                    res.status(200).json({ results: updatedResults });
-                })
-                .catch((error) => {
-                    console.error("Error fetching usernames: " + error);
-                    res.status(500).json({ error: "An error occurred" });
-                });
+                    // Wait for all Promises to resolve
+                    Promise.all(queryPromises)
+                        .then((updatedResults) => {
+                            // All queries have completed, and the results are updated
+                            res.status(200).json({ results: updatedResults, countResults });
+                        })
+                        .catch((error) => {
+                            console.error("Error fetching usernames: " + error);
+                            res.status(500).json({ error: "An error occurred" });
+                        });
+                }
+            });
         }
-    });
+    })
 });
 
 
