@@ -10,7 +10,6 @@ type Row
     top: string// | undefined
   }
 const initTable: Row[] = []
-// const newTable: Row[] = []
 const apiRoute = "http://127.0.0.1:8000/"
 
 const Leaderboard = () => {
@@ -157,61 +156,83 @@ const Leaderboard = () => {
 
   }, [mapFetchedID])
 
-
-
-
-  function isEmpty(table: never[]) {
-    throw new Error('Function not implemented.');
+  const getCellClass = (pPos: number) => {
+    let classReturned = "leaderboard-cell"
+    if (pPos === 1) {
+      classReturned += " ld-first"
+    }
+    if (pPos === 2) {
+      classReturned += " ld-second"
+    }
+    if (pPos === 3) {
+      classReturned += " ld-third"
+    }
+    return classReturned
   }
+
 
   return (
     <div className="App">
       <header className="App-header">
 
         <Navbar></Navbar>
-
-        {mapID ? (<div className='date-container'>
-          <button
-            onClick={() => setMapFetchedID(prev => prev + 1)}
-          > {"<"} </button>
-          <>{mapID ? mapDate : ""} </>
-          <button
-            disabled={!mapFetchedID}
-            onClick={() => setMapFetchedID(prev => prev - 1)}
-          > {">"} </button>
-
-        </div>) : <> wait</>
-
-        }
-
-        <table className='leaderboard-table'  >
-          <thead>
-            <th>JOUEUR</th>
-            <th>SCORE</th>
-            <th>POSITION</th>
-            <th>TOP </th>
-          </thead>
-
-
-          {
-            table.length ?
-              <tbody>
-
-                {table.map((row: Row) => {
-                  return <tr>
-                    <td className='leaderboard-cell'  >{row.username}</td>
-                    <td className='leaderboard-cell' >{row.score}</td>
-                    <td className='leaderboard-cell'>{row.position} </td>
-                    <td className='leaderboard-cell'>{row.top} </td>
-                  </tr>
-                })}
-              </tbody>
-              : <>aucun joureur trouvé pour cette date</>
-          }
-        </table>
       </header>
-    </div>
+
+      {mapID ? (<div className='date-container'>
+        <button
+          onClick={() => setMapFetchedID(prev => prev + 1)}
+        > {"<"} </button>
+        <div className='date-displayer' >{mapID ? mapDate : ""} </div>
+        <button
+          disabled={!mapFetchedID}
+          onClick={() => setMapFetchedID(prev => prev - 1)}
+        > {">"} </button>
+
+      </div>) : <> wait</>
+
+      }
+      <div className='lb-container'>
+
+
+
+
+        {
+          table.length ? <table className='leaderboard-table'  >
+            <thead>
+              <th className='leaderboard-head'>JOUEUR</th>
+              <th className='leaderboard-head'>SCORE</th>
+              <th className='leaderboard-head'>POSITION</th>
+              <th className='leaderboard-head'>TOP </th>
+            </thead>
+            <tbody>
+
+              {table.map((row: Row) => {
+
+                const cellClass = getCellClass(row.position)
+
+
+                return <tr>
+                  <td className={cellClass}  >{row.username}</td>
+                  <td className={cellClass}  >{row.score}</td>
+                  <td className={cellClass} >{row.position} </td>
+                  <td className={cellClass}>{row.top} </td>
+                </tr>
+              })}
+            </tbody>
+          </table>
+
+            : <>
+              <tbody></tbody>
+
+              <div>aucun joueur trouvé pour cette date</div>
+
+            </>
+        }
+      </div>
+    </div >
+
   );
+
 }
 
 export default Leaderboard;
