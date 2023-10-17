@@ -187,8 +187,8 @@ const runGame = () => {
 
     canvas = document.createElement("canvas");
     canvas.id = "canvas";
-    canvas.width = "1200";
-    canvas.height = "675";
+    canvas.width = "100%";
+    canvas.height = "100%";
     canvas.style.backgroundColor = "black";
     root.appendChild(canvas);
 

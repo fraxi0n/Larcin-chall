@@ -2,6 +2,7 @@ nav {
   display: flex;
   justify-content: space-between;
   background-color: #BC770F;
+  /* padding-left: 2%; */
 
 
 
@@ -16,13 +17,40 @@ button {
   padding: 1rem;
   min-height: 3rem;
 
+}
 
+body {
+  background-color: #f3e6bd;
+  /* text-align: center; */
+  /* display: flex; */
+  /* align-items: flex-start;
+   */
+  padding: 0 3% 0 3%;
+  justify-content: center;
 
 
 }
 
-body {
-  background-color: #f3e6bd
+h1 {
+  padding: 1% 2% 1% 2%
+    /* text-align: center; */
+
+}
+
+hr {
+  margin: 2rem;
+  color: #BC770F;
+}
+
+.list-img-run {
+  display: flex;
+  flex-wrap: wrap
+}
+
+.list-run {
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem
 }
 
 .lb-container {
