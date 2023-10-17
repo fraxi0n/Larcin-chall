@@ -1,15 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 // import './button-icon.scss';
 
+let largeurEcran = window.innerWidth;
+let hauteurEcran = window.innerHeight;
+
+
 type Props = {
   type: string
 };
 const Game = ({ type }: Props) => {
-
-
-
-
-
 
   //   const [isOpen , setIsOpen] = useState(false)
 
@@ -25,17 +24,36 @@ const Game = ({ type }: Props) => {
 
 
 
-  const [width, setWidth] = useState(1600)
-  const [height, setHeight] = useState(900)
+  const [height, setHeight] = useState(10)
+  const [width, setWidth] = useState(largeurEcran * 0.85);
 
-  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => {
+      console.log('Screen size changed');
+      // You can also access the updated screen dimensions using window.innerWidth and window.innerHeight.
+      largeurEcran = window.innerWidth;
+      hauteurEcran = window.innerHeight;
+      setWidth(largeurEcran * 0.85)
+
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+
+
+
+  const screenRef = useRef(null);
 
 
   useEffect(() => {
 
-    setHeight(9 / 16 * width)
-
-
+    setHeight(7 / 16 * width)
 
 
   }, [width])
@@ -43,21 +61,35 @@ const Game = ({ type }: Props) => {
 
   return (
     <>
-      <div >
+      <div ref={screenRef} >
+
+
+
+        {
+          width > 500 ?
+            <iframe
+              className='canvas'
+              src="http://127.0.0.1:5500/game/index.html?mod=1&id=1"  // Replace with your desired URL
+              title="larcin précis"
+              width={width}                   // Set the width as per your requirement
+              height={height}               // Set the height as per your requirement
+              // frameBorder="0"               // Optionally, you can set frameBorder to 0 for no border
+              allowFullScreen={true}             // Enable fullscreen mode if needed
+            ></iframe>
+            :
+            <div>
+              passer  en mode paysage pour commencer a jouer
+            </div>
+
+
+        }
+
       </div>
 
-      <iframe
-        src="http://127.0.0.1:5500/game/index.html?mod=1&id=1"  // Replace with your desired URL
-        title="larcin précis"
-        width={width}                   // Set the width as per your requirement
-        height={height}               // Set the height as per your requirement
-        // frameBorder="0"               // Optionally, you can set frameBorder to 0 for no border
-        allowFullScreen={true}             // Enable fullscreen mode if needed
-      ></iframe>
       <p>
 
 
-
+        {/* 
         CONTRÔLE :
 
         Flèches directionnelles : déplacer Larcin, naviguer dans les menus
@@ -71,7 +103,7 @@ const Game = ({ type }: Props) => {
         " Larcin Lazer est un puzzle game dans lequel votre mémoire est mise à l’épreuve. Chaque niveau est rempli de lasers qui disparaissent aussitôt que vous commencez à bouger. Déplacez-vous discrètement en vous fiant à votre mémoire pour arriver jusqu’à la fin du parcours "  - page steam de Larcin Lazer
 
         Il est conseillé de jouer à la démo de Larcin Lazer avant d’essayer Larcin Lazer Challenge.
-
+ */}
 
 
       </p>

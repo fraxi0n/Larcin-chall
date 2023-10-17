@@ -8,6 +8,10 @@
 
 const urlAPI = 'http://127.0.0.1:8000/';
 
+const largeurEcran = window.innerWidth;
+
+const hauteurEcran = window.innerHeight;
+
 let PlayerID
 let MapID
 
@@ -30,6 +34,8 @@ const emailInputRegister = document.getElementById("regEmail");
 const passwordInputRegister = document.getElementById("regPassword");
 const nameInputRegister = document.getElementById("regName");
 const root = document.getElementById("root");
+const body = document.getElementById("body");
+
 
 
 
@@ -157,9 +163,7 @@ const hasPlayerPlayed = () => {
                         if (response.status == 422) {
                             console.log(response)
                             alert("Vous avez déjà réalisé le défi d'aujourdhui, revenez demain !")
-
                         }
-
 
                         if (response.status == 200) {
 
@@ -187,10 +191,26 @@ const runGame = () => {
 
     canvas = document.createElement("canvas");
     canvas.id = "canvas";
-    canvas.width = "100%";
-    canvas.height = "100%";
+
+    console.log(largeurEcran)
+
+    canvas.width = largeurEcran;
+    canvas.height = hauteurEcran;
     canvas.style.backgroundColor = "black";
-    root.appendChild(canvas);
+    canvas.style.margin = "auto";
+
+
+    canvasContainer = document.createElement("div");
+    canvasContainer.width = largeurEcran;
+    canvasContainer.id = "canvas-container";
+    canvasContainer.style.display = "flex";
+    canvasContainer.style.justifyContent = "center";
+
+
+
+    root.appendChild(canvasContainer);
+    canvasContainer.appendChild(canvas);
+
 
     initGame()
 
@@ -209,3 +229,4 @@ const updateScore = async (pScore) => {
         console.error('Error updating score:', error);
     }
 };
+
