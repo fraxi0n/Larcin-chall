@@ -152,3 +152,14 @@ hr {
 
 
 }
+
+.loading-screen {
+
+  align-self: center;
+  text-align: center;
+  font-weight: 500;
+  /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+  font-size: larger;
+
+
+}

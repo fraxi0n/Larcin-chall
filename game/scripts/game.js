@@ -38,8 +38,8 @@ function load() {
     testDif = 0
     time = 90
 
-    oX = 1200 / 2 - 64 * map.largeur / 2 - 64
-    oY = 675 / 2 - 64 * map.hauteur / 2 - 64
+    oX = largeurEcran / 2 - scale * map.largeur / 2 - scale
+    oY = hauteurEcran / 2 - scale * map.hauteur / 2 - scale
 
 
 }
@@ -97,6 +97,37 @@ function update(d) {
 
 
 function draw(pCtx) {
+
+    const drawInCenter = (pImg, h, isScaled) => {
+
+
+        let scaleW = pImg.width
+        let scaleH = pImg.height
+
+        if (isScaled) {
+            scaleW = scaleW * scale / 64
+            scaleH = scaleH * scale / 64
+
+        }
+
+
+
+        pCtx.drawImage(pImg, largeurEcran / 2 - scaleW / 2, h, scaleW, scaleH)
+
+    }
+    const writeInCenter = (pTxt, h) => {
+
+
+        pCtx.fillText(pTxt, (largeurEcran - pCtx.measureText(pTxt).width) / 2, h)
+
+
+    }
+
+
+
+
+
+
     ctx.fillStyle = 'rgb(255,255,255)'
 
 
@@ -172,66 +203,80 @@ function draw(pCtx) {
 
 
 
-
-
     }
     else //  == INGAME
     {
 
         if (lvl == 0) {
-            pCtx.fillText(" Passez la premiere porte pour comencer le défi", 360, 70)
+            writeInCenter(homeText, scale)
+            // pCtx.fillText(homeText, (largeurEcran - pCtx.measureText(homeText).width) / 2, scale)
         }
         if (score == false) {
             //ctx.fillStyle = 'rgb(255,255,255)'
-            pCtx.drawImage(imgStemps, 540, 10, 32, 32)
+            pCtx.drawImage(imgStemps, largeurEcran / 2 - scale * 1.3, scale * 0.14, scale / 2, scale * 0.45)
 
-            pCtx.fillText(Math.ceil(time), 540 + 5 + 32, 35)
+            pCtx.fillText(Math.ceil(time), largeurEcran / 2 - scale * 0.75, scale * 0.51)
 
-            pCtx.drawImage(imgSporte, 620, 10, 32, 32)
+            pCtx.drawImage(imgSporte, largeurEcran / 2 + scale * 0.3, scale * 0.1, scale / 2, scale / 2)
 
-            pCtx.fillText(lvl, 620 + 5 + 32, 35)
+            pCtx.fillText(lvl, largeurEcran / 2 + scale * 0.85, scale * 0.51)
 
 
             for (let Sy = 1; Sy <= map.hauteur; Sy++) {
                 for (let Sx = 1; Sx <= map.largeur; Sx++) {
 
                     if (map[Sy][Sx] == 3 && laserON == false) {
-                        pCtx.drawImage(imgCase, oX + 64 * Sx, oY + 64 * Sy)
+                        pCtx.drawImage(imgCase, oX + scale * Sx, oY + scale * Sy, scale, scale)
                     }
                     else {
-                        pCtx.drawImage(plot[map[Sy][Sx]], oX + 64 * Sx, oY + 64 * Sy)
+                        pCtx.drawImage(plot[map[Sy][Sx]], oX + scale * Sx, oY + scale * Sy, scale, scale)
                     }
                 }
             }
 
             if (Larcin.clignote < 2) {
-                pCtx.drawImage(imgLarcin, oX + 64 * Larcin.x, oY + 64 * Larcin.y)
+                pCtx.drawImage(imgLarcin, oX + scale * Larcin.x, oY + scale * Larcin.y, scale, scale)
             }
+
 
 
         }
         else // GAME OVER -- score == true
         {
-            if (GameMod == "PRECIS") { pCtx.drawImage(imgPrécis, 450, 50) }
-            if (GameMod == "MORTEL") { pCtx.drawImage(imgMortel, 450, 50) }
-            if (GameMod == "RAPIDE") { pCtx.drawImage(imgRapide, 450, 50) }
 
 
 
-            pCtx.fillText("GAME OVER", 550, 250)
+            if (GameMod == "PRECIS") { drawInCenter(imgPrécis, hauteurEcran * 0.05, true) }
+            if (GameMod == "MORTEL") { drawInCenter(imgMortel, hauteurEcran * 0.05, true) }
+            if (GameMod == "RAPIDE") { drawInCenter(imgRapide, hauteurEcran * 0.05, true) }
 
-            pCtx.drawImage(imgSporte, 550, 350, 64, 64)
 
-            pCtx.fillText(lvl, 550 + 64 + 20, 350 + 40, 64, 64)
+            writeInCenter("GAME OVER", hauteurEcran * 0.45)
+
+
+            drawInCenter(imgSporte, hauteurEcran * 0.55, scale)
+            pCtx.fillText(lvl, largeurEcran / 2 + scale, hauteurEcran * 0.55 + scale / 2)
+
+
+            // writeInCenter(lvl, 300 + 40)
+
+
 
             if (GameMod == "MORTEL") {
-                pCtx.drawImage(imgStemps, 530, 500, 64, 64)
-                pCtx.fillText(Math.ceil(time) + " left", 530 + 64 + 10, 500 + 40)
+                pCtx.drawImage(imgStemps, 530, 500, scale, true)
+                pCtx.fillText(Math.ceil(time) + " left", 530 + scale + 10, 500 + 40)
+
+
             }
             else {
 
-                pCtx.drawImage(imgSmort, 550, 500, 64, 64)
-                pCtx.fillText(deathCount, 550 + 64 + 10, 500 + 40)
+                // writeInCenter(deathCount, 500 + 40)
+
+
+                drawInCenter(imgSmort, hauteurEcran * 0.70, true)
+
+                // pCtx.drawImage(imgSmort, 550, 500, scale, scale)
+                pCtx.fillText(deathCount, largeurEcran / 2 + scale, hauteurEcran * 0.70 + scale / 2)
             }
 
         }
@@ -239,6 +284,8 @@ function draw(pCtx) {
 
 
     }
+
+
 
 
 }

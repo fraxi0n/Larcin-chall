@@ -19,6 +19,8 @@ if (!largeurEcran) {
     largeurEcran = window.innerWidth;
 }
 
+const hauteurEcran = largeurEcran * 8.5 / 16
+
 
 const urlAPI = 'http://127.0.0.1:8000/';
 
@@ -209,7 +211,7 @@ const runGame = () => {
     // console.log(largeurEcran)
 
     canvas.width = largeurEcran;
-    canvas.height = largeurEcran * 7 / 16;
+    canvas.height = hauteurEcran
     canvas.style.backgroundColor = "black";
     canvas.style.margin = "auto";
 

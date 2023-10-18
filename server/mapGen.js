@@ -91,16 +91,23 @@ function gen(pDif) {
     do {
         do {
             if (pDif > 200) {
-                map.t = 24
+                map.t = 23
                 map.largeur = 16
             }
             else {
                 map.t = RandomINT(4 + Math.floor(pDif / 12), 6 + Math.floor(pDif / 8)) + RandomINT(4, 6)
+                if (map.t > 23) {
+                    map.t = 23
+                }
+
                 map.largeur = RandomINT(Math.floor(0, 64 * map.t) - 2, Math.floor(0.64 * map.t) + 2)
             }
 
+            if (map.t - map.largeur > 7) {
+                map.largeur = map.t - 7
+            }
             map.hauteur = map.t - map.largeur
-        } while (map.hauteur <= 2 || map.hauteur >= 10 || map.largeur <= 2 || map.largeur >= 17)
+        } while (map.hauteur <= 2 || map.largeur <= 2)
 
         porte.x = RandomINT(1, Math.ceil(map.largeur * 0.20)) + (RandomINT(0, Math.floor(map.largeur * 0.20)))
         porte.y = RandomINT(1, Math.ceil(map.hauteur * 0.50)) + (RandomINT(0, Math.floor(map.hauteur * 0.50)))
@@ -270,7 +277,7 @@ function createDailySeed() {
 
     testDif = lvlDif.precis.base
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 50; i++) {
 
         daylySeed.precis.push(gen(testDif))
         testDif += lvlDif.precis.inc

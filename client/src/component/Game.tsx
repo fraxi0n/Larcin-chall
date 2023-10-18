@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ScreenComp from './Screen';
 // import './button-icon.scss';
 
 let largeurEcran = window.innerWidth;
@@ -53,7 +54,7 @@ const Game = ({ type }: Props) => {
 
   useEffect(() => {
 
-    setHeight(7 / 16 * width)
+    setHeight(8.5 / 16 * width)
 
 
   }, [width])
@@ -65,21 +66,12 @@ const Game = ({ type }: Props) => {
 
 
 
-        {
-          width > 500 ?
-            <iframe
-              className='canvas'
-              src={"http://127.0.0.1:5500/game/index.html#?lg=" + width + "&mod=1"}  // Replace with your desired URL
-              title="larcin précis"
-              width={width}                   // Set the width as per your requirement
-              height={height}               // Set the height as per your requirement
-              // frameBorder="0"               // Optionally, you can set frameBorder to 0 for no border
-              allowFullScreen={true}             // Enable fullscreen mode if needed
-            ></iframe>
-            :
-            <div>
-              passer  en mode paysage pour commencer a jouer
-            </div>
+        {width > 500 ? <ScreenComp widthScreen={width}       ></ScreenComp>
+
+          :
+          <div>
+            passer  en mode paysage pour commencer a jouer
+          </div>
 
 
         }

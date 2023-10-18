@@ -9,7 +9,7 @@ let godMODE = false
 function run() {
   canvas = document.getElementById("canvas");
   ctx = canvas.getContext("2d");
-  ctx.font = "2rem myFont";
+  ctx.font = scale / 40 + "rem myFont";
 
 
   requestAnimationFrame(run);
@@ -45,6 +45,6 @@ const godLaunch = () => {
 
 }
 //test launch game quick
-godLaunch()
+// godLaunch()
 
 

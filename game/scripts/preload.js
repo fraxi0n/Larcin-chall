@@ -26,6 +26,19 @@ let imgSmort = new Image
 let imgSporte = new Image
 let imgScoeur = new Image
 
+let tCase = 64 //img.width
+let scale = 64
+let scaleRatio = 1
+
+
+
+if (largeurEcran < tCase * 16) {
+    scale = Math.floor(largeurEcran / 16)
+    scaleRatio = scale / tCase
+
+}
+
+let homeText = "Passez la premiere porte pour comencer le défi"
 
 
 
@@ -58,12 +71,12 @@ var matrix = []
 
 
 map.largeur = 1
-map.hauteur =1
+map.hauteur = 1
 
 // map[x][y] = 0 
 
-let oX = 20 -64 
-let oY = 20 -64
+let oX = 20 - 64
+let oY = 20 - 64
 
 let Relement
 let Ri
@@ -71,7 +84,7 @@ let Rx
 let Ry
 
 let Larcin = []
-Larcin.x 
+Larcin.x
 Larcin.y
 
 let porte = []
@@ -82,11 +95,11 @@ porte.y
 
 let laserON = true
 
-var grid 
+var grid
 var finder = new PF.AStarFinder();
 var path
 
-let laserCount 
+let laserCount
 let Secu
 
 let timer = 0
@@ -99,7 +112,7 @@ Larcin.clignote = 1
 
 
 
-menu= []
+menu = []
 
 menu.butPrecis
 menu.butmortel
@@ -108,16 +121,16 @@ menu.butRapide
 let curseur = []
 
 curseur.pos = 1
-curseur.x = [0,180,600,980]
-curseur.y= 30
+curseur.x = [0, 180, 600, 980]
+curseur.y = 30
 
 testDif = 0
 
 let mapOK
 
-let time 
+let time
 
-let lvl 
+let lvl
 
 let score = false
 
@@ -128,4 +141,3 @@ languette = []
 languette.x = [0, 110, 500, 910]
 languette.y = 190
 
- 
