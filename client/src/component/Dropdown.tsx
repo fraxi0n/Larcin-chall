@@ -15,26 +15,26 @@ const Dropdown = ({ isDisable, textTitle, textContents, remWidth, children }: Pr
 
   const [isOpen, setIsOpen] = useState(false)
 
-  const getWidth = () => {
+  // const getWidth = () => {
 
-    if (!remWidth) {
-      return "auto"
-    }
-
-    return remWidth + "rem"
-
-  }
+  //   if (!remWidth) {
+  //     return "auto"
+  //   }
+  //   return remWidth + "rem"
+  // }
 
   return (
     <div
+      className='dropdown'
       style={{ position: "relative" }}
-      onMouseEnter={() => { !isDisable && setIsOpen(true) }}
+      onClick={() => { !isDisable && setIsOpen(true) }}
       onMouseLeave={() => { setIsOpen(false) }}
     >
 
       <button
+        className='dropdown'
         disabled={isDisable}
-        style={{ width: getWidth() }}
+      // style={{ width: getWidth() }}
 
 
       >
@@ -44,15 +44,22 @@ const Dropdown = ({ isDisable, textTitle, textContents, remWidth, children }: Pr
 
       {isOpen && textContents.map((content, i) => {
         return <Link to="/play">
-          <button style={{ width: getWidth(), position: "absolute", left: "0", top: (i + 1) * 3.5 + "rem" }}> {content} </button>
+          <button className='dropdown' style={{ position: "absolute", left: "0", top: (i + 1) * 3 + "rem" }}
+          > {content} </button>
+
         </Link>
 
       })}
 
     </div>
 
+    // <Link to="/play">
+    //   <button > LANCER DEFI </button>
+    // </Link>
+
 
   );
+
 };
 
 export default Dropdown;

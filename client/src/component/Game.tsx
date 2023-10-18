@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 // import './button-icon.scss';
 
 let largeurEcran = window.innerWidth;
-let hauteurEcran = window.innerHeight;
+// let hauteurEcran = window.innerHeight;
 
 
 type Props = {
@@ -33,7 +33,7 @@ const Game = ({ type }: Props) => {
       console.log('Screen size changed');
       // You can also access the updated screen dimensions using window.innerWidth and window.innerHeight.
       largeurEcran = window.innerWidth;
-      hauteurEcran = window.innerHeight;
+      // hauteurEcran = window.innerHeight;
       setWidth(largeurEcran * 0.85)
 
     };
@@ -69,7 +69,7 @@ const Game = ({ type }: Props) => {
           width > 500 ?
             <iframe
               className='canvas'
-              src="http://127.0.0.1:5500/game/index.html?mod=1&id=1"  // Replace with your desired URL
+              src={"http://127.0.0.1:5500/game/index.html#?lg=" + width + "&mod=1"}  // Replace with your desired URL
               title="larcin précis"
               width={width}                   // Set the width as per your requirement
               height={height}               // Set the height as per your requirement

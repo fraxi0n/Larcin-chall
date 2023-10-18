@@ -6,11 +6,25 @@
 
 // If not using modules and including Axios via CDN, no import is needed.
 
+
+var hash = window.location.hash;
+
+hash = hash.slice(1);
+
+var hashParams = new URLSearchParams(hash);
+
+var largeurEcran = hashParams.get("lg");
+
+if (!largeurEcran) {
+    largeurEcran = window.innerWidth;
+}
+
+
 const urlAPI = 'http://127.0.0.1:8000/';
 
-const largeurEcran = window.innerWidth;
+// 
 
-const hauteurEcran = window.innerHeight;
+// const hauteurEcran = window.innerHeight;
 
 let PlayerID
 let MapID
@@ -192,10 +206,10 @@ const runGame = () => {
     canvas = document.createElement("canvas");
     canvas.id = "canvas";
 
-    console.log(largeurEcran)
+    // console.log(largeurEcran)
 
     canvas.width = largeurEcran;
-    canvas.height = hauteurEcran;
+    canvas.height = largeurEcran * 7 / 16;
     canvas.style.backgroundColor = "black";
     canvas.style.margin = "auto";
 

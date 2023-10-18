@@ -1,23 +1,40 @@
 nav {
   display: flex;
   justify-content: space-between;
+  align-content: center;
   background-color: #BC770F;
+  height: 64px;
   /* padding-left: 2%; */
-
-
 
 }
 
 button {
+  height: 3rem;
   background-color: #E2B618;
+
+
+}
+
+.dropdown {
+  width: 80%;
+
+
+}
+
+.nav-button {
+
   text-align: center;
   font-weight: 500;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: larger;
-  padding: 1rem;
-  min-height: 3rem;
+  padding: 0 1rem;
+  /* height: 3rem; */
 
+  margin: .5rem;
+
+  min-width: 12rem;
 }
+
 
 body {
   background-color: #f3e6bd;
