@@ -38,8 +38,7 @@ function load() {
     testDif = 0
     time = 90
 
-    oX = largeurEcran / 2 - scale * map.largeur / 2 - scale
-    oY = hauteurEcran / 2 - scale * map.hauteur / 2 - scale
+
 
 
 }
@@ -109,9 +108,6 @@ function draw(pCtx) {
             scaleH = scaleH * scale / 64
 
         }
-
-
-
         pCtx.drawImage(pImg, largeurEcran / 2 - scaleW / 2, h, scaleW, scaleH)
 
     }
@@ -119,8 +115,6 @@ function draw(pCtx) {
 
 
         pCtx.fillText(pTxt, (largeurEcran - pCtx.measureText(pTxt).width) / 2, h)
-
-
     }
 
 

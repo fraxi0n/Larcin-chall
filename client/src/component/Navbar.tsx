@@ -50,25 +50,13 @@ const NavBar = ({ isConnected = false }: Props) => {
 
 
           <Link to="/play">
-            <button className='nav-button' > LANCER DEFI </button>
+            <button className='nav-element nav-button' > LANCER DEFI </button>
           </Link>
 
-          {/* <Dropdown
-        isDisable={isConnected}
-        textTitle={'JOUER'}
-        textContents={['LARCIN PRECIS', 'LARCIN MORTEL', 'LARCIN ECLAIR']}
-        remWidth={10}
-      >
-
-
-      </Dropdown> */}
-
-          {/* <img src={playImg} alt='Go to welcome page'></img> */}
-
-          <Link to="/leaderboard"><button className='nav-button'>
+          <Link to="/leaderboard"><button className='nav-element nav-button'>
             LEADERBOARD
           </button></Link>
-          <Link to="/mapgen"><button className='nav-button'>
+          <Link to="/mapgen"><button className='nav-element nav-button'>
             NOUVELLE GENERATION
           </button></Link>
         </>
@@ -77,8 +65,32 @@ const NavBar = ({ isConnected = false }: Props) => {
           <Dropdown
             isDisable={false}
             textTitle={'MENU'}
-            textContents={['jouer', 'sqdf', 'LARCIN ECLAIR']}
-          ></Dropdown>
+
+          >{
+
+              [
+                <Link to="/play">
+                  <button className='nav-element dropdown'> LANCER DEFI </button>
+                </Link>,
+                <Link to="/leaderboard"><button className='nav-element dropdown' >
+                  LEADERBOARD
+                </button></Link>,
+                <Link to="/mapgen"><button className='nav-element dropdown'>
+                  NOUVELLE GENERATION
+                </button></Link>
+              ]
+            }
+
+
+            {/* <Link to="/mapgen"><button className='nav-button'>
+                NOUVELLE GENERATION
+              </button></Link>
+
+            </> */}
+
+
+
+          </Dropdown>
 
         </>
 

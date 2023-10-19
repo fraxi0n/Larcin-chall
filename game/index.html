@@ -18,44 +18,55 @@
 
       <div id="login" class="login-reg-box">
 
-        <h2>Log in</h2>
+        <h2>Connexion</h2>
         <form id="loginForm" method="POST">
-          <label for="loginEmail">Email:</label>
+          <label for="loginEmail">Pseudo/Email:</label>
           <input type="email" id="loginEmail" name="loginEmail" required>
           <br>
-          <label for="loginPassword">Password:</label>
+          <label for="loginPassword">Mot de passe :</label>
           <input type="password" id="loginPassword" name="loginPassword" required>
           <br>
-          <input id="submitLogin" type="button" value="Log in">
+          <input id="submitLogin" type="button" value="se connecter">
         </form>
-        <p>First robbery ? <a href="#" class="toggleForms"> Register</a></p>
+        <p>Premier cambriolage ? <a href="#" class="toggleForms"> S'inscrire</a></p>
 
       </div>
 
       <div id="register" class="hidden login-reg-box">
 
 
-        <h2>Registration</h2>
+        <h2>Inscription</h2>
         <form id="registrationForm" method="POST">
-          <label for="regName">Name:</label>
+          <label for="regName">Pseudo:</label>
           <input type="text" id="regName" name="regName" required>
           <br>
           <label for="regEmail">Email:</label>
           <input type="email" id="regEmail" name="regEmail" required>
           <br>
-          <label for="regPassword">Password:</label>
+          <label for="regPassword">Mot de passe:</label>
           <input type="password" id="regPassword" name="regPassword" required>
           <br>
-          <input id="submitRegister" type="button" value="Register">
+          <input id="submitRegister" type="button" value="s'inscrire">
         </form>
-        <p>Already a crime genius ? <a href="#" class="toggleForms"> Log in </a></p>
+        <p>Déjà un génie du crime ? <a href="#" class="toggleForms"> Se connecter</a></p>
+
+      </div>
+
+      <div class="hidden" id="virtual-keyboard">
+        <div class="arrow up">↑</div>
+        <div class="keyboard-container">
+          <div class="arrow left">←</div>
+          <div class="arrow down">↓</div>
+          <div class="arrow right">→</div>
+        </div>
 
       </div>
     </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="scripts/authentication.js"></script>
+  <script src="scripts/preLaunch.js"></script>
+  <script src="scripts/route.js"></script>
   <script src="./bower_components\pathfinding\pathfinding-browser.min.js"></script>
   <script src="scripts/libFraxion.js"></script>
   <script src="scripts/preload.js"></script>

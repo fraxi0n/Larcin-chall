@@ -277,7 +277,7 @@ function createDailySeed() {
 
     testDif = lvlDif.precis.base
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 30; i++) {
 
         daylySeed.precis.push(gen(testDif))
         testDif += lvlDif.precis.inc
@@ -286,6 +286,8 @@ function createDailySeed() {
 
     return daylySeed.precis
 
+
+    //to put when all mods implanted
     testDif = lvlDif.mortel.base
 
     for (let i = 0; i < 50; i++) {
@@ -301,9 +303,6 @@ function createDailySeed() {
         daylySeed.eclair.push(codingSeed())
         testDif += lvlDif.eclair.inc
     }
-
-
-
 
 }
 

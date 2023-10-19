@@ -47,39 +47,11 @@ function KeyDown(t) {
             if (curseur.pos == 4) { curseur.pos = 1 }
         }
 
-        // if (t.code == "Enter") {
-        //     if (curseur.pos == 1) {
-        //         GameMod = "PRECIS"
-        //         testDif = 0
-        //         time = 90
-
-
-        //     }
-        //     if (curseur.pos == 2) {
-        //         GameMod = "MORTEL"
-        //         testDif = 40
-        //         time = 180
-        //     }
-        //     if (curseur.pos == 3) {
-        //         GameMod = "RAPIDE"
-        //         testDif = 20
-        //         time = 30
-        //     }
-        //     deathCount = 0
-        //     lvl = 1
-        //     laserON = true
-        //     CreateMap(testDif)
-        // }
 
 
     }
     else // IN GAME
     {
-
-        // if (score == true && t.code == "Enter") {
-        //     score = false
-        //     GameMod = "MENU"
-        // }
 
 
 
@@ -96,10 +68,14 @@ function KeyDown(t) {
 
             if (t.code == "ArrowLeft") {
                 LarcinMove(-1, 0)
+
+
             }
 
             if (t.code == "ArrowRight") {
                 LarcinMove(+1, 0)
+
+
             }
         }
     }
@@ -238,6 +214,9 @@ function loadMap() {
     map.largeur = map[1].length - 1
     map.hauteur = map.length - 1
     map.t = map.largeur + map.hauteur
+
+    oX = largeurEcran / 2 - scale * map.largeur / 2 - scale
+    oY = hauteurEcran / 2 - scale * map.hauteur / 2 - scale
 
     for (let i = 1; i <= map.length - 1; i++) {
 

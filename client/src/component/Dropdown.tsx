@@ -1,38 +1,29 @@
 import React, { ReactElement, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 // import './button-icon.scss';
 
 type Props = {
   isDisable: boolean;
   textTitle: string;
-  textContents: string[];
-  remWidth?: number;
-  children?: ReactElement<any, any>
+  // textContents: string[];
+  children: ReactElement<any, any>[]
   // children : chil
 };
-const Dropdown = ({ isDisable, textTitle, textContents, remWidth, children }: Props) => {
+const Dropdown = ({ isDisable, textTitle, children }: Props) => {
 
   const [isOpen, setIsOpen] = useState(false)
 
-  // const getWidth = () => {
-
-  //   if (!remWidth) {
-  //     return "auto"
-  //   }
-  //   return remWidth + "rem"
-  // }
 
   return (
     <div
-      className='dropdown'
-      style={{ position: "relative" }}
+      className='nav-element dropdown'
       onClick={() => { !isDisable && setIsOpen(true) }}
       onMouseLeave={() => { setIsOpen(false) }}
     >
 
       <button
-        className='dropdown'
+        className='nav-element dropdown'
+        style={{ marginTop: ".5rem" }}
         disabled={isDisable}
       // style={{ width: getWidth() }}
 
@@ -42,20 +33,22 @@ const Dropdown = ({ isDisable, textTitle, textContents, remWidth, children }: Pr
 
       </button>
 
-      {isOpen && textContents.map((content, i) => {
-        return <Link to="/play">
-          <button className='dropdown' style={{ position: "absolute", left: "0", top: (i + 1) * 3 + "rem" }}
-          > {content} </button>
+      {isOpen && children.map((content) => {
 
-        </Link>
+        return <div style={{ position: "relative", left: "0", top: "0", margin: "0", }}>
+          {content}
+        </div>
 
-      })}
+
+      }
+
+        // return <Link to="/play">
+        //   <button className='dropdown' style={{ position: "absolute", left: "0", top: (i + 1) * 3 + "rem" }}
+        //   > {content} </button>
+
+      )}
 
     </div>
-
-    // <Link to="/play">
-    //   <button > LANCER DEFI </button>
-    // </Link>
 
 
   );

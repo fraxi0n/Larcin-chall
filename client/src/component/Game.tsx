@@ -62,9 +62,8 @@ const Game = ({ type }: Props) => {
 
   return (
     <>
+
       <div ref={screenRef} >
-
-
 
         {width > 500 ? <ScreenComp widthScreen={width}       ></ScreenComp>
 
@@ -77,35 +76,9 @@ const Game = ({ type }: Props) => {
         }
 
       </div>
-
-      <p>
-
-
-        {/* 
-        CONTRÔLE :
-
-        Flèches directionnelles : déplacer Larcin, naviguer dans les menus
-
-        Entrée : valider
-
-        Echap : retourner au menu
-
-        RÈGLES :
-
-        " Larcin Lazer est un puzzle game dans lequel votre mémoire est mise à l’épreuve. Chaque niveau est rempli de lasers qui disparaissent aussitôt que vous commencez à bouger. Déplacez-vous discrètement en vous fiant à votre mémoire pour arriver jusqu’à la fin du parcours "  - page steam de Larcin Lazer
-
-        Il est conseillé de jouer à la démo de Larcin Lazer avant d’essayer Larcin Lazer Challenge.
- */}
-
-
+      <p style={{ textAlign: "center", padding: "0" }}>
+        CONTRÔLE : Flèches directionnelles ←↑↓→ pour déplacer Larcin   //   OBJECTIF: mémoriser le parcours jusqu'à la sortie sans passer par les lasers
       </p>
-
-
-
-
-      {/* <canvas //ref={canvasRef}
-     id="canvas" width="1200" height= "675" style={{backgroundColor: "black"}} ></canvas> */}
-
     </>
   );
 };
