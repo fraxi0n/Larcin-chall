@@ -4,8 +4,6 @@ const router = express.Router();
 const mysql = require('mysql');
 
 
-const hashedPWlg = '7d50bf8325fa2ce2cb63d060eac87e3cc81b8135454a12693ae6c2af1d4830dd'.length // 64 char
-
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -30,12 +28,6 @@ router.get('/test', (req, res) => {
 router.get('/genDaily', (req, res) => {
     res.send(Map.createDailySeed());
 });
-
-// Serve the HTML form
-// router.get('/', (req, res) => {
-//     res.sendFile('../game/index.html');
-// });
-
 
 
 router.post('/login', (req, res) => {

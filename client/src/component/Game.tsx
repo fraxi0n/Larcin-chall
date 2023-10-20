@@ -25,6 +25,7 @@ const Game = ({ type }: Props) => {
 
 
 
+
   const [height, setHeight] = useState(10)
   const [width, setWidth] = useState(largeurEcran * 0.85);
 

@@ -5,27 +5,23 @@ import './../App.css';
 import { Link } from 'react-router-dom';
 
 import welcomeImg from '../asset/Sporte.png';
-import playImg from '../asset/larcin.png'
 
 const limitScreen = 780
-let largeurEcran = window.innerWidth;
-// let hauteurEcran = window.innerHeight;
+let largeurEcran: number
 
 type Props = { isConnected?: boolean };
 const NavBar = ({ isConnected = false }: Props) => {
 
-  // const [height, setHeight] = useState(10)
   const [width, setWidth] = useState(window.innerWidth);
 
-  useEffect(() => {
-    const handleResize = () => {
-      console.log('Screen size changed');
-      // You can also access the updated screen dimensions using window.innerWidth and window.innerHeight.
-      largeurEcran = window.innerWidth;
-      // hauteurEcran = window.innerHeight;
-      setWidth(window.innerWidth)
+  const handleResize = () => {
+    largeurEcran = window.innerWidth;
+    setWidth(window.innerWidth)
 
-    };
+  };
+
+
+  useEffect(() => {
 
     window.addEventListener('resize', handleResize);
 
@@ -33,6 +29,10 @@ const NavBar = ({ isConnected = false }: Props) => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  // useEffect(() => {
+  //   handleResize()
+  // }, []);
 
 
 
@@ -50,13 +50,13 @@ const NavBar = ({ isConnected = false }: Props) => {
 
 
           <Link to="/play">
-            <button className='nav-element nav-button' > LANCER DEFI </button>
+            <button className='button nav-element nav-button' > LANCER DEFI </button>
           </Link>
 
-          <Link to="/leaderboard"><button className='nav-element nav-button'>
+          <Link to="/leaderboard"><button className='button nav-element nav-button'>
             LEADERBOARD
           </button></Link>
-          <Link to="/mapgen"><button className='nav-element nav-button'>
+          <Link to="/mapgen"><button className='button nav-element nav-button'>
             NOUVELLE GENERATION
           </button></Link>
         </>
@@ -67,37 +67,23 @@ const NavBar = ({ isConnected = false }: Props) => {
             textTitle={'MENU'}
 
           >{
-
               [
                 <Link to="/play">
                   <button className='nav-element dropdown'> LANCER DEFI </button>
                 </Link>,
-                <Link to="/leaderboard"><button className='nav-element dropdown' >
+                <Link to="/leaderboard"><button className='button nav-element dropdown' >
                   LEADERBOARD
                 </button></Link>,
-                <Link to="/mapgen"><button className='nav-element dropdown'>
+                <Link to="/mapgen"><button className='button nav-element dropdown'>
                   NOUVELLE GENERATION
                 </button></Link>
               ]
             }
-
-
-            {/* <Link to="/mapgen"><button className='nav-button'>
-                NOUVELLE GENERATION
-              </button></Link>
-
-            </> */}
-
-
-
           </Dropdown>
 
         </>
 
-
       }
-
-
 
     </nav >
   );

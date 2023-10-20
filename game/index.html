@@ -26,7 +26,8 @@
           <label for="loginPassword">Mot de passe :</label>
           <input type="password" id="loginPassword" name="loginPassword" required>
           <br>
-          <input id="submitLogin" type="button" value="se connecter">
+          <div id="errorLogin" class="error"></div>
+          <input id="submitLogin" type="submit" value="se connecter">
         </form>
         <p>Premier cambriolage ? <a href="#" class="toggleForms"> S'inscrire</a></p>
 
@@ -46,9 +47,12 @@
           <label for="regPassword">Mot de passe:</label>
           <input type="password" id="regPassword" name="regPassword" required>
           <br>
-          <input id="submitRegister" type="button" value="s'inscrire">
+          <div id="errorRegister" class="error"></div>
+          <input id="submitRegister" type="submit" value="s'inscrire">
+
         </form>
         <p>Déjà un génie du crime ? <a href="#" class="toggleForms"> Se connecter</a></p>
+
 
       </div>
 

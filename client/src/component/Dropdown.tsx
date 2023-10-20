@@ -14,18 +14,18 @@ const Dropdown = ({ isDisable, textTitle, children }: Props) => {
   const [isOpen, setIsOpen] = useState(false)
 
 
+
   return (
     <div
-      className='nav-element dropdown'
+      className=' nav-element dropdown'
       onClick={() => { !isDisable && setIsOpen(true) }}
       onMouseLeave={() => { setIsOpen(false) }}
     >
 
       <button
-        className='nav-element dropdown'
+        className='button nav-element dropdown'
         style={{ marginTop: ".5rem" }}
         disabled={isDisable}
-      // style={{ width: getWidth() }}
 
 
       >

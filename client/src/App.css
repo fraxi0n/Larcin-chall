@@ -8,59 +8,17 @@ nav {
 
 }
 
-button {
-  height: 3rem;
-  background-color: #E2B618;
-}
-
-.dropdown {
-  width: 80%;
-  margin: 0;
-
-}
-
-.nav-element {
+h2 {
+  font-weight: bold;
+  font-size: small;
   text-align: center;
-  font-weight: 500;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: larger;
-  height: 3rem;
-
-
-  min-width: 12rem;
-
-
-}
-
-
-.nav-button {
-  padding: 0 1rem;
-  margin: .5rem;
-
-
-
-
 }
 
 
 body {
   background-color: #f3e6bd;
-  /* text-align: center; */
-  /* display: flex; */
-  /* align-items: flex-start;
-   */
   padding: 0 3% 0 3%;
   justify-content: center;
-
-
-}
-
-.canvas {
-  margin: 0;
-  /* position: absolute; */
-  left: 7.5%;
-
-
 }
 
 h1 {
@@ -73,6 +31,16 @@ hr {
   margin: 2rem;
   color: #BC770F;
 }
+
+.canvas {
+  margin: 0;
+  /* position: absolute; */
+  left: 7.5%;
+
+
+}
+
+
 
 .list-img-run {
   display: flex;
@@ -135,8 +103,6 @@ hr {
 
 
 
-
-
 .date-container {
   display: flex;
   justify-content: center;
@@ -144,17 +110,13 @@ hr {
 }
 
 .date-displayer {
-
-
-
-
-
+  min-width: 170px;
   background-color: #E2B618;
+
   text-align: center;
   font-weight: 500;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: larger;
-  padding: 0.9rem;
   border: 2px solid rgb(255, 255, 255);
 
 
@@ -168,5 +130,69 @@ hr {
   /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
   font-size: larger;
 
+
+}
+
+.video-container {
+  max-width: 854px;
+  position: relative;
+  /* padding-bottom: 6.25%; */
+  /* Rapport hauteur/largeur pour un écran 16:9 (9/16) */
+  padding-top: 480px;
+  /* Ajustement pour centrer la vidéo verticalement (facultatif) */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.teaser-container {
+  padding: 0;
+
+  width: 80%;
+  max-width: 854px;
+}
+
+.teaser {
+
+  width: 100%,
+}
+
+.button {
+  height: 3rem;
+  background-color: #E2B618;
+
+}
+
+.dropdown {
+  width: 80%;
+  margin: 0;
+
+}
+
+.nav-element {
+  text-align: center;
+  font-weight: 500;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: larger;
+  height: 3rem;
+
+
+  min-width: 12rem;
+
+
+}
+
+
+.nav-button {
+  padding: 0 1rem;
+  margin: .5rem;
 
 }

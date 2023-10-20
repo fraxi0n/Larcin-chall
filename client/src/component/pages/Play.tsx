@@ -10,6 +10,8 @@ const Play = () => {
 
       <Navbar></Navbar>
 
+      {/* <Game></Game> */}
+
 
 
 

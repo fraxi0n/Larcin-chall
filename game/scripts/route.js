@@ -1,3 +1,5 @@
+// import { response } from "express";
+
 const urlAPI = 'http://127.0.0.1:8000/';
 
 
@@ -45,45 +47,66 @@ const login = async (e) => {
     }
     catch (error) {
         console.error('Error:', error);
+
+        if (error.response.status === 404) {
+
+            errorLogin.innerHTML = "Utilisateur ou mot de passe incorrect"
+        }
+
+
     }
 }
 
 
 const register = async (e) => {
     e.preventDefault()
-    try {
-        const userEmailRegister = emailInputRegister.value;
-        const userNameRegister = nameInputRegister.value;
-        const userPasswordRegister = passwordInputRegister.value;
 
-        const data = encoder.encode(userPasswordRegister);
-        const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+    const userEmailRegister = emailInputRegister.value;
+    const userNameRegister = nameInputRegister.value;
+    const userPasswordRegister = passwordInputRegister.value;
 
-        // Create the registration request body
-        const registerBody = {
-            name: userNameRegister,
-            email: userEmailRegister,
-            password: hashedPassword,
-        };
+    if (userPasswordRegister !== "" && userNameRegister !== "" && userEmailRegister !== "") {
 
-        const response = await axios.post(urlAPI + 'register', registerBody, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+        try {
 
-        console.log('Response:', response.data);
 
-        if (response.status === 200) {
-            PlayerID = response.data.ID
+            const data = encoder.encode(userPasswordRegister);
+            const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
 
-            hasPlayerPlayed()
+            // Create the registration request body
+            const registerBody = {
+                name: userNameRegister,
+                email: userEmailRegister,
+                password: hashedPassword,
+            };
+
+            const response = await axios.post(urlAPI + 'register', registerBody, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('Response:', response.data);
+
+            if (response.status === 200) {
+                PlayerID = response.data.ID
+
+                hasPlayerPlayed()
+            }
+
+        } catch (error) {
+            console.error('Error:', error);
+            if (error.response.status === 400) {
+                errorRegister.innerHTML = "Nom d'utilisateur / email déjà pris";
+
+
+            }
         }
-
-    } catch (error) {
-        console.error('Error:', error);
+    }
+    else {
+        errorRegister.innerHTML = "Tout les champs ne sont pas remplis";
     }
 
 }

@@ -113,28 +113,18 @@ const Leaderboard = () => {
     , [table, nbScore])
 
 
-  // const fetchDate = (pMapID) => { }
 
 
   useEffect((
-
-
   ) => {
-
-
     fetch(apiRoute + 'map?numMap=' + mapFetchedID)
       .then(response => {
-
         console.log("404", response)
-
         if (response.status === 400) {
-
           setMapFetchedID(prev => prev - 1)
           alert("aucune donnée antérieure à cette date")
-
         }
         else if (response.status === 200) {
-
           return response.json()
         }
 
@@ -155,6 +145,25 @@ const Leaderboard = () => {
 
 
   }, [mapFetchedID])
+
+
+  const playSeedButton = <button style={{ backgroundColor: "#ada997" }}
+    onClick={ }> Jouer </button>
+
+  const mapDateDiv = () => {
+
+    if (!mapID) {
+      return ""
+    }
+
+    if (!mapFetchedID) {
+      return <div className='date-displayer' style={{ padding: ".9rem 0" }} >{mapDate} </div>
+
+    }
+    return <div className='date-displayer' style={{ padding: ".35rem 0", fontSize: "1rem" }}  ><div>{mapDate} </div> {playSeedButton}</div>
+    // background - color: #22211d;
+
+  }
 
   const getCellClass = (pPos: number) => {
     let classReturned = "leaderboard-cell"
@@ -179,23 +188,17 @@ const Leaderboard = () => {
       </header>
 
       {mapID ? (<div className='date-container'>
-        <button
+        <button className='button'
           onClick={() => setMapFetchedID(prev => prev + 1)}
         > {"<"} </button>
-        <div className='date-displayer' >{mapID ? mapDate : ""} </div>
-        <button
+        {mapDateDiv()}
+        <button className='button'
           disabled={!mapFetchedID}
           onClick={() => setMapFetchedID(prev => prev - 1)}
         > {">"} </button>
-
       </div>) : <> wait</>
-
       }
       <div className='lb-container'>
-
-
-
-
         {
           table.length ? <table className='leaderboard-table'  >
             <thead>

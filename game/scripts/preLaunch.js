@@ -23,6 +23,10 @@ const registrationForm = document.getElementById("register");
 const submitRegister = document.getElementById("submitRegister");
 const submitLogin = document.getElementById("submitLogin");
 
+const errorRegister = document.getElementById("errorRegister");
+const errorLogin = document.getElementById("errorLogin");
+
+
 const emailInputLogin = document.getElementById("loginEmail");
 const passwordInputLogin = document.getElementById("loginPassword");
 const emailInputRegister = document.getElementById("regEmail");
