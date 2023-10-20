@@ -12,6 +12,8 @@ if (!largeurEcran) {
 
 const hauteurEcran = largeurEcran * 8.5 / 16
 
+MapID = hashParams.get("id");
+
 let canvas
 
 let isLoginDisplayed = true

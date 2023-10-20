@@ -17,8 +17,7 @@ h2 {
 
 body {
   background-color: #f3e6bd;
-  padding: 0 3% 0 3%;
-  justify-content: center;
+
 }
 
 h1 {
@@ -40,7 +39,14 @@ hr {
 
 }
 
+.app {
+  padding: 0 3% 0 3%;
+  justify-content: center;
+}
 
+.app-header {
+  margin: .5rem;
+}
 
 .list-img-run {
   display: flex;
@@ -136,10 +142,8 @@ hr {
 .video-container {
   max-width: 854px;
   position: relative;
-  /* padding-bottom: 6.25%; */
-  /* Rapport hauteur/largeur pour un écran 16:9 (9/16) */
+
   padding-top: 480px;
-  /* Ajustement pour centrer la vidéo verticalement (facultatif) */
   height: 0;
   overflow: hidden;
 }

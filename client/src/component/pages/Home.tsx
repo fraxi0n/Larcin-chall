@@ -9,14 +9,12 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (<>
-    <div className="App">
-      <header className="App-header">
 
-        <Navbar></Navbar>
+    <div className="app">
 
-      </header>
+      <Navbar></Navbar>
 
-      <body>
+      <div style={{ padding: " 0 2rem " }}>
 
         <h1> Larcin Challenge </h1>
         <h3> Chaque jour, jouez vous de la nouvelle sécurité et imposez vous comme le cambrioleur ultime</h3>
@@ -139,7 +137,7 @@ const Home = () => {
           <br></br>
           <hr></hr>
         </p>
-      </body>
+      </div>
 
     </div>
   </>

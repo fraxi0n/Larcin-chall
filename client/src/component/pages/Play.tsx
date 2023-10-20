@@ -6,21 +6,15 @@ import Game from '../Game';
 const Play = () => {
   return (<>
 
-    <header className="App-header">
+    <div className='app' >
+
 
       <Navbar></Navbar>
+      <div style={{ padding: " 1rem 4%" }}>
+        <Game type={"rapide"} ></Game >
+      </div>
 
-      {/* <Game></Game> */}
-
-
-
-
-
-
-    </header>
-    <body style={{ height: "90%", width: "100%" }}>
-      <Game type={"rapide"} ></Game >
-    </body>
+    </div>
   </>
 
   );

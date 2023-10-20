@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import '../../App.css';
+import { Link } from 'react-router-dom';
 
 type Row
   = {
@@ -34,6 +35,10 @@ const Leaderboard = () => {
 
   const [table, setTable] = useState(initTable)
   const [nbScore, setNbScore] = useState(1)
+
+  // const [isGameLaunch, isGameLaunch] = useState(1)
+
+
 
 
   useEffect(() => {
@@ -117,7 +122,7 @@ const Leaderboard = () => {
 
   useEffect((
   ) => {
-    fetch(apiRoute + 'map?numMap=' + mapFetchedID)
+    fetch(apiRoute + 'mapFromIndex?numMap=' + mapFetchedID)
       .then(response => {
         console.log("404", response)
         if (response.status === 400) {
@@ -147,8 +152,18 @@ const Leaderboard = () => {
   }, [mapFetchedID])
 
 
-  const playSeedButton = <button style={{ backgroundColor: "#ada997" }}
-    onClick={ }> Jouer </button>
+  const playSeedButton =
+    <Link to={"/play?id=" + mapID}>
+
+      <button style={{ backgroundColor: "#ada997" }}
+      // onClick={() => console.log("cça arrive fort")}
+      >
+        Jouer </button >
+
+    </Link>
+
+
+
 
   const mapDateDiv = () => {
 
@@ -181,11 +196,10 @@ const Leaderboard = () => {
 
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="app">
 
-        <Navbar></Navbar>
-      </header>
+      <Navbar></Navbar>
+
 
       {mapID ? (<div className='date-container'>
         <button className='button'

@@ -26,35 +26,28 @@ const MapGen = () => {
     }
 
 
-    return (<>
-
-        <header className="App-header">
-
-            <Navbar></Navbar>
+    return (
 
 
-            <button
-                style={{ margin: "auto" }}
-                onClick={() => { newGen() }}
-            >
+        <div className='app'>
 
-                PASSER 24H
+            <header className="App-header">
 
-            </button>
+                <Navbar></Navbar>
 
 
+                <button
+                    style={{ margin: "auto" }}
+                    onClick={() => { newGen() }}
+                >
 
+                    PASSER 24H
 
+                </button>
 
+            </header>
 
-
-
-        </header>
-        <body style={{ height: "90%", width: "100%" }}>
-
-
-        </body>
-    </>
+        </div>
 
     );
 }

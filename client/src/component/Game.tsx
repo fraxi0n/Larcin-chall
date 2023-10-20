@@ -3,30 +3,19 @@ import ScreenComp from './Screen';
 // import './button-icon.scss';
 
 let largeurEcran = window.innerWidth;
-// let hauteurEcran = window.innerHeight;
 
+var url = window.location.href;
+
+var urlParams = new URLSearchParams(url);
+var mapID = urlParams.get("id");
 
 type Props = {
   type: string
 };
 const Game = ({ type }: Props) => {
 
-  //   const [isOpen , setIsOpen] = useState(false)
 
-  // const canvasRef = useRef(null);
-
-  // useEffect(() => {
-  //   const canvas = canvasRef.current ù
-  //   if (canvas  instanceof HTMLCanvasElement ) {
-  //     const ctx = canvas.getContext('2d');
-  //     // Perform any additional operations on the 2D rendering context
-  //   }
-  // }, []);
-
-
-
-
-  const [height, setHeight] = useState(10)
+  // const [height, setHeight] = useState(10)
   const [width, setWidth] = useState(largeurEcran * 0.85);
 
 
@@ -53,12 +42,9 @@ const Game = ({ type }: Props) => {
   const screenRef = useRef(null);
 
 
-  useEffect(() => {
-
-    setHeight(8.5 / 16 * width)
-
-
-  }, [width])
+  // useEffect(() => {
+  //   setHeight(8.5 / 16 * width)
+  // }, [width])
 
 
   return (
@@ -66,7 +52,7 @@ const Game = ({ type }: Props) => {
 
       <div ref={screenRef} >
 
-        {width > 500 ? <ScreenComp widthScreen={width}       ></ScreenComp>
+        {width > 500 ? <ScreenComp widthScreen={width} mapID={mapID ? mapID : undefined}   ></ScreenComp>
 
           :
           <div>
