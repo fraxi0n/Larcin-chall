@@ -3,6 +3,7 @@ import Navbar from '../Navbar';
 import '../../App.css';
 import { Link } from 'react-router-dom';
 
+
 type Row
   = {
     username: string
@@ -11,7 +12,10 @@ type Row
     top: string// | undefined
   }
 const initTable: Row[] = []
-const apiRoute = "http://127.0.0.1:8000/"
+const apiRoute = "http://127.0.0.1:8000/api/v0/"
+const mapRoute = "maps/"
+const scoreRoute = "scores/"
+
 
 const Leaderboard = () => {
 
@@ -122,7 +126,7 @@ const Leaderboard = () => {
 
   useEffect((
   ) => {
-    fetch(apiRoute + 'mapFromIndex?numMap=' + mapFetchedID)
+    fetch(apiRoute + mapRoute + 'mapFromIndex?numMap=' + mapFetchedID)
       .then(response => {
         console.log("404", response)
         if (response.status === 400) {

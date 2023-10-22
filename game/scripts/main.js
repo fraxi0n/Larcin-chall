@@ -37,7 +37,7 @@ const godLaunch = () => {
 
   if (!MapID) {
 
-    fetch('http://127.0.0.1:8000/daily')
+    fetch(urlAPI + urlMaps + 'mapFromIndex?umMap=0')
       .then(response => response.json()) // Convert response to JSON
       .then(data => {
 
@@ -49,7 +49,7 @@ const godLaunch = () => {
   }
   else {
 
-    fetch('http://127.0.0.1:8000/map?+id' + MapID)
+    fetch(urlAPI + urlMaps + 'map?+id' + MapID)
       .then(response => response.json()) // Convert response to JSON
       .then(data => {
 
@@ -66,7 +66,7 @@ const godLaunch = () => {
 
 if (MapID) {
 
-  fetch('http://127.0.0.1:8000/daily')
+  fetch(urlApi + urlMaps + 'daily')
     .then(response => response.json()) // Convert response to JSON
     .then(data => {
 

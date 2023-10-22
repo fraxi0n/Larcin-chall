@@ -1,8 +1,10 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import '../../App.css';
-import Game from '../Game';
 import axios from 'axios';
+
+const mapRoute = "maps/"
+
 
 
 const MapGen = () => {
@@ -14,7 +16,7 @@ const MapGen = () => {
     const newGen = () => {
 
 
-        axios.post(urlAPI + 'daily', {
+        axios.post(urlAPI + mapRoute + 'daily', {
             headers: {
                 'Content-Type': 'application/json',
             },

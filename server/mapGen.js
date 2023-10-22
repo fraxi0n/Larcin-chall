@@ -1,5 +1,3 @@
-
-
 const PF = require('pathfinding')
 
 

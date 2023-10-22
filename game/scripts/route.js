@@ -1,13 +1,13 @@
 // import { response } from "express";
 
-const urlAPI = 'http://127.0.0.1:8000/';
+const urlAPI = 'http://127.0.0.1:8000/api/v0/';
 
-
+urlUsers = 'users/'
+urlMaps = 'maps/'
+urlScores = 'scores/'
 
 let PlayerID
 let MapID
-
-
 
 const encoder = new TextEncoder();
 
@@ -29,7 +29,7 @@ const login = async (e) => {
             password: hashedPassword,
         };
 
-        const response = await axios.post(urlAPI + 'login', loginBody, {
+        const response = await axios.post(urlAPI + urlUsers + 'login', loginBody, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -82,7 +82,7 @@ const register = async (e) => {
                 password: hashedPassword,
             };
 
-            const response = await axios.post(urlAPI + 'register', registerBody, {
+            const response = await axios.post(urlAPI + urlUsers + 'register', registerBody, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -119,7 +119,7 @@ submitLogin.addEventListener("click", login)
 
 const updateScore = async (pScore) => {
     try {
-        const response = await axios.patch(urlAPI + 'score', { MapID, PlayerID, pScore }, {
+        const response = await axios.patch(urlAPI + urlScores + 'score', { MapID, PlayerID, pScore }, {
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -137,7 +137,7 @@ const updateScore = async (pScore) => {
 
 const hasPlayerPlayed = () => {
 
-    fetch('http://127.0.0.1:8000/daily')
+    fetch(urlAPI + urlMaps + 'daily')
         .then(response => response.json()) // Convert response to JSON
         .then(data => {
 
@@ -148,7 +148,7 @@ const hasPlayerPlayed = () => {
 
 
 
-            fetch(`http://127.0.0.1:8000/has_score?MapID=${MapID}&PlayerID=${PlayerID}`)
+            fetch(` ${urlAPI + urlMaps} has_score?MapID=${MapID}&PlayerID=${PlayerID}`)
                 .then(
                     response => {
 
@@ -159,7 +159,7 @@ const hasPlayerPlayed = () => {
 
                         if (response.status == 200) {
 
-                            axios.post(urlAPI + 'score', { PlayerID, MapID }, {
+                            axios.post(urlAPI + urlScores + 'score', { PlayerID, MapID }, {
                                 headers: {
                                     'Content-Type': 'application/json',
                                 },
