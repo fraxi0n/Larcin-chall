@@ -148,7 +148,7 @@ const hasPlayerPlayed = () => {
 
 
 
-            fetch(` ${urlAPI + urlMaps} has_score?MapID=${MapID}&PlayerID=${PlayerID}`)
+            fetch(`${urlAPI + urlScores}has_score?MapID=${MapID}&PlayerID=${PlayerID}`)
                 .then(
                     response => {
 

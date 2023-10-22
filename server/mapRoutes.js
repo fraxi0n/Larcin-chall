@@ -5,7 +5,30 @@ const Map = require('./mapGen');
 
 module.exports = (connection) => {
 
-    // Generation de la map et insertien d'une nouvelle map
+    // récupération de la derniere map ajouté 
+    router.get('/daily', (req, res) => {
+
+        const query = 'SELECT * FROM map ORDER BY id DESC LIMIT 1';
+
+
+        connection.query(query, (error, results) => {
+            if (error) {
+                console.error('Error fetching data:', error);
+                res.status(500).send('Error fetching data');
+            } else {
+                if (results.length > 0) {
+                    const mostRecentMap = results[0];
+                    console.log("daily map found")
+                    res.json({ ...mostRecentMap });
+
+                } else {
+                    res.status(404).send('No data found');
+                }
+            }
+        });
+    });
+
+    // Generation de la map et insertion d'une nouvelle map
     router.post('/daily', (req, res) => {
         const date = new Date()
         const newEntry = {
