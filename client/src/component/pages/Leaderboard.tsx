@@ -147,10 +147,8 @@ const Leaderboard = () => {
 
 
   const playSeedButton =
-    <Link to={"/play?id=" + mapID}>
-
+    <Link to={`/play?id=${mapID}`}>
       <button style={{ backgroundColor: "#ada997" }}
-      // onClick={() => console.log("cça arrive fort")}
       >
         Jouer </button >
 

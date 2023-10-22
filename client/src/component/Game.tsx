@@ -4,15 +4,14 @@ import ScreenComp from './Screen';
 
 let largeurEcran = window.innerWidth;
 
-var url = window.location.href;
-
-var urlParams = new URLSearchParams(url);
-var mapID = urlParams.get("id");
 
 type Props = {
   type: string
+  mapID?: string
 };
-const Game = ({ type }: Props) => {
+const Game = ({ type, mapID }: Props) => {
+
+  console.log(mapID)
 
 
   // const [height, setHeight] = useState(10)

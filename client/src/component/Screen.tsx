@@ -10,22 +10,17 @@ type Props = {
 };
 const ScreenComp = ({ widthScreen, mapID }: Props) => {
 
-    <map name=""></map>
+    console.log(mapID)
 
 
 
 
     const [isWidthChanging, setIsWidthChanging] = useState(false);
     const [iframeKey, setIframeKey] = useState(0);
-
     const [mapIdStr, setMapIdStr] = useState("");
-
     if (mapID) {
         setMapIdStr("&id=" + mapID)
-
     }
-
-
 
 
     useEffect(() => {
