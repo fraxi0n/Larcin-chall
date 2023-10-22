@@ -52,7 +52,7 @@ module.exports = (connection) => {
     })
 
     //recupere la map du jour si l'index numMap est a 0, de la veille si l'index est a 1 etc
-    router.get('/mapFromIndex', (req, res) => {
+    router.get('/map_from_index', (req, res) => {
         const query = 'SELECT * FROM map ORDER BY id DESC';
 
         connection.query(query, (error, results) => {

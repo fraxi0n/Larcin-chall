@@ -3,15 +3,15 @@ import Navbar from '../Navbar';
 import '../../App.css';
 import axios from 'axios';
 
-const mapRoute = "maps/"
 
+const urlAPI = 'http://127.0.0.1:8000/api/v0/';
+const mapRoute = "maps/"
 
 
 const MapGen = () => {
 
 
 
-    const urlAPI = 'http://127.0.0.1:8000/';
 
     const newGen = () => {
 
@@ -33,21 +33,15 @@ const MapGen = () => {
 
         <div className='app'>
 
-            <header className="App-header">
+            <Navbar></Navbar>
 
-                <Navbar></Navbar>
-
-
-                <button
-                    style={{ margin: "auto" }}
-                    onClick={() => { newGen() }}
-                >
-
-                    PASSER 24H
-
-                </button>
-
-            </header>
+            <button
+                className='button'
+                style={{ alignSelf: "center" }}
+                onClick={() => { newGen() }}
+            >
+                PASSER 24H
+            </button>
 
         </div>
 

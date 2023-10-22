@@ -4,6 +4,8 @@ import '../../App.css';
 import { Link } from 'react-router-dom';
 
 
+
+
 type Row
   = {
     username: string
@@ -49,7 +51,7 @@ const Leaderboard = () => {
 
     if (mapID) {
 
-      fetch(apiRoute + 'leaderboard?MapID=' + mapID)
+      fetch(apiRoute + scoreRoute + 'leaderboard?MapID=' + mapID)
         .then(response => {
           console.log(response)
           return response.json() // Convert response to JSON
@@ -81,18 +83,12 @@ const Leaderboard = () => {
         if (top <= 25) {
           arrondi = 5
         } else {
-          arrondi = 10
+          arrondi = 5
+          //10?
         }
 
-      // const a = top % arrondi
-      // console.log(a, top)
-
       return top - top % arrondi + arrondi + "%"
-
-
     }
-
-
 
     if (table.length && !table[0].position) {
       const newTable: Row[] = []
@@ -107,15 +103,9 @@ const Leaderboard = () => {
           position: i + 1,
           top: calculateTop(i + 1)
         }
-
-
       }
       console.log(table)
-
       setTable(newTable)
-
-
-
 
     }
   }
@@ -126,7 +116,7 @@ const Leaderboard = () => {
 
   useEffect((
   ) => {
-    fetch(apiRoute + mapRoute + 'mapFromIndex?numMap=' + mapFetchedID)
+    fetch(apiRoute + mapRoute + 'map_from_index?numMap=' + mapFetchedID)
       .then(response => {
         console.log("404", response)
         if (response.status === 400) {
