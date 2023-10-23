@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ScreenComp from './Screen';
+import { Link } from 'react-router-dom';
 
 let largeurEcran = window.innerWidth;
 
@@ -38,6 +39,19 @@ const Game = ({ type, mapID }: Props) => {
     <>
 
       <div>
+
+        {mapID &&
+          <div>
+            Redifusion d'une ancienne map : votre score ne sera pas enregistré .
+            <Link to="/play">
+              <button style={{ margin: "0 1rem" }} > Lancer le défi du jour</button>
+            </Link>
+
+          </div>
+
+
+        }
+
 
         {width > 500 ? <ScreenComp
           widthScreen={width}

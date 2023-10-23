@@ -29,11 +29,6 @@ const ScreenComp = ({ widthScreen, mapID }: Props) => {
 
     }, [mapID])
 
-    // if (mapID) {
-    //     setMapIdStr("&id=" + mapID)
-    // }
-
-
     useEffect(() => {
         setIsWidthChanging(true);
         const timeoutId = setTimeout(() => {
@@ -44,7 +39,6 @@ const ScreenComp = ({ widthScreen, mapID }: Props) => {
             clearTimeout(timeoutId);
         };
     }, [widthScreen]);
-
 
 
     return (

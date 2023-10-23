@@ -12,7 +12,11 @@ if (!largeurEcran) {
 
 const hauteurEcran = largeurEcran * 8.5 / 16
 
-MapID = hashParams.get("id");
+let MapID = hashParams.get("id");
+let PlayerID
+
+
+console.log(MapID)
 
 let canvas
 

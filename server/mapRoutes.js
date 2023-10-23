@@ -28,6 +28,8 @@ module.exports = (connection) => {
         });
     });
 
+
+
     // Generation de la map et insertion d'une nouvelle map
     router.post('/daily', (req, res) => {
         const date = new Date()
@@ -50,6 +52,27 @@ module.exports = (connection) => {
             }
         });
     })
+
+    // récupération de la map avec l'id en parametre
+    router.get('/map_from_id/:id', (req, res) => {
+        const id = req.params.id;
+        const sql = 'SELECT * FROM map WHERE id = ?';
+        connection.query(sql, [id], (error, results) => {
+            if (error) {
+                console.error('Error fetching data:', error);
+                res.status(500).send('Error fetching data');
+            } else {
+                if (results.length > 0) {
+                    const mostRecentMap = results[0];
+                    console.log("daily map found")
+                    res.json({ ...mostRecentMap });
+
+                } else {
+                    res.status(404).send('No data found');
+                }
+            }
+        });
+    });
 
     //recupere la map du jour si l'index numMap est a 0, de la veille si l'index est a 1 etc
     router.get('/map_from_index', (req, res) => {

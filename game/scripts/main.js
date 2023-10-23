@@ -6,6 +6,7 @@ let maintenant
 
 let godMODE = false
 
+
 function run() {
   canvas = document.getElementById("canvas");
   ctx = canvas.getContext("2d");
@@ -64,29 +65,30 @@ const godLaunch = () => {
 }
 
 
+console.log(2, MapID, urlAPI)
 if (MapID) {
 
-  fetch(urlApi + urlMaps + 'daily')
+
+  fetch(urlAPI + urlMaps + 'daily')
     .then(response => response.json()) // Convert response to JSON
     .then(data => {
 
-      fetchedMap = JSON.parse(data.map)
-      if (!MapID == data.id) {
+      if (MapID != data.id) {
 
 
+        console.log(MapID, data.id)
+        fetch(urlAPI + urlMaps + 'map_from_id/' + MapID)
+          .then(response => response.json())
+          .then(data => {
 
-        godMODE = true
+            fetchedMap = JSON.parse(data.map)
+            console.log("passe")
 
-        godLaunch()
+            godMODE = true
 
-
-
-
+            godLaunch()
+          })
       }
-
-
-
-
     })
 }
 

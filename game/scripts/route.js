@@ -6,8 +6,7 @@ const urlUsers = 'users/'
 const urlMaps = 'maps/'
 const urlScores = 'scores/'
 
-let PlayerID
-let MapID
+// let MapID
 
 const encoder = new TextEncoder();
 
@@ -118,17 +117,23 @@ submitLogin.addEventListener("click", login)
 
 
 const updateScore = async (pScore) => {
-    try {
-        const response = await axios.patch(urlAPI + urlScores + 'score', { MapID, PlayerID, pScore }, {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
 
-        console.log('Response:', response.data);
-    } catch (error) {
-        console.error('Error updating score:', error);
+    if (!godMODE) {
+
+
+        try {
+            const response = await axios.patch(urlAPI + urlScores + 'score', { MapID, PlayerID, pScore }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            console.log('Response:', response.data);
+        } catch (error) {
+            console.error('Error updating score:', error);
+        }
     }
+
 };
 
 
