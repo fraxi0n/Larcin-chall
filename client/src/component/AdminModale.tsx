@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { ReactElement, useState } from 'react';
 
 const urlAPI = 'http://127.0.0.1:8000/api/v0/';
@@ -5,52 +6,85 @@ const urlAPI = 'http://127.0.0.1:8000/api/v0/';
 const urlUsers = 'users/'
 const urlMaps = 'maps/'
 
+const encoder = new TextEncoder();
+
 
 type Props = {
     isActive: boolean;
+    mapID: number;
+    desactivation: () => void
 };
-const AdminModale = ({ isActive }: Props) => {
+const AdminModale = ({ isActive, mapID, desactivation }: Props) => {
 
     const [pwValue, setPwValue] = useState("")
     const [emailValue, setEmailValue] = useState("")
 
 
-    // const adminLogin = async (e) => {
-    //     e.preventDefault()
+    const adminLogin = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault()
 
-    //     try {
-    //         const data = encoder.encode(userPasswordLogin);
-    //         const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-    //         const hashArray = Array.from(new Uint8Array(hashBuffer));
-    //         const hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+        try {
+            const data = encoder.encode(pwValue);
+            const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
 
-    //         const loginBody = {
-    //             email: userEmailLogin,
-    //             password: hashedPassword,
-    //         };
+            const loginBody = {
+                email: emailValue,
+                password: hashedPassword,
+            };
 
-    //         const response = await axios.post(urlAPI + urlUsers + 'admin_login', loginBody, {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //         });
-
-    //         // console.log('Response:', response.data);
+            const response = await axios.post(urlAPI + urlUsers + 'admin_login', loginBody, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
 
 
-    //         if (response.status === 200) {
 
-    //             // delete map
+            if (response.status === 200) {
 
-    //         }
+                console.log("je passe ")
 
-    //     }
-    //     catch (error) {
-    //         console.error('Error:', error);
+                fetch(urlAPI + urlMaps + 'map/' + mapID, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => {
+
+                        desactivation()
+
+                        if (!response.ok) {
+                            alert("'La requête DELETE a échoué'")
+
+                            throw new Error('La requête DELETE a échoué');
+
+                        }
+                        else { alert("la map à été supprimé avec succes !") }
+                        // Gérer la réponse si nécessaire
+                    })
+                    .catch(error => {
+                        console.error('Une erreur s\'est produite :', error);
+                        desactivation()
+
+                    });
 
 
-    //     }
-    // }
+
+            }
+
+
+            // alert(response.data)
+
+        }
+        catch (error: any) {
+            desactivation()
+
+            alert(error.response.data)
+        }
+    }
 
 
     return (<div className={` ${isActive ? 'delete-map-modale' : 'hidden'}  `} >
@@ -63,8 +97,8 @@ const AdminModale = ({ isActive }: Props) => {
             <label >Mot de passe :</label>
             <input type="password" value={pwValue} onChange={(e) => setPwValue(e.target.value)}></input>
             <br></br>
-            <input type="submit" value="OK"  ></input>
-            <button style={{ margin: ".5rem" }}> Annuler</button>
+            <input type="submit" value="OK" onClick={adminLogin} ></input>
+            <button style={{ margin: ".5rem" }} onClick={desactivation} > Annuler</button>
         </div>
 
     </div>

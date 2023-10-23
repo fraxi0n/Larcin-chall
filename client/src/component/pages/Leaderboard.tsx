@@ -59,7 +59,7 @@ const Leaderboard = () => {
 
       fetch(apiRoute + scoreRoute + 'leaderboard?MapID=' + mapID)
         .then(response => {
-          console.log(response)
+          // console.log(response)
           return response.json() // Convert response to JSON
         })
         .then(response => {
@@ -110,7 +110,7 @@ const Leaderboard = () => {
           top: calculateTop(i + 1)
         }
       }
-      console.log(table)
+      // console.log(table)
       setTable(newTable)
 
     }
@@ -122,34 +122,38 @@ const Leaderboard = () => {
 
   useEffect((
   ) => {
-    fetch(apiRoute + mapRoute + 'map_from_index?numMap=' + mapFetchedID)
-      .then(response => {
-        console.log("404", response)
-        if (response.status === 400) {
-          setMapFetchedID(prev => prev - 1)
-          alert("aucune donnée antérieure à cette date")
+
+    if (!isModaleActive) {
+
+      fetch(apiRoute + mapRoute + 'map_from_index?numMap=' + mapFetchedID)
+        .then(response => {
+          console.log("404", response)
+          if (response.status === 400) {
+            setMapFetchedID(prev => prev - 1)
+            alert("aucune donnée antérieure à cette date")
+          }
+          else if (response.status === 200) {
+            return response.json()
+          }
+
         }
-        else if (response.status === 200) {
-          return response.json()
-        }
+        )
+        .then(data => {
+          // console.log(data)
 
-      }
-      )
-      .then(data => {
-        console.log(data)
+          if (data) {
 
-        if (data) {
+            setMapID(data.id)
+            setMapDate(convertISOToCustomFormat(data.date))
+          }
 
-          setMapID(data.id)
-          setMapDate(convertISOToCustomFormat(data.date))
-        }
+        })
 
-      })
+    }
 
 
 
-
-  }, [mapFetchedID])
+  }, [mapFetchedID, isModaleActive])
 
 
   const playSeedButton =
@@ -243,12 +247,17 @@ const Leaderboard = () => {
         }
       </div>
 
-      <button className='delete-map-button button' onClick={() => setIsModaleActive(true)}>
-        ADMIN : <br></br>Supprimez map
 
-      </button>
 
-      <AdminModale isActive={isModaleActive} ></AdminModale>
+      {mapID && <>
+        <button className='delete-map-button button' onClick={() => setIsModaleActive(true)}>
+          ADMIN : <br></br>Supprimez map
+        </button>
+        <AdminModale isActive={isModaleActive} mapID={mapID} desactivation={() => setIsModaleActive(false)} ></AdminModale>
+      </>
+
+      }
+
 
     </div >
 

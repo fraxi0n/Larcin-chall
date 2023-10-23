@@ -43,7 +43,7 @@ module.exports = (connection) => {
                     const userIsAdmin = results[0].admin;
 
                     if (userIsAdmin) {
-                        console.log('User found with ID:', userId);
+                        console.log('ADMIN user found with ID:', userId);
                         res.status(200).send("permission accorded");
 
                     }
