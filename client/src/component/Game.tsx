@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ScreenComp from './Screen';
-// import './button-icon.scss';
 
 let largeurEcran = window.innerWidth;
 
@@ -11,10 +10,9 @@ type Props = {
 };
 const Game = ({ type, mapID }: Props) => {
 
-  console.log(mapID)
 
 
-  // const [height, setHeight] = useState(10)
+
   const [width, setWidth] = useState(largeurEcran * 0.85);
 
 
@@ -36,22 +34,15 @@ const Game = ({ type, mapID }: Props) => {
   }, []);
 
 
-
-
-  const screenRef = useRef(null);
-
-
-  // useEffect(() => {
-  //   setHeight(8.5 / 16 * width)
-  // }, [width])
-
-
   return (
     <>
 
-      <div ref={screenRef} >
+      <div>
 
-        {width > 500 ? <ScreenComp widthScreen={width} mapID={mapID ? mapID : undefined}   ></ScreenComp>
+        {width > 500 ? <ScreenComp
+          widthScreen={width}
+          mapID={mapID ? mapID : undefined}
+        ></ScreenComp>
 
           :
           <div>

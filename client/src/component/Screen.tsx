@@ -10,7 +10,7 @@ type Props = {
 };
 const ScreenComp = ({ widthScreen, mapID }: Props) => {
 
-    console.log(mapID)
+    console.log("screen", mapID)
 
 
 
@@ -18,24 +18,29 @@ const ScreenComp = ({ widthScreen, mapID }: Props) => {
     const [isWidthChanging, setIsWidthChanging] = useState(false);
     const [iframeKey, setIframeKey] = useState(0);
     const [mapIdStr, setMapIdStr] = useState("");
-    if (mapID) {
-        setMapIdStr("&id=" + mapID)
-    }
 
 
     useEffect(() => {
-        // Set a flag to indicate that the width is changing
-        setIsWidthChanging(true);
 
-        // Wait for 1 second before changing the key and triggering a reload
+        if (mapID) {
+            setMapIdStr("&id=" + mapID)
+        }
+
+
+    }, [mapID])
+
+    // if (mapID) {
+    //     setMapIdStr("&id=" + mapID)
+    // }
+
+
+    useEffect(() => {
+        setIsWidthChanging(true);
         const timeoutId = setTimeout(() => {
             setIsWidthChanging(false);
-            // Increment the key to force a re-render of the iframe
             setIframeKey((prevKey) => prevKey + 1);
         }, 500);
-
         return () => {
-            // Cleanup the timeout in case the width changes again before the 1-second delay
             clearTimeout(timeoutId);
         };
     }, [widthScreen]);
@@ -49,7 +54,7 @@ const ScreenComp = ({ widthScreen, mapID }: Props) => {
             <iframe
                 key={iframeKey}
                 className='canvas'
-                src={"http://127.0.0.1:5500/game/index.html#?lg=" + widthScreen * 1 + "&mod=1" + mapIdStr}  // Replace with your desired URL
+                src={"http://127.0.0.1:5500/game/index.html#?lg=" + Math.floor(widthScreen) * 1 + "&mod=1" + mapIdStr}  // Replace with your desired URL
                 title="larcin précis"
                 width={widthScreen}                   // Set the width as per your requirement
                 height={widthScreen / ratio}               // Set the height as per your requirement
