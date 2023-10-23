@@ -78,6 +78,22 @@ module.exports = (connection) => {
         });
     });
 
+
+    router.delete('/map/:id', (req, res) => {
+        const id = req.params.id;
+
+        const sql = 'DELETE FROM map WHERE id = ?';
+
+        connection.query(sql, [id], (error, results) => {
+            if (error) {
+                console.error('Error deleting entry:', error);
+                res.status(500).json({ message: 'Error deleting entry' });
+            } else {
+                res.json({ message: 'Entry deleted successfully' });
+            }
+        });
+    });
+
     return router
 }
 

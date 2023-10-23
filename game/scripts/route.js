@@ -2,9 +2,9 @@
 
 const urlAPI = 'http://127.0.0.1:8000/api/v0/';
 
-urlUsers = 'users/'
-urlMaps = 'maps/'
-urlScores = 'scores/'
+const urlUsers = 'users/'
+const urlMaps = 'maps/'
+const urlScores = 'scores/'
 
 let PlayerID
 let MapID

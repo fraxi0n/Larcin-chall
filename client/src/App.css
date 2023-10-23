@@ -200,3 +200,36 @@ hr {
   margin: .5rem;
 
 }
+
+.delete-map-button {
+  position: absolute;
+  bottom: 5rem;
+  right: 5rem;
+}
+
+.delete-map-modale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ada99777;
+  display: flex;
+}
+
+.login-reg-box {
+  background-color: rgba(115, 115, 131, 0.658);
+  margin: auto;
+  padding: 2rem 4rem;
+  border: 2px solid rgba(42, 43, 39, 0.87);
+
+}
+
+.modale {
+  margin: .5rem;
+
+}
+
+.hidden {
+  display: none;
+}

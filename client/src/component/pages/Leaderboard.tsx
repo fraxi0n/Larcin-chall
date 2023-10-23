@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import '../../App.css';
 import { Link } from 'react-router-dom';
+import AdminModale from '../AdminModale';
 
 
 
@@ -41,6 +42,11 @@ const Leaderboard = () => {
 
   const [table, setTable] = useState(initTable)
   const [nbScore, setNbScore] = useState(1)
+
+  const [isModaleActive, setIsModaleActive] = useState(false)
+
+
+
 
   // const [isGameLaunch, isGameLaunch] = useState(1)
 
@@ -155,8 +161,6 @@ const Leaderboard = () => {
     </Link>
 
 
-
-
   const mapDateDiv = () => {
 
     if (!mapID) {
@@ -238,6 +242,14 @@ const Leaderboard = () => {
             </>
         }
       </div>
+
+      <button className='delete-map-button button' onClick={() => setIsModaleActive(true)}>
+        ADMIN : <br></br>Supprimez map
+
+      </button>
+
+      <AdminModale isActive={isModaleActive} ></AdminModale>
+
     </div >
 
   );
