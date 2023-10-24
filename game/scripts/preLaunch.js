@@ -1,9 +1,7 @@
 var hash = window.location.hash;
-
 hash = hash.slice(1);
 
 var hashParams = new URLSearchParams(hash);
-
 var largeurEcran = hashParams.get("lg");
 
 if (!largeurEcran) {
@@ -14,9 +12,6 @@ const hauteurEcran = largeurEcran * 8.5 / 16
 
 let MapID = hashParams.get("id");
 let PlayerID
-
-
-console.log(MapID)
 
 let canvas
 
@@ -125,35 +120,4 @@ toggleFormsLinks[0].addEventListener("click", toggleForms)
 toggleFormsLinks[1].addEventListener("click", toggleForms)
 
 
-const runGame = () => {
 
-    if (largeurEcran < 1000) {
-        vKeyboard.classList.remove("hidden")
-        vKeyboard.classList.add("virtual-keyboard")
-
-    }
-
-
-    loginForm.classList.add("hidden")
-    registrationForm.classList.add("hidden")
-
-    canvas = document.createElement("canvas");
-    canvas.id = "canvas";
-
-    canvas.width = largeurEcran;
-    canvas.height = hauteurEcran
-    canvas.style.backgroundColor = "black";
-    canvas.style.margin = "auto";
-
-    canvasContainer = document.createElement("div");
-    canvasContainer.width = largeurEcran;
-    canvasContainer.id = "canvas-container";
-    canvasContainer.style.display = "flex";
-    canvasContainer.style.justifyContent = "center";
-
-    root.appendChild(canvasContainer);
-    canvasContainer.appendChild(canvas);
-
-    initGame()
-
-}

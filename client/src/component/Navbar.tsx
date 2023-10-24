@@ -69,7 +69,7 @@ const NavBar = ({ isConnected = false }: Props) => {
           >{
               [
                 <Link to="/play">
-                  <button className='nav-element dropdown'> LANCER DEFI </button>
+                  <button className='button nav-element dropdown'> LANCER DEFI </button>
                 </Link>,
                 <Link to="/leaderboard"><button className='button nav-element dropdown' >
                   LEADERBOARD

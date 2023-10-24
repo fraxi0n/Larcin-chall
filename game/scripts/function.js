@@ -178,11 +178,6 @@ function LarcinWin() {
 
     updateScore(lvl)
 
-
-
-
-
-
     loadMap()
 
 

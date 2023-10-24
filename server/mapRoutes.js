@@ -63,9 +63,9 @@ module.exports = (connection) => {
                 res.status(500).send('Error fetching data');
             } else {
                 if (results.length > 0) {
-                    const mostRecentMap = results[0];
+                    const map = results[0];
                     console.log("daily map found")
-                    res.json({ ...mostRecentMap });
+                    res.json({ ...map });
 
                 } else {
                     res.status(404).send('No data found');
@@ -98,6 +98,7 @@ module.exports = (connection) => {
                     res.status(404).send('No data found');
                 }
             }
+
         });
     });
 

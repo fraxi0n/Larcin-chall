@@ -7,9 +7,13 @@ module.exports = (connection) => {
 
     router.post('/login', (req, res) => {
 
+        const emailOrUsername = req.body.email
+        const password = req.body.password
+
+
         const sql = 'SELECT id FROM users WHERE (email = ? OR username = ?) AND hashpassword = ?';
 
-        connection.query(sql, [req.body.email, req.body.email, req.body.password], (error, results, fields) => {
+        connection.query(sql, [emailOrUsername, emailOrUsername, password], (error, results, fields) => {
             if (error) {
                 console.error('Error querying user:', error);
                 res.status(400).send('Error in the query');

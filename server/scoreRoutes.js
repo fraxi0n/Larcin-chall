@@ -41,7 +41,6 @@ module.exports = (connection) => {
                     res.status(500).json({ message: 'Error updating score' });
                 } else {
 
-
                     console.log('Score updated successfully');
                     res.json({ message: 'Score updated successfully' });
                 }

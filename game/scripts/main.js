@@ -29,20 +29,50 @@ function initGame() {
 
 }
 
+const runGame = () => {
 
+  if (largeurEcran < 1000) {
+    vKeyboard.classList.remove("hidden")
+    vKeyboard.classList.add("virtual-keyboard")
+
+  }
+
+
+  loginForm.classList.add("hidden")
+  registrationForm.classList.add("hidden")
+
+  canvas = document.createElement("canvas");
+  canvas.id = "canvas";
+
+  canvas.width = largeurEcran;
+  canvas.height = hauteurEcran
+  canvas.style.backgroundColor = "black";
+  canvas.style.margin = "auto";
+
+  canvasContainer = document.createElement("div");
+  canvasContainer.width = largeurEcran;
+  canvasContainer.id = "canvas-container";
+  canvasContainer.style.display = "flex";
+  canvasContainer.style.justifyContent = "center";
+
+  root.appendChild(canvasContainer);
+  canvasContainer.appendChild(canvas);
+
+  initGame()
+
+}
 
 
 const godLaunch = () => {
   godMODE = true
 
+  if (!MapID) { // pour test developpeur 
+    console.log("MODE TEST ACTIF")
 
-  if (!MapID) {
-
-    fetch(urlAPI + urlMaps + 'mapFromIndex?umMap=0')
-      .then(response => response.json()) // Convert response to JSON
+    fetch(urlAPI + urlMaps + 'daily')
+      .then(response => response.json())
       .then(data => {
 
-        // const jsonString = JSON.stringify(data);
         fetchedMap = JSON.parse(data.map)
         MapID = data.id
       }).then(() => runGame())
@@ -50,44 +80,27 @@ const godLaunch = () => {
   }
   else {
 
-    fetch(urlAPI + urlMaps + 'map?+id' + MapID)
-      .then(response => response.json()) // Convert response to JSON
+    fetch(urlAPI + urlMaps + 'map_from_id/' + MapID)
+      .then(response => response.json())
       .then(data => {
 
-        // const jsonString = JSON.stringify(data);
         fetchedMap = JSON.parse(data.map)
         MapID = data.id
-      }).then(() => runGame())
-    runGame()
+      }).then(runGame())
   }
 
 
 }
 
 
-console.log(2, MapID, urlAPI)
 if (MapID) {
 
-
   fetch(urlAPI + urlMaps + 'daily')
-    .then(response => response.json()) // Convert response to JSON
+    .then(response => response.json())
     .then(data => {
 
       if (MapID != data.id) {
-
-
-        console.log(MapID, data.id)
-        fetch(urlAPI + urlMaps + 'map_from_id/' + MapID)
-          .then(response => response.json())
-          .then(data => {
-
-            fetchedMap = JSON.parse(data.map)
-            console.log("passe")
-
-            godMODE = true
-
-            godLaunch()
-          })
+        godLaunch()
       }
     })
 }
