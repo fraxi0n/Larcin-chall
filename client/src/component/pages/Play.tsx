@@ -7,8 +7,6 @@ import Game from '../Game';
 
 const Play = () => {
 
-  // const id = useParams();
-
   const sampleLocation = useLocation();
   const searchParams = new URLSearchParams(sampleLocation.search);
   const id = searchParams.get("id");
