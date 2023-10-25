@@ -16,7 +16,6 @@ const Home = () => {
 
       <div style={{ padding: " 0 2rem " }}>
 
-        <h1> Larcin Challenge </h1>
         <h3> Chaque jour, jouez vous de la nouvelle sécurité et imposez vous comme le cambrioleur ultime</h3>
 
         <p> Connaissez vous Larcin Lazer ?<></>
@@ -43,7 +42,7 @@ const Home = () => {
 
 
         <p>Dans le jeu original, les niveaux sont crée manuellement et que la vitesse d'execution n'importe pas. <br></br>
-          Larcin Challenge vous propose de comparer votre rapidité et fiabilité de mémorisation avec les autres joueur
+          Larcin Challenges vous propose de comparer votre rapidité et fiabilité de mémorisation avec les autres joueur
           de la comunauté dans des niveau généré quotidiennement.<br></br>
           Trois mods de jeux sont disponible et il faut compter 5 a 6 min pour tout compléter.<br></br>
 
@@ -137,6 +136,8 @@ const Home = () => {
           <br></br>
           <hr></hr>
         </p>
+        <h1> Larcin Challenges </h1>
+        <h3> Créateur : François Brias </h3>
       </div>
 
     </div>

@@ -84,7 +84,7 @@ module.exports = (connection) => {
 
 
         const sqlCount = 'SELECT COUNT(*) AS total_rows FROM score WHERE map_id = ?';
-        const sql1 = 'SELECT * FROM score WHERE map_id = ? ORDER BY score DESC LIMIT 10';
+        const sql1 = 'SELECT * FROM score WHERE map_id = ? ORDER BY score DESC LIMIT 20';
 
         connection.query(sqlCount, [MapID], (error, countResults) => {
             if (error) {

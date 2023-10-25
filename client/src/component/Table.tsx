@@ -24,6 +24,8 @@ const LeaderboardTable = ({ pTable, nbScore }: Props) => {
 
     const [table, setTable] = useState(pTable)
 
+
+
     useEffect(() => {
         const calculateTop = (pPos: number) => {
             let top = Math.floor((pPos - 0.51) / nbScore * 100)

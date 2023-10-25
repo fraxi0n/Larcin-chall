@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const ratio = 16 / 8.5
 
-const gameURL = "http://127.0.0.1:5500/game/index.html#"
+const gameURL = "http://127.0.0.1:5500/index.html"
 
 type Props = {
     widthScreen: number
