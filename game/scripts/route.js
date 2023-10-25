@@ -10,13 +10,25 @@ const urlScores = 'scores/'
 
 const encoder = new TextEncoder();
 
+const xssFilter = (input) => {
+    if (typeof input !== 'string') return input;
+    return input.replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#x27;")
+        .replace(/\//g, "&#x2F;");
+}
+
+
+
 const login = async (e) => {
     e.preventDefault()
 
 
     try {
-        const userEmailLogin = emailInputLogin.value;
-        const userPasswordLogin = passwordInputLogin.value;
+        const userEmailLogin = xssFilter(emailInputLogin.value);
+        const userPasswordLogin = xssFilter(passwordInputLogin.value);
 
         const data = encoder.encode(userPasswordLogin);
         const hashBuffer = await crypto.subtle.digest("SHA-256", data);
@@ -34,9 +46,6 @@ const login = async (e) => {
             },
         });
 
-        // console.log('Response:', response.data);
-
-
         if (response.status === 200) {
             PlayerID = response.data.userId
 
@@ -45,14 +54,9 @@ const login = async (e) => {
 
     }
     catch (error) {
-        console.error('Error:', error);
-
         if (error.response.status === 404) {
-
             errorLogin.innerHTML = "Utilisateur ou mot de passe incorrect"
         }
-
-
     }
 }
 
@@ -60,9 +64,9 @@ const login = async (e) => {
 const register = async (e) => {
     e.preventDefault()
 
-    const userEmailRegister = emailInputRegister.value;
-    const userNameRegister = nameInputRegister.value;
-    const userPasswordRegister = passwordInputRegister.value;
+    const userEmailRegister = xssFilter(emailInputRegister.value);
+    const userNameRegister = xssFilter(nameInputRegister.value);
+    const userPasswordRegister = xssFilter(passwordInputRegister.value);
 
     if (userPasswordRegister !== "" && userNameRegister !== "" && userEmailRegister !== "") {
 
@@ -73,8 +77,6 @@ const register = async (e) => {
             const hashBuffer = await crypto.subtle.digest("SHA-256", data);
             const hashArray = Array.from(new Uint8Array(hashBuffer));
             const hashedPassword = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-
-            // Create the registration request body
             const registerBody = {
                 name: userNameRegister,
                 email: userEmailRegister,
@@ -87,8 +89,6 @@ const register = async (e) => {
                 },
             });
 
-            console.log('Response:', response.data);
-
             if (response.status === 200) {
                 PlayerID = response.data.ID
 
@@ -96,11 +96,8 @@ const register = async (e) => {
             }
 
         } catch (error) {
-            console.error('Error:', error);
             if (error.response.status === 400) {
                 errorRegister.innerHTML = "Nom d'utilisateur / email déjà pris";
-
-
             }
         }
     }
@@ -125,19 +122,15 @@ const hasPlayerPlayed = () => {
         .then(response => response.json()) // Convert response to JSON
         .then(data => {
 
-            // const jsonString = JSON.stringify(data);
             fetchedMap = JSON.parse(data.map)
             MapID = data.id
         }).then(() =>
-
-
 
             fetch(`${urlAPI + urlScores}has_score?MapID=${MapID}&PlayerID=${PlayerID}`)
                 .then(
                     response => {
 
                         if (response.status == 422) {
-                            console.log(response)
                             alert("Vous avez déjà réalisé le défi d'aujourdhui, revenez demain !")
                         }
 
@@ -147,12 +140,11 @@ const hasPlayerPlayed = () => {
                                 headers: {
                                     'Content-Type': 'application/json',
                                 },
-                            }).then(response => { console.log("ok pour jouer", response) })
-                            runGame()
+                            }).then(runGame())
+
                         }
                     })
                 .catch(error => {
-                    console.log(error)
                 })
         )
 }
@@ -162,7 +154,6 @@ const updateScore = async (pScore) => {
 
     if (!godMODE) {
 
-
         try {
             const response = await axios.patch(urlAPI + urlScores + 'score', { MapID, PlayerID, pScore }, {
                 headers: {
@@ -170,9 +161,7 @@ const updateScore = async (pScore) => {
                 },
             });
 
-            console.log('Response:', response.data);
         } catch (error) {
-            console.error('Error updating score:', error);
         }
     }
 

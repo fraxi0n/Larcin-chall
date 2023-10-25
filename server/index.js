@@ -20,10 +20,6 @@ connection.connect((error) => {
 });
 
 
-// app.use('/api', require('./userRoutes')(connection));
-// const apiRoutes = require('./apiRoutes');
-
-
 const app = express();
 
 app.use(express.json());

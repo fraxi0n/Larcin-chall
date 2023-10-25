@@ -37,7 +37,7 @@ const Leaderboard = () => {
   const [mapID, setMapID] = useState(0)
   const [mapDate, setMapDate] = useState("")
 
-  const [mapFetchedID, setMapFetchedID] = useState(0)
+  const [mapFetchedIndex, setMapFetchedIndex] = useState(0)
 
 
   const [table, setTable] = useState(initTable)
@@ -46,29 +46,15 @@ const Leaderboard = () => {
   const [isModaleActive, setIsModaleActive] = useState(false)
 
 
-
-
-  // const [isGameLaunch, isGameLaunch] = useState(1)
-
-
-
-
   useEffect(() => {
-
     if (mapID) {
-
       fetch(apiRoute + scoreRoute + 'leaderboard?MapID=' + mapID)
         .then(response => {
-          // console.log(response)
-          return response.json() // Convert response to JSON
+          return response.json()
         })
         .then(response => {
-
           setNbScore(response.countResults[0].total_rows)
-          // setTable([])
           setTable(response.results)
-
-
         })
     }
 
@@ -76,11 +62,8 @@ const Leaderboard = () => {
 
 
   useEffect(() => {
-
     const calculateTop = (pPos: number) => {
-
       let top = Math.floor((pPos - 0.51) / nbScore * 100)
-
       let arrondi: number
 
       if (top <= 5) {
@@ -98,11 +81,7 @@ const Leaderboard = () => {
 
     if (table.length && !table[0].position) {
       const newTable: Row[] = []
-
-
       for (let i = 0; i < table.length; i++) {
-
-
         newTable[i] = {
           username: table[i].username,
           score: table[i].score,
@@ -110,71 +89,58 @@ const Leaderboard = () => {
           top: calculateTop(i + 1)
         }
       }
-      // console.log(table)
       setTable(newTable)
-
     }
   }
     , [table, nbScore])
 
 
-
+  // 222222222222222222
 
   useEffect((
   ) => {
-
     if (!isModaleActive) {
-
-      fetch(apiRoute + mapRoute + 'map_from_index?numMap=' + mapFetchedID)
+      fetch(apiRoute + mapRoute + 'map_id_date_from_index?numMap=' + mapFetchedIndex)
         .then(response => {
           if (response.status === 400) {
-            setMapFetchedID(prev => prev - 1)
+            setMapFetchedIndex(prev => prev - 1)
             alert("aucune donnée antérieure à cette date")
           }
           else if (response.status === 200) {
             return response.json()
           }
-
         }
         )
         .then(data => {
           if (data) {
-
             setMapID(data.id)
             setMapDate(convertISOToCustomFormat(data.date))
           }
-
         })
-
     }
+  }, [mapFetchedIndex, isModaleActive])
 
-
-
-  }, [mapFetchedID, isModaleActive])
-
+  // 333333333333333
 
   const playSeedButton =
     <Link to={`/play?id=${mapID}`}>
       <button style={{ backgroundColor: "#ada997" }}
       >
         Jouer </button >
-
     </Link>
 
 
-  const mapDateDiv = () => {
 
+
+
+  const mapDateDiv = () => {
     if (!mapID) {
       return ""
     }
-
-    if (!mapFetchedID) {
+    if (!mapFetchedIndex) {
       return <div className='date-displayer' style={{ padding: ".9rem 0" }} >{mapDate} </div>
-
     }
     return <div className='date-displayer' style={{ padding: ".35rem 0", fontSize: "1rem" }}  ><div>{mapDate} </div> {playSeedButton}</div>
-    // background - color: #22211d;
-
   }
 
   const getCellClass = (pPos: number) => {
@@ -191,24 +157,32 @@ const Leaderboard = () => {
     return classReturned
   }
 
-
   return (
     <div className="app">
-
       <Navbar></Navbar>
+
+
+      {/* 1111111111111111 */}
 
 
       {mapID ? (<div className='date-container'>
         <button className='button'
-          onClick={() => setMapFetchedID(prev => prev + 1)}
+          onClick={() => setMapFetchedIndex(prev => prev + 1)}
         > {"<"} </button>
+
         {mapDateDiv()}
+
         <button className='button'
-          disabled={!mapFetchedID}
-          onClick={() => setMapFetchedID(prev => prev - 1)}
+          disabled={!mapFetchedIndex}
+          onClick={() => setMapFetchedIndex(prev => prev - 1)}
         > {">"} </button>
       </div>) : <> wait</>
       }
+
+
+
+
+
       <div className='lb-container'>
         {
           table.length ? <table className='leaderboard-table'  >
@@ -219,12 +193,8 @@ const Leaderboard = () => {
               <th className='leaderboard-head'>TOP </th>
             </thead>
             <tbody>
-
               {table.map((row: Row) => {
-
                 const cellClass = getCellClass(row.position)
-
-
                 return <tr>
                   <td className={cellClass}  >{row.username}</td>
                   <td className={cellClass}  >{row.score}</td>
@@ -234,17 +204,12 @@ const Leaderboard = () => {
               })}
             </tbody>
           </table>
-
             : <>
               <tbody></tbody>
-
               <div>aucun joueur trouvé pour cette date</div>
-
             </>
         }
       </div>
-
-
 
       {mapID && <>
         <button className='delete-map-button button' onClick={() => setIsModaleActive(true)}>
@@ -252,14 +217,9 @@ const Leaderboard = () => {
         </button>
         <AdminModale isActive={isModaleActive} mapID={mapID} desactivation={() => setIsModaleActive(false)} ></AdminModale>
       </>
-
       }
-
-
     </div >
-
   );
-
 }
 
 export default Leaderboard;

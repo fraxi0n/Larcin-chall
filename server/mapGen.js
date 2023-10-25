@@ -41,7 +41,6 @@ lvlDif.eclair.inc = 10
 
 function gen(pDif) {
 
-    // console.log(" ------------MAP GEN START---------------")
     function MapOK(pDif) {
         mapOK = "NO"
 
@@ -60,15 +59,11 @@ function gen(pDif) {
 
         if (path.length >= distPorte + 2 + a && 15 + b <= Math.floor(laserCount / (map.hauteur * map.largeur) * 100)) {
             mapOK = "YES"
-            // console.log(path.length, Math.floor(laserCount / (map.hauteur * map.largeur) * 100))
         }
 
         if (path.length >= distPorte + 4 + c || 30 + d <= Math.floor(laserCount / (map.hauteur * map.largeur) * 100) || Secu > 200) {
             mapOK = "REBOOT"
-            // console.log("REBOOT")
         }
-
-        // console.log(mapOK)
 
         return mapOK
 
@@ -120,9 +115,6 @@ function gen(pDif) {
 
         Larcin.dX = Larcin.x
         Larcin.dY = Larcin.y
-
-        //console.log (Larcin.x)
-        //console.table(map)
 
 
 
@@ -225,8 +217,6 @@ function gen(pDif) {
             grid = new PF.Grid(matrix);
             path = finder.findPath(Larcin.dX - 1, Larcin.dY - 1, porte.x - 1, porte.y - 1, grid)
 
-            // console.log("pathfinding :")
-            // console.table(path)
 
             if (path.length == 0) {
                 map[Ry][Rx] = 1

@@ -19,7 +19,6 @@ const Game = ({ type, mapID }: Props) => {
 
   useEffect(() => {
     const handleResize = () => {
-      console.log('Screen size changed');
       largeurEcran = window.innerWidth;
       setWidth(largeurEcran * 0.85)
 

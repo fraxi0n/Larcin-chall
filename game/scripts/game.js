@@ -59,7 +59,6 @@ function update(d) {
         }
 
         if (timer >= 1) {
-            //console.log("check1")
 
 
             timer = 0

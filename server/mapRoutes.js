@@ -13,14 +13,11 @@ module.exports = (connection) => {
 
         connection.query(query, (error, results) => {
             if (error) {
-                console.error('Error fetching data:', error);
                 res.status(500).send('Error fetching data');
             } else {
                 if (results.length > 0) {
                     const mostRecentMap = results[0];
-                    console.log("daily map found")
                     res.json({ ...mostRecentMap });
-
                 } else {
                     res.status(404).send('No data found');
                 }
@@ -34,18 +31,15 @@ module.exports = (connection) => {
     router.post('/daily', (req, res) => {
         const date = new Date()
         const newEntry = {
-
             id: Date.now() * 10 + 1,
             // +1 différienciera les types de maps plus tard (1 = précis, 2= mortel, 3= rapide)
             type: "precis",
             date: date,
             map: JSON.stringify(Map.createDailySeed())
-
         };
 
         connection.query('INSERT INTO map SET ?', newEntry, (error, results) => {
             if (error) {
-                console.error('Error adding new entry:', error);
                 res.status(500).json({ message: 'Error adding new entry' });
             } else {
                 res.json({ message: 'Entry added successfully', entry: newEntry });
@@ -59,14 +53,11 @@ module.exports = (connection) => {
         const sql = 'SELECT * FROM map WHERE id = ?';
         connection.query(sql, [id], (error, results) => {
             if (error) {
-                console.error('Error fetching data:', error);
                 res.status(500).send('Error fetching data');
             } else {
                 if (results.length > 0) {
                     const map = results[0];
-                    console.log("daily map found")
                     res.json({ ...map });
-
                 } else {
                     res.status(404).send('No data found');
                 }
@@ -75,12 +66,11 @@ module.exports = (connection) => {
     });
 
     //recupere la map du jour si l'index numMap est a 0, de la veille si l'index est a 1 etc
-    router.get('/map_from_index', (req, res) => {
-        const query = 'SELECT * FROM map ORDER BY id DESC';
+    router.get('/map_id_date_from_index', (req, res) => {
+        const query = 'SELECT id , date FROM map ORDER BY id DESC';
 
         connection.query(query, (error, results) => {
             if (error) {
-                console.error('Error fetching data:', error);
                 res.status(500).send('Error fetching data');
             } else {
                 if (results.length > 0) {
@@ -90,7 +80,6 @@ module.exports = (connection) => {
                         const mapSearched = results[numMap];
                         res.json(mapSearched);
                     } else {
-                        console.log("Map limit reached")
                         res.status(400).send('Map limit reached');
                     }
                 } else {
@@ -110,7 +99,6 @@ module.exports = (connection) => {
 
         connection.query(sql, [id], (error, results) => {
             if (error) {
-                console.error('Error deleting entry:', error);
                 res.status(500).json({ message: 'Error deleting entry' });
             } else {
                 res.json({ message: 'Entry deleted successfully' });
