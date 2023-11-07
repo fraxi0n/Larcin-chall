@@ -6,7 +6,6 @@ const urlUsers = 'users/'
 const urlMaps = 'maps/'
 const urlScores = 'scores/'
 
-// let MapID
 
 const encoder = new TextEncoder();
 
@@ -19,6 +18,8 @@ const xssFilter = (input) => {
         .replace(/'/g, "&#x27;")
         .replace(/\//g, "&#x2F;");
 }
+
+
 
 
 
@@ -107,13 +108,13 @@ const register = async (e) => {
 
 }
 
+
+
+
+
+
 submitRegister.addEventListener("click", register)
 submitLogin.addEventListener("click", login)
-
-
-
-
-
 
 
 const hasPlayerPlayed = () => {
@@ -145,6 +146,7 @@ const hasPlayerPlayed = () => {
                         }
                     })
                 .catch(error => {
+                    console.log(error)
                 })
         )
 }
@@ -162,6 +164,7 @@ const updateScore = async (pScore) => {
             });
 
         } catch (error) {
+            console.log(error)
         }
     }
 

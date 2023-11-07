@@ -18,14 +18,14 @@ const Home = () => {
 
         <h3> Chaque jour, jouez vous de la nouvelle sécurité et imposez vous comme le cambrioleur ultime</h3>
 
-        <p> Connaissez vous Larcin Lazer ?<></>
+        <p> Connaissez vous Larcin Lazer ?
 
           Il s'agit d'un jeu au concept original crée en Game Jam par
           Géraud Zuchini, alias <a href="https://docgeraud.itch.io/" > doc Géraud</a>.<br></br>
           Il est sortie en version finale et commerciale en début d'année 2023 sur steam, itch io et en version mobile sur android.<br></br>
 
           Dans ce jeu vous incarnez un cambrioleur, qui n'ayant plus de quoi nourir son chat est contraint
-          d'aller voler de riche capitaliste.
+          d'aller voler de riches capitalistes.
         </p>
 
         <div style={{ maxWidth: "854px" }}

@@ -62,8 +62,10 @@ module.exports = (connection) => {
     // récupere tout les scores d'une map les classes et converti les ID des joueur par leur usernames
     router.get('/leaderboard', (req, res) => {
         const { MapID, PlayerID } = req.query;
+
         const sqlCount = 'SELECT COUNT(*) AS total_rows FROM score WHERE map_id = ?';
         const sql1 = 'SELECT * FROM score WHERE map_id = ? ORDER BY score DESC LIMIT 20';
+
         connection.query(sqlCount, [MapID], (error, countResults) => {
             if (error) {
                 res.status(500).json({ message: 'Error retrieving scores' });
@@ -72,7 +74,11 @@ module.exports = (connection) => {
                     if (error) {
                         res.status(500).json({ message: 'Error retrieving scores' });
                     } else {
+
+
                         const sql2 = 'SELECT username FROM users WHERE id = ?';
+
+
                         const queryPromises = results.map((result) => {
                             return new Promise((resolve, reject) => {
                                 connection.query(sql2, [result.user_id], (error, usernameResults) => {

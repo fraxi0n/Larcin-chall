@@ -59,6 +59,20 @@ body {
 
 }
 
+h2 {
+    text-align: center
+}
+
+
+
+.label-input-container {
+
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+
+}
+
 .grey-filter {
     height: 100%;
     background-color: rgba(40, 40, 48, 0.38);

@@ -97,6 +97,8 @@ const Leaderboard = () => {
 
   // 222222222222222222
 
+
+
   useEffect((
   ) => {
     if (!isModaleActive) {
@@ -121,6 +123,8 @@ const Leaderboard = () => {
   }, [mapFetchedIndex, isModaleActive])
 
   // 333333333333333
+
+
 
   const playSeedButton =
     <Link to={`/play?id=${mapID}`}>
@@ -162,7 +166,9 @@ const Leaderboard = () => {
       <Navbar></Navbar>
 
 
+
       {/* 1111111111111111 */}
+
 
 
       {mapID ? (<div className='date-container'>
