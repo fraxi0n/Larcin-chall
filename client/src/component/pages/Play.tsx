@@ -9,6 +9,7 @@ import '../../style/game.css';
 
 import Game from '../Game';
 import Header from '../Header';
+import Footer from '../Footer';
 
 
 const Play = () => {
@@ -26,6 +27,7 @@ const Play = () => {
           mapID={id ? id : undefined}
         ></Game >
       </div>
+      <Footer></Footer>
     </div>
   </>
 

@@ -11,6 +11,7 @@ import mortelImg from '../../asset/mortel.png';
 import rapideImg from '../../asset/rapide.png';
 import { Link } from 'react-router-dom';
 import Header from '../Header';
+import Footer from '../Footer';
 
 
 const Home = () => {
@@ -42,7 +43,7 @@ const Home = () => {
               Votre navigateur ne supporte pas la lecture de vidéos.
             </video>
           </div>
-          <h2 > Teaser de larcin Lazer </h2>
+          <h2 className='teaser-legend' > Teaser de larcin Lazer </h2>
 
         </div>
 
@@ -52,7 +53,7 @@ const Home = () => {
           de la comunauté dans des niveau généré quotidiennement.<br></br>
           Trois mods de jeux sont disponible et il faut compter 5 a 6 min pour tout compléter.<br></br>
 
-          <hr className='custom-hr plant'></hr>
+          <hr className='custom-hr hr-larcin'></hr>
 
           <h3>Les challenges :
           </h3>
@@ -84,7 +85,7 @@ const Home = () => {
           Un défi complet, le joueur doit trouver son équilibre entre vitesse et préparation car les
           erreurs sont pénalisantes. <br></br>
 
-          <hr className='custom-hr plant'></hr>
+          <hr className='custom-hr hr-plant'></hr>
 
 
 
@@ -115,7 +116,7 @@ const Home = () => {
           la vitesse est secondaire ici, le but est de départager les joueurs au fur et à mesure
           que les tableaux se complexifient <br></br>
 
-          <hr className='custom-hr plant'></hr>
+          <hr className='custom-hr hr-door'></hr>
 
 
 
@@ -144,14 +145,23 @@ const Home = () => {
           <br></br>
 
 
-          <hr className='custom-hr hr-laser'></hr>
+          {/* <hr className='custom-hr hr-door'></hr> */}
 
         </p>
-        <h1> Larcin Challenges </h1>
-        <h3> Créateur : François Brias </h3>
+        {/* <h1> Larcin Challenges </h1>
+        <h3> Créateur : François Brias </h3> */}
       </div>
 
+
+      <Footer></Footer>
+
     </div>
+
+
+
+
+
+
   </>
 
   )

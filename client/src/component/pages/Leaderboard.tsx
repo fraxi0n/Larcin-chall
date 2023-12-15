@@ -9,6 +9,7 @@ import '../../style/leaderboard.css';
 import { Link } from 'react-router-dom';
 import AdminModale from '../AdminModale';
 import Header from '../Header';
+import Footer from '../Footer';
 
 
 
@@ -229,6 +230,8 @@ const Leaderboard = () => {
         <AdminModale isActive={isModaleActive} mapID={mapID} desactivation={() => setIsModaleActive(false)} ></AdminModale>
       </>
       }
+
+      <Footer></Footer>
     </div >
   );
 }

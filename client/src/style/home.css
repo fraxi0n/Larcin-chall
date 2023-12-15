@@ -1,4 +1,5 @@
 .video-container {
+    cursor: pointer;
     max-width: 854px;
     position: relative;
 
@@ -32,7 +33,7 @@
     border: none;
     border-top: 3px double #333;
     color: #BC770F;
-    margin: 2rem;
+    margin: 4rem;
     overflow: visible;
     text-align: center;
     height: 5px;
@@ -60,5 +61,20 @@
 }
 
 .hr-plant::after {
-    background-image: url("../asset/laser.png");
+    background-image: url("../asset/plante.png");
+}
+
+.hr-door::after {
+    background-image: url("../asset/porte.png");
+}
+
+.hr-larcin::after {
+    background-image: url("../asset/larcin.png");
+}
+
+.teaser-legend {
+
+    font-weight: bold;
+    font-size: small;
+    text-align: center;
 }
