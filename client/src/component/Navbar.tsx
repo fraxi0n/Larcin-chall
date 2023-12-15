@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from './Dropdown';
 
-import './../App.css';
+import './../style/classStyle.css';
+import './../style/balise.css';
+
 import { Link } from 'react-router-dom';
 
-import welcomeImg from '../asset/Sporte.png';
 
 const limitScreen = 780
-let largeurEcran: number
 
-type Props = { isConnected?: boolean };
-const NavBar = ({ isConnected = false }: Props) => {
+const NavBar = () => {
 
   const [width, setWidth] = useState(window.innerWidth);
 
   const handleResize = () => {
-    largeurEcran = window.innerWidth;
     setWidth(window.innerWidth)
 
   };
@@ -30,20 +28,13 @@ const NavBar = ({ isConnected = false }: Props) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   handleResize()
-  // }, []);
-
-
 
 
 
   return (
     <nav className='nav'>
 
-      <Link to="/">
-        <img src={welcomeImg} alt='Go to welcome page'></img>
-      </Link>
+
 
       {width > limitScreen ?
         <>

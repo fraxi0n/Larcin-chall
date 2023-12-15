@@ -1,10 +1,16 @@
 import React from 'react';
 import Navbar from '../Navbar';
-import '../../App.css';
+import '../../style/balise.css';
+// import '../../style/style/balise.css';
+// import '../../style/classStyle.css';
+import '../../style/home.css';
+
+
 import precisImg from '../../asset/precis.png';
 import mortelImg from '../../asset/mortel.png';
 import rapideImg from '../../asset/rapide.png';
 import { Link } from 'react-router-dom';
+import Header from '../Header';
 
 
 const Home = () => {
@@ -12,7 +18,7 @@ const Home = () => {
 
     <div className="app">
 
-      <Navbar></Navbar>
+      <Header></Header>
 
       <div style={{ padding: " 0 2rem " }}>
 
@@ -46,7 +52,7 @@ const Home = () => {
           de la comunauté dans des niveau généré quotidiennement.<br></br>
           Trois mods de jeux sont disponible et il faut compter 5 a 6 min pour tout compléter.<br></br>
 
-          <hr></hr>
+          <hr className='custom-hr plant'></hr>
 
           <h3>Les challenges :
           </h3>
@@ -78,7 +84,8 @@ const Home = () => {
           Un défi complet, le joueur doit trouver son équilibre entre vitesse et préparation car les
           erreurs sont pénalisantes. <br></br>
 
-          <hr></hr>
+          <hr className='custom-hr plant'></hr>
+
 
 
 
@@ -108,7 +115,8 @@ const Home = () => {
           la vitesse est secondaire ici, le but est de départager les joueurs au fur et à mesure
           que les tableaux se complexifient <br></br>
 
-          <hr></hr>
+          <hr className='custom-hr plant'></hr>
+
 
 
 
@@ -134,7 +142,10 @@ const Home = () => {
           Même sans bouger, les lasers disparaissent au bout d’une petite seconde.<br></br> La mort est peu pénalisante et vous permet de consulter à nouveaux les lasers pendant 1 secondes.<br></br>
           Les niveaux sont simples et s’enchaîne vite : mode dédié pour les amateurs de speedrun et les mémoires flashs.
           <br></br>
-          <hr></hr>
+
+
+          <hr className='custom-hr hr-laser'></hr>
+
         </p>
         <h1> Larcin Challenges </h1>
         <h3> Créateur : François Brias </h3>

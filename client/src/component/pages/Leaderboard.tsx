@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../Navbar';
-import '../../App.css';
+
+
+import '../../style/balise.css';
+import '../../style/classStyle.css';
+import '../../style/leaderboard.css';
+
+
 import { Link } from 'react-router-dom';
 import AdminModale from '../AdminModale';
+import Header from '../Header';
 
 
 
@@ -163,8 +169,7 @@ const Leaderboard = () => {
 
   return (
     <div className="app">
-      <Navbar></Navbar>
-
+      <Header></Header>
 
 
       {/* 1111111111111111 */}

@@ -1,6 +1,8 @@
 import React from 'react';
 import Navbar from '../Navbar';
-import '../../App.css';
+import '../../style/balise.css';
+import '../../style/classStyle.css';
+
 import axios from 'axios';
 
 
