@@ -37,10 +37,6 @@ body {
 
 }
 
-.app-header {
-  /* margin: .5rem; */
-}
-
 header {
 
   display: flex;
@@ -63,15 +59,27 @@ header {
 
 nav {
   /* width: 80%; */
+  height: 100%;
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
   /* margin: auto; */
   /* padding: auto; */
 
   /* background-color: #BC770F; */
   height: 64px;
   /* padding-left: 2%; */
+
+}
+
+.nav-element {
+  text-align: center;
+  font-weight: 500;
+  font-size: larger;
+  height: 3rem;
+  min-width: 12rem;
+  margin-left: 2rem;
+
 
 }
 
@@ -148,27 +156,34 @@ a {
 
 /*    ---------------------------------------------    */
 
-.nav-element {
-  text-align: center;
-  font-weight: 500;
-  font-size: larger;
-  height: 3rem;
-  min-width: 12rem;
 
-}
+
 
 
 .button {
+
+  cursor: pointer;
+  background-color: #E2B618;
   box-shadow: 4px 5px 5px rgb(82, 82, 82);
-  padding: 0 1rem;
-  margin: .5rem;
   cursor: pointer;
 
-  font-family: "titleFont";
 
 }
 
-.button:hover {
+.button-lazer {
+
+  height: 3rem;
+
+  font-family: "titleFont";
+  padding: 0 1rem;
+
+
+
+
+}
+
+
+.button-lazer:hover {
 
   background-color: #caa51f;
   box-shadow: 4px 5px 5px rgb(163, 158, 158);

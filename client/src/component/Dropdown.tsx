@@ -20,12 +20,14 @@ const Dropdown = ({ isDisable, textTitle, children }: Props) => {
       className=' nav-element dropdown'
       onClick={() => { !isDisable && setIsOpen(true) }}
       onMouseLeave={() => { setIsOpen(false) }}
+
     >
 
       <button
-        className='button nav-element dropdown'
-        style={{ marginTop: ".5rem" }}
+        className='button button-lazer nav-element dropdown'
+        // style={{ marginTop: ".5rem"; font-family: "pfont" }}
         disabled={isDisable}
+        style={{}}
 
 
       >

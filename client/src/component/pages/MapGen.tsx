@@ -4,6 +4,8 @@ import '../../style/balise.css';
 import '../../style/classStyle.css';
 
 import axios from 'axios';
+import Footer from '../Footer';
+import Header from '../Header';
 
 
 const urlAPI = 'http://127.0.0.1:8000/api/v0/';
@@ -35,8 +37,7 @@ const MapGen = () => {
 
         <div className='app'>
 
-            <Navbar></Navbar>
-
+            <Header></Header>
             <button
                 className='button'
                 style={{ alignSelf: "center" }}
@@ -45,6 +46,7 @@ const MapGen = () => {
                 PASSER 24H
             </button>
 
+            <Footer></Footer>
         </div>
 
     );

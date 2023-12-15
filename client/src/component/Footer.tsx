@@ -22,7 +22,7 @@ const Footer = () => {
                             Créateur : <h2> françois BRIAS  </h2>
                         </div>
                         <div>
-                            site internet : <a href="francois-brias.xyz"> francois-brias.xyz </a> <br></br>
+                            site internet : <a href="https://francois-brias.xyz"> francois-brias.xyz </a> <br></br>
                             prototype : <a href="https://half-squid.itch.io/larcin-lazer-challenges"> larcin-lazer-challenges </a>
                         </div>
                     </div>

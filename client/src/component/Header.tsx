@@ -12,7 +12,10 @@ const Header = () => {
     return (
         <header>
 
-            <Link to="/" className='unvisited'>
+
+            <Link to="/" className='unvisited' style={{ color: "black" }}>
+
+
                 <h1>LARCIN CHALLENGE</h1>
             </Link>
             <Navbar></Navbar>

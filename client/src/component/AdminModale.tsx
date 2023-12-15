@@ -97,8 +97,8 @@ const AdminModale = ({ isActive, mapID, desactivation }: Props) => {
             <label >Mot de passe :</label>
             <input type="password" value={pwValue} onChange={(e) => setPwValue(e.target.value)}></input>
             <br></br>
-            <input type="submit" value="OK" onClick={adminLogin} ></input>
-            <button style={{ margin: ".5rem" }} onClick={desactivation} > Annuler</button>
+            <input type="submit" value="OK" onClick={adminLogin} className='button' ></input>
+            <button className='button' style={{ margin: ".5rem" }} onClick={desactivation} > Annuler</button>
         </div>
 
     </div>

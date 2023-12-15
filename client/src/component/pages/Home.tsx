@@ -74,8 +74,8 @@ const Home = () => {
                 <li>électrocution fait perdre 10 secondes au compteur </li>
                 <li>finir un niveau fait gagner 2 secondes au compteur </li>
               </ul>
-              <Link style={{ paddingLeft: "5rem" }} to="/play#">
-                <button className='button'
+              <Link style={{ paddingLeft: "3rem" }} to="/play#">
+                <button className='button button-lazer'
                 > RELEVER LE CHALLENGE </button>
               </Link>
             </div>
@@ -104,8 +104,8 @@ const Home = () => {
                 <li>électrocution fait perdre 10 secondes au compteur </li>
                 <li>finir un niveau fait gagner 2 secondes au compteur </li>
               </ul>
-              <Link style={{ paddingLeft: "5rem" }} to="/play">
-                <button className='button'
+              <Link style={{ paddingLeft: "3rem" }} to="/play">
+                <button className='button button-lazer'
                 > RELEVER LE CHALLENGE </button>
               </Link>
             </div>
@@ -133,8 +133,8 @@ const Home = () => {
                 <li> +1 sec si le niveau est réussi du premier coup </li>
                 <li>les tableaux commenceront facile et la difficulté à une faible croissance.</li>
               </ul>
-              <Link style={{ paddingLeft: "5rem" }} to="/play">
-                <button className='button'
+              <Link style={{ paddingLeft: "3rem" }} to="/play">
+                <button className='button button-lazer'
                 > RELEVER LE CHALLENGE </button>
               </Link>
             </div>

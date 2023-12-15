@@ -135,7 +135,7 @@ const Leaderboard = () => {
 
   const playSeedButton =
     <Link to={`/play?id=${mapID}`}>
-      <button style={{ backgroundColor: "#ada997" }}
+      <button className='button button-lazer'
       >
         Jouer </button >
     </Link>
@@ -178,13 +178,13 @@ const Leaderboard = () => {
 
 
       {mapID ? (<div className='date-container'>
-        <button className='button'
+        <button className='button' style={{ padding: " .8rem .3rem ", marginTop: "1rem" }}
           onClick={() => setMapFetchedIndex(prev => prev + 1)}
         > {"<"} </button>
 
         {mapDateDiv()}
 
-        <button className='button'
+        <button className='button' style={{ padding: " .8rem .3rem ", marginTop: "1rem" }}
           disabled={!mapFetchedIndex}
           onClick={() => setMapFetchedIndex(prev => prev - 1)}
         > {">"} </button>
@@ -224,7 +224,7 @@ const Leaderboard = () => {
       </div>
 
       {mapID && <>
-        <button className='delete-map-button button' onClick={() => setIsModaleActive(true)}>
+        <button className='delete-map-button button button-lazer' onClick={() => setIsModaleActive(true)}>
           ADMIN : <br></br>Supprimez map
         </button>
         <AdminModale isActive={isModaleActive} mapID={mapID} desactivation={() => setIsModaleActive(false)} ></AdminModale>
