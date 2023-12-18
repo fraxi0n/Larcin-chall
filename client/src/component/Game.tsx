@@ -64,9 +64,31 @@ const Game = ({ type, mapID }: Props) => {
         }
 
       </div>
-      <p style={{ textAlign: "center", padding: "0" }}>
-        CONTRÔLE : Flèches directionnelles ←↑↓→ pour déplacer Larcin   //   OBJECTIF: mémoriser le parcours jusqu'à la sortie sans passer par les lasers
-      </p>
+      {/* <p style={{ textAlign: "center", margin: "auto", display: "flex" }}> */}
+      <section aria-label='contrôle et objectif du jeu'></ section>
+      <div style={{ display: "flex", justifyContent: 'space-around' }}>
+
+
+
+        <div>
+
+
+          <h3 style={{ textAlign: "center", margin: "0" }} > CONTRÔLE : </h3 >
+          <p style={{ textAlign: "center", padding: "0", margin: "0" }}>
+
+            Flèches directionnelles ←↑↓→ pour déplacer Larcin
+          </p>
+        </div>
+
+        <div>
+
+          <h3 style={{ textAlign: "center", margin: "0" }} > OBJECTIF : </h3 >
+          <p style={{ textAlign: "center", padding: "0", margin: "0" }}>
+            mémoriser le parcours jusqu'à la sortie sans passer par les lasers
+          </p>
+        </div>
+      </div >
+
     </>
   );
 };

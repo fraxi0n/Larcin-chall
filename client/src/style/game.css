@@ -2,6 +2,18 @@
     margin: 0;
     /* position: absolute; */
     left: 7.5%;
+}
+
+.map-carousel {
+    padding: .8rem .3rem;
+    margin-top: 1rem
+}
+
+.button-disable {
+    cursor: not-allowed;
+    background-color: rgb(109, 98, 75);
+    color: aliceblue;
+
 
 
 }

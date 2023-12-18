@@ -177,18 +177,20 @@ const Leaderboard = () => {
 
 
 
-      {mapID ? (<div className='date-container'>
-        <button className='button' style={{ padding: " .8rem .3rem ", marginTop: "1rem" }}
+      {mapID ? (<div className='date-container '>
+        <button className={` button map-carousel`}
           onClick={() => setMapFetchedIndex(prev => prev + 1)}
+          aria-label='carte précédente'
         > {"<"} </button>
 
         {mapDateDiv()}
 
-        <button className='button' style={{ padding: " .8rem .3rem ", marginTop: "1rem" }}
+        <button className={` button map-carousel ${!mapFetchedIndex ? 'button-disable' : ''} `} style={{ padding: " .8rem .3rem ", marginTop: "1rem" }}
           disabled={!mapFetchedIndex}
           onClick={() => setMapFetchedIndex(prev => prev - 1)}
+          aria-label='carte suivante'
         > {">"} </button>
-      </div>) : <> wait</>
+      </div>) : <div style={{ cursor: "wait" }} > please wait </div>
       }
 
 

@@ -13,7 +13,7 @@ const Header = () => {
         <header>
 
 
-            <Link to="/" className='unvisited' style={{ color: "black" }}>
+            <Link to="/" style={{ color: "black" }} aria-label="page d'acceuil" >
 
 
                 <h1>LARCIN CHALLENGE</h1>
