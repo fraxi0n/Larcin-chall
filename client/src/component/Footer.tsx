@@ -2,18 +2,11 @@
 import './../style/balise.css';
 import './../style/classStyle.css';
 
-
-
-
 const Footer = () => {
-
+    
     return (
         <div style={{ margin: "0" }} >
-
-
             <div className='footer-bandeau'></div>
-
-
             <footer>
                 <div className='footer-content'>
                     <div className='footer-container' >
@@ -29,17 +22,12 @@ const Footer = () => {
                         <div>
                             concept original: <h2> Géraud Zuchini (@DrGeraud) </h2>
                         </div>
-
                         <div>
                             studio : <a href="https://tambouillestudio.com/"> tambouille studio </a>
                         </div>
-
                     </div>
-
                 </div>
             </footer>
-
-
         </div>
     );
 };

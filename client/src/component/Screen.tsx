@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 
 const ratio = 16 / 8.5
-
 const gameURL = "http://127.0.0.1:5500/game/index.html#"
 
 type Props = {
@@ -15,16 +14,11 @@ const ScreenComp = ({ widthScreen, mapID }: Props) => {
     const [iframeKey, setIframeKey] = useState(0);
     const [mapIdStr, setMapIdStr] = useState("");
 
-
     useEffect(() => {
-
         if (mapID) {
             setMapIdStr("&id=" + mapID)
         }
-
-
     }, [mapID])
-
     useEffect(() => {
         setIsWidthChanging(true);
         const timeoutId = setTimeout(() => {
@@ -35,7 +29,6 @@ const ScreenComp = ({ widthScreen, mapID }: Props) => {
             clearTimeout(timeoutId);
         };
     }, [widthScreen]);
-
 
     return (
         isWidthChanging ?
@@ -49,8 +42,6 @@ const ScreenComp = ({ widthScreen, mapID }: Props) => {
                 width={widthScreen}
                 height={widthScreen / ratio}
             />
-
-
     );
 };
 

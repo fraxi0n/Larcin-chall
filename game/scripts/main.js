@@ -67,8 +67,6 @@ const godLaunch = () => {
   godMODE = true
 
   if (!MapID) { // pour test developpeur 
-    console.log("MODE TEST ACTIF")
-
     fetch(urlAPI + urlMaps + 'daily')
       .then(response => response.json())
       .then(data => {
