@@ -82,11 +82,18 @@ footer {
   .footer-content {
     flex-direction: column;
   }
+
+  .footer-container-2{
+    width: 50%;
+    text-align: center;
+
+  }
+
 }
 
 .footer-container {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   margin: 1rem;
   padding: 1rem;
 }
