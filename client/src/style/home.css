@@ -2,7 +2,6 @@
     cursor: pointer;
     max-width: 854px;
     position: relative;
-
     padding-top: 480px;
     height: 0;
     overflow: hidden;
@@ -19,7 +18,6 @@
 
 .teaser-container {
     padding: 0;
-
     width: 80%;
     max-width: 854px;
 }
@@ -42,9 +40,6 @@
 
 .custom-hr::after {
     content: '';
-    /* background-image: url("../asset/laser.png"); */
-    /* background-attachment: fixed; */
-
     background-size: contain;
     background-repeat: no-repeat;
     width: 3rem;
@@ -73,7 +68,6 @@
 }
 
 .teaser-legend {
-
     font-weight: bold;
     font-size: small;
     text-align: center;

@@ -18,8 +18,8 @@ type Row
   = {
     username: string
     score: number
-    position: number// | undefined
-    top: string// | undefined
+    position: number
+    top: string
   }
 const initTable: Row[] = []
 const apiRoute = "http://127.0.0.1:8000/api/v0/"
@@ -80,7 +80,6 @@ const Leaderboard = () => {
           arrondi = 5
         } else {
           arrondi = 5
-          //10?
         }
 
       return top - top % arrondi + arrondi + "%"
@@ -102,7 +101,6 @@ const Leaderboard = () => {
     , [table, nbScore])
 
 
-  // 222222222222222222
 
 
 
@@ -129,7 +127,6 @@ const Leaderboard = () => {
     }
   }, [mapFetchedIndex, isModaleActive])
 
-  // 333333333333333
 
 
 
@@ -173,7 +170,6 @@ const Leaderboard = () => {
       <Header></Header>
 
 
-      {/* 1111111111111111 */}
 
 
 

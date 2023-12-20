@@ -17,7 +17,6 @@ const Footer = () => {
             <footer>
                 <div className='footer-content'>
                     <div className='footer-container' >
-                        {/* <div style={{ display: "flex", alignContent: "flex-end" }} > */}
                         <div>
                             Créateur : <h2> françois BRIAS  </h2>
                         </div>

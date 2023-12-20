@@ -63,7 +63,6 @@ const AdminModale = ({ isActive, mapID, desactivation }: Props) => {
 
                         }
                         else { alert("la map à été supprimé avec succes !") }
-                        // Gérer la réponse si nécessaire
                     })
                     .catch(error => {
                         console.error('Une erreur s\'est produite :', error);
@@ -76,7 +75,6 @@ const AdminModale = ({ isActive, mapID, desactivation }: Props) => {
             }
 
 
-            // alert(response.data)
 
         }
         catch (error: any) {

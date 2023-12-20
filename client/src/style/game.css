@@ -1,6 +1,5 @@
 .canvas {
     margin: 0;
-    /* position: absolute; */
     left: 7.5%;
 }
 
@@ -13,7 +12,4 @@
     cursor: not-allowed;
     background-color: rgb(109, 98, 75);
     color: aliceblue;
-
-
-
 }

@@ -68,7 +68,6 @@ const Game = ({ type, mapID }: Props) => {
         }
 
       </div>
-      {/* <p style={{ textAlign: "center", margin: "auto", display: "flex" }}> */}
       <section aria-label='contrôle et objectif du jeu'></ section>
       <div style={{ display: "flex", justifyContent: 'space-around' }}>
 

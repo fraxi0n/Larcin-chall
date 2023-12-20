@@ -1,55 +1,41 @@
 @font-face {
   font-family: 'titleFont';
-  /* Nom de la police */
   src: url('../asset/font/Lazer84.ttf') format('truetype');
-  /* Chemin vers votre fichier TTF */
-  /* Autres propriétés de la police (optionnelles) */
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'pfont';
-  /* Nom de la police */
   src: url('../asset/font/Afacad-VariableFont_wght.ttf') format('truetype');
-  /* Chemin vers votre fichier TTF */
-  /* Autres propriétés de la police (optionnelles) */
   color: rgb(46, 38, 38);
   font-weight: 300;
   font-style: normal;
 }
 
 body {
-  /* background-color: #f3e6bd; */
   font-family: "pfont";
   background-image: url("../asset/case.png");
   background-attachment: fixed;
   min-height: 100%;
-
 }
 
 .app {
   margin: 1.5rem;
-  /* padding: 0 3% 0 3%; */
   justify-content: center;
   background-color: #f3e6bd;
   min-height: 650px;
-
 }
 
 header {
-
   display: flex;
   justify-content: space-between;
   background-color: #BC770F;
   padding: 0 2% 0 2%;
-
-
 }
 
 @media screen and (max-width: 1100px) {
   header {
-
     flex-direction: column;
     align-items: center;
     margin: 0;
@@ -58,18 +44,11 @@ header {
 }
 
 nav {
-  /* width: 80%; */
   height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* margin: auto; */
-  /* padding: auto; */
-
-  /* background-color: #BC770F; */
   height: 64px;
-  /* padding-left: 2%; */
-
 }
 
 .nav-element {
@@ -79,42 +58,31 @@ nav {
   height: 3rem;
   min-width: 12rem;
   margin-left: 2rem;
-
-
 }
 
 footer {
   margin: 0;
   background-color: #BC770F;
   font-size: large;
-
 }
 
 .footer-bandeau {
-
   height: 64px;
   background-image: url("../asset/plante.png");
-
 }
 
 .footer-content {
-
   display: flex;
   justify-content: space-around;
   color: aliceblue;
   background-color: #222120;
 }
 
-
-
 @media screen and (max-width: 800px) {
   .footer-content {
-
     flex-direction: column;
   }
 }
-
-
 
 .footer-container {
   display: flex;
@@ -122,8 +90,6 @@ footer {
   margin: 1rem;
   padding: 1rem;
 }
-
-
 
 h1 {
   font-size: 1.8rem;
@@ -136,7 +102,6 @@ h1 {
 h2 {
   padding-right: 1rem;
   margin: 0;
-
 }
 
 a {
@@ -145,42 +110,23 @@ a {
 
 
 
-
-/*    ---------------------------------------------    */
-
-
-
-
-
 .button {
-
   cursor: pointer;
   background-color: #E2B618;
   box-shadow: 4px 5px 5px rgb(82, 82, 82);
   cursor: pointer;
-
-
 }
 
 .button-lazer {
-
   height: 3rem;
-
   font-family: "titleFont";
   padding: 0 1rem;
-
-
-
-
 }
 
-
 .button-lazer:hover {
-
   background-color: #caa51f;
   box-shadow: 4px 5px 5px rgb(163, 158, 158);
   color: rgb(160, 16, 16);
-
 }
 
 link {
@@ -190,11 +136,7 @@ link {
 .dropdown {
   width: 80%;
   margin: 0;
-
 }
-
-
-
 
 .lazer-font {
   color: rgb(46, 38, 38);
