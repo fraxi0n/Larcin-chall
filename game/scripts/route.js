@@ -132,7 +132,9 @@ const hasPlayerPlayed = () => {
                     response => {
 
                         if (response.status == 422) {
-                            alert("Vous avez déjà réalisé le défi d'aujourdhui, revenez demain !")
+                            showPopup()
+
+                            // alert("Vous avez déjà réalisé le défi d'aujourdhui, revenez demain !")
                         }
 
                         if (response.status == 200) {

@@ -121,3 +121,12 @@ toggleFormsLinks[1].addEventListener("click", toggleForms)
 
 
 
+
+
+const showPopup = () => {
+    document.getElementById('customPopup').style.display = 'block';
+}
+
+const closePopup = () => {
+    document.getElementById('customPopup').style.display = 'none';
+}

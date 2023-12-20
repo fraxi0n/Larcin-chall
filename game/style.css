@@ -109,3 +109,46 @@ h2 {
 .error {
     color: rgb(175, 0, 0)
 }
+
+
+/* ----------------------- */
+
+.custom-popup {
+    color: black;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffc23d;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+
+
+    animation: blinkAnimation 0.2s 5 alternate;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+@keyframes blinkAnimation {
+    from {
+        background-color: #ffffff;
+    }
+
+    to {
+        background-color: #ffc23d;
+    }
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #49483e;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}

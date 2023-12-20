@@ -89,9 +89,10 @@ const Home = () => {
           </div>
         </div>
         <br></br>
-
-        Un défi complet, le joueur doit trouver son équilibre entre vitesse et préparation car les
-        erreurs sont pénalisantes. <br></br>
+        <p>
+          Un défi complet, le joueur doit trouver son équilibre entre vitesse et préparation car les
+          erreurs sont pénalisantes.
+        </p>
 
         <hr className='custom-hr hr-plant' aria-hidden='true'></hr>
 
@@ -115,9 +116,12 @@ const Home = () => {
         </div>
         <br></br>
 
-        Pas de précipitation ! Trois erreurs sont synonyme de fin pour Larcin.<br></br>
-        la vitesse est secondaire ici, le but est de départager les joueurs au fur et à mesure
-        que les tableaux se complexifient <br></br>
+        <p>
+
+          Pas de précipitation ! Trois erreurs sont synonyme de fin pour Larcin.<br></br>
+          la vitesse est secondaire ici, le but est de départager les joueurs au fur et à mesure
+          que les tableaux se complexifient
+        </p>
 
         <hr className='custom-hr hr-door' aria-hidden='true'></hr>
 
@@ -139,12 +143,14 @@ const Home = () => {
           </div>
         </div>
         <br></br>
-        Même sans bouger, les lasers disparaissent au bout d’une petite seconde.<br></br> La mort est peu pénalisante et vous permet de consulter à nouveaux les lasers pendant 1 secondes.<br></br>
-        Les niveaux sont simples et s’enchaîne vite : mode dédié pour les amateurs de speedrun et les mémoires flashs.
-        <br></br>
-        <br></br>
 
+        <p>
+          Même sans bouger, les lasers disparaissent au bout d’une petite seconde.<br></br>
+          La mort est peu pénalisante et vous permet de consulter à nouveaux les lasers pendant 1 secondes.<br></br>
+          Les niveaux sont simples et s’enchaîne vite : mode dédié pour les amateurs de speedrun et les mémoires flashs.
+        </p>
 
+        <br></br>
 
       </div>
       <Footer></Footer>

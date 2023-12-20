@@ -84,9 +84,7 @@ nav {
 }
 
 footer {
-  /* height: 100px; */
   margin: 0;
-  /* background-color: #caa51f; */
   background-color: #BC770F;
   font-size: large;
 
@@ -97,20 +95,14 @@ footer {
   height: 64px;
   background-image: url("../asset/plante.png");
 
-  /* background-attachment: fixed; */
-
 }
 
 .footer-content {
 
   display: flex;
   justify-content: space-around;
-  /* margin: .5rem .5rem .5rem .5rem; */
   color: aliceblue;
-
   background-color: #222120;
-
-  /* height: 64px; */
 }
 
 

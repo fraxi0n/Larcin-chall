@@ -57,7 +57,11 @@ const Game = ({ type, mapID }: Props) => {
 
           :
           <div>
-            passer  en mode paysage pour commencer a jouer
+            <hr></hr>
+            <h3>
+              Veuillez laisser votre téléphone en mode paysage pour commencer à jouer.
+            </h3>
+            <hr></hr>
           </div>
 
 

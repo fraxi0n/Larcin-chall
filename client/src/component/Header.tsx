@@ -12,10 +12,7 @@ const Header = () => {
     return (
         <header>
 
-
-            <Link to="/" style={{ color: "black" }} aria-label="page d'acceuil" >
-
-
+            <Link to="/" style={{ color: "black" }} aria-label="page d'accueil" >
                 <h1>LARCIN CHALLENGE</h1>
             </Link>
             <Navbar></Navbar>
