@@ -4,9 +4,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './component/pages/Home'
 import Leaderboard from './component/pages/Leaderboard'
 import Play from './component/pages/Play'
-import MapGen from './component/pages/MapGen'
-
-
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,8 +12,6 @@ ReactDOM.render(
         <Route path="/" element={<Home />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/play" element={<Play />} />
-        <Route path="/mapgen" element={<MapGen />} />
-
       </Routes>
     </Router>
   </React.StrictMode>,

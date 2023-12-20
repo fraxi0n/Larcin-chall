@@ -1,31 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
-
 import '../../style/balise.css';
 import '../../style/classStyle.css';
 import '../../style/leaderboard.css';
-
 
 import { Link } from 'react-router-dom';
 import AdminModale from '../AdminModale';
 import Header from '../Header';
 import Footer from '../Footer';
 
-
-
-
-type Row
-  = {
-    username: string
-    score: number
-    position: number
-    top: string
-  }
+type Row = {
+  username: string
+  score: number
+  position: number
+  top: string
+}
 const initTable: Row[] = []
 const apiRoute = "http://127.0.0.1:8000/api/v0/"
 const mapRoute = "maps/"
 const scoreRoute = "scores/"
-
 
 const Leaderboard = () => {
 
@@ -36,22 +29,14 @@ const Leaderboard = () => {
     const year = date.getFullYear().toString().slice(2);
     const hours = date.getHours().toString().padStart(2, '0');
     const minutes = date.getMinutes().toString().padStart(2, '0');
-
     return `${day}/${month}/${year}  //  ${hours}:${minutes}`;
   }
-
-
   const [mapID, setMapID] = useState(0)
   const [mapDate, setMapDate] = useState("")
-
   const [mapFetchedIndex, setMapFetchedIndex] = useState(0)
-
-
   const [table, setTable] = useState(initTable)
   const [nbScore, setNbScore] = useState(1)
-
   const [isModaleActive, setIsModaleActive] = useState(false)
-
 
   useEffect(() => {
     if (mapID) {
@@ -64,15 +49,12 @@ const Leaderboard = () => {
           setTable(response.results)
         })
     }
-
   }, [mapID])
-
 
   useEffect(() => {
     const calculateTop = (pPos: number) => {
       let top = Math.floor((pPos - 0.51) / nbScore * 100)
       let arrondi: number
-
       if (top <= 5) {
         arrondi = 1
       } else
@@ -81,10 +63,8 @@ const Leaderboard = () => {
         } else {
           arrondi = 5
         }
-
       return top - top % arrondi + arrondi + "%"
     }
-
     if (table.length && !table[0].position) {
       const newTable: Row[] = []
       for (let i = 0; i < table.length; i++) {
@@ -99,10 +79,6 @@ const Leaderboard = () => {
     }
   }
     , [table, nbScore])
-
-
-
-
 
   useEffect((
   ) => {
@@ -127,20 +103,12 @@ const Leaderboard = () => {
     }
   }, [mapFetchedIndex, isModaleActive])
 
-
-
-
   const playSeedButton =
     <Link to={`/play?id=${mapID}`}>
       <button className='button button-lazer'
       >
         Jouer </button >
     </Link>
-
-
-
-
-
   const mapDateDiv = () => {
     if (!mapID) {
       return ""
@@ -150,7 +118,6 @@ const Leaderboard = () => {
     }
     return <div className='date-displayer' style={{ padding: ".35rem 0", fontSize: "1rem" }}  ><div>{mapDate} </div> {playSeedButton}</div>
   }
-
   const getCellClass = (pPos: number) => {
     let classReturned = "leaderboard-cell"
     if (pPos === 1) {
@@ -168,19 +135,12 @@ const Leaderboard = () => {
   return (
     <div className="app">
       <Header></Header>
-
-
-
-
-
       {mapID ? (<div className='date-container '>
         <button className={` button map-carousel`}
           onClick={() => setMapFetchedIndex(prev => prev + 1)}
           aria-label='carte précédente'
         > {"<"} </button>
-
         {mapDateDiv()}
-
         <button className={` button map-carousel ${!mapFetchedIndex ? 'button-disable' : ''} `} style={{ padding: " .8rem .3rem ", marginTop: "1rem" }}
           disabled={!mapFetchedIndex}
           onClick={() => setMapFetchedIndex(prev => prev - 1)}
@@ -188,11 +148,6 @@ const Leaderboard = () => {
         > {">"} </button>
       </div>) : <div style={{ cursor: "wait" }} > please wait </div>
       }
-
-
-
-
-
       <div className='lb-container'>
         {
           table.length ? <table className='leaderboard-table'  >
@@ -220,7 +175,6 @@ const Leaderboard = () => {
             </>
         }
       </div>
-
       {mapID && <>
         <button className='delete-map-button button button-lazer' onClick={() => setIsModaleActive(true)}>
           ADMIN : <br></br>Supprimez map
@@ -228,7 +182,6 @@ const Leaderboard = () => {
         <AdminModale isActive={isModaleActive} mapID={mapID} desactivation={() => setIsModaleActive(false)} ></AdminModale>
       </>
       }
-
       <Footer></Footer>
     </div >
   );

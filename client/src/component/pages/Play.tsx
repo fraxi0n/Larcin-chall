@@ -1,22 +1,17 @@
-import React from 'react';
 import { useLocation } from 'react-router-dom';
 
 import '../../style/classStyle.css';
 import '../../style/balise.css';
 import '../../style/game.css';
 
-
 import Game from '../Game';
 import Header from '../Header';
 import Footer from '../Footer';
 
-
 const Play = () => {
-
   const sampleLocation = useLocation();
   const searchParams = new URLSearchParams(sampleLocation.search);
   const id = searchParams.get("id");
-
 
   return (<>
     <div className='app' >
