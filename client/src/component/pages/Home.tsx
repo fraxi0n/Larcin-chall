@@ -5,9 +5,14 @@ import precisImg from '../../asset/precis.png';
 import mortelImg from '../../asset/mortel.png';
 import rapideImg from '../../asset/rapide.png';
 
+import larcinImg from '../../asset/larcin.png';
+import planteImg from '../../asset/plante.png';
+import porteImg from '../../asset/porte.png';
+
 import { Link } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
+import DynamicHR from '../DynamicHR';
 
 const Home = () => {
   return (<>
@@ -40,11 +45,15 @@ const Home = () => {
             Trois mods de jeux sont disponible et il faut compter 5 a 6 min pour tout compléter.<br></br>
           </p>
         </section>
-        <hr className='custom-hr hr-larcin' aria-hidden='true'></hr>
+
+        <DynamicHR
+        img={larcinImg}>
+
         <h3>Les challenges : </h3>
         <p>Le but des défis est de passer un maximum de niveau avant le temps imparti. <br></br>
         Les niveau se complexifient a mesure que vous les traversez 
         </p>
+
         <br></br>
         <div className="list-img-run" >
           <img src={precisImg} alt='Challenge : Lazer precis' aria-describedby='desc-precis'></img> <br></br>
@@ -65,7 +74,10 @@ const Home = () => {
         <p>Un défi complet, le joueur doit trouver son équilibre entre vitesse et préparation car les
           erreurs sont pénalisantes.
         </p>
-        <hr className='custom-hr hr-plant' aria-hidden='true'></hr>
+        </DynamicHR>
+
+        <DynamicHR
+        img={porteImg}>
         <div className="list-img-run"  >
           <img src={mortelImg} alt='Challenge : Lazer mortel' aria-describedby='desc-mortel'></img> <br></br>
           <div className='list-run'>
@@ -86,7 +98,10 @@ const Home = () => {
           la vitesse est secondaire ici, le but est de départager les joueurs au fur et à mesure
           que les tableaux se complexifient
         </p>
-        <hr className='custom-hr hr-door' aria-hidden='true'></hr>
+        </DynamicHR>
+
+        <DynamicHR
+        img={planteImg}>
         <div className="list-img-run"  >
           <img src={rapideImg} alt='Challenge : Lazer rapide' aria-describedby='desc-rapide' ></img> <br></br>
           <div className='list-run'>
@@ -109,6 +124,7 @@ const Home = () => {
           Les niveaux sont simples et s’enchaîne vite : mode dédié pour les amateurs de speedrun et les mémoires flashs.
         </p>
         <br></br>
+        </DynamicHR>
       </div>
       <Footer></Footer>
     </div >

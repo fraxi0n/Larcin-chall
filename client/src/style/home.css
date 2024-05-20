@@ -30,45 +30,39 @@
 .custom-hr {
     border: none;
     border-top: 3px double #333;
-    color: #BC770F;
-    margin: 4rem;
-    overflow: visible;
-    text-align: center;
-    height: 5px;
+    margin:  4rem 4rem 0 4rem ;
     position: relative;
 }
 
-.custom-hr::after {
-    content: '';
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 3rem;
-    height: 3rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-}
-
-.hr-laser::after {
-    background-image: url("../asset/laser.png");
-}
-
-.hr-plant::after {
-    background-image: url("../asset/plante.png");
-}
-
-.hr-door::after {
-    background-image: url("../asset/porte.png");
-}
-
-.hr-larcin::after {
-    background-image: url("../asset/larcin.png");
-}
 
 .teaser-legend {
     font-weight: bold;
     font-size: small;
     text-align: center;
+}
+/*    animation     */
+
+.hr-sprite {
+    width: 3rem;
+    height: 3rem;
+    position: relative;
+    top: -1.5rem;
+    left: 10%; 
+    transform: translate(-3rem, 0);
+    transition:  0.5s; 
+}
+
+
+.box-hr {
+    --parent-width: 100%;  
+    transition: 0.7s;
+    
+}
+
+.hr-sprite {
+    transition: transform 1s;
+}
+
+.box-hr:hover .hr-sprite {
+    transform: translate(calc(var(--parent-width) * 0.8), 0);
 }
