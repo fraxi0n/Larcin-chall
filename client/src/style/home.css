@@ -23,9 +23,13 @@
 }
 
 .teaser {
-    width: 100%,
+    width: 100%;
 }
 
+figure {
+    margin: 0;
+
+}
 
 .custom-hr {
     border: none;

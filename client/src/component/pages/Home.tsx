@@ -10,7 +10,6 @@ import planteImg from '../../asset/plante.png';
 import porteImg from '../../asset/porte.png';
 import lazerImg from '../../asset/laser.png';
 
-import { Link } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import DynamicHR from '../DynamicHR';
@@ -19,119 +18,123 @@ const Home = () => {
   return (<>
     <div className="app">
       <Header></Header>
-      <div style={{ padding: " 0 2rem " }}>
+      <main style={{ padding: " 0 2rem " }}>
+        <div> Chaque jour, jouez vous de la nouvelle sécurité et imposez vous comme le cambrioleur ultime</div>
+
         <section aria-label='Description du jeu Larcin Lazer original'>
-          <h3> Chaque jour, jouez vous de la nouvelle sécurité et imposez vous comme le cambrioleur ultime</h3>
-          <p> Connaissez vous Larcin Lazer ?
-            Il s'agit d'un jeu au concept original crée en Game Jam par
-            Géraud Zuchini, alias <a href="https://docgeraud.itch.io/" > doc Géraud</a>.<br></br>
-            Il est sortie en version finale et commerciale en début d'année 2023 sur steam, itch io et en version mobile sur android.<br></br>
-            Dans ce jeu vous incarnez un cambrioleur, qui n'ayant plus de quoi nourir son chat est contraint
-            d'aller voler de riches capitalistes.
+          <h2>  Larcin Lazer, qu'est ce que c'est? </h2>
+          <p> Il s'agit d'un jeu au concept original crée en Game Jam par
+          Géraud Zuchini, alias <a href="https://docgeraud.itch.io/" > doc Géraud</a>.<br></br>
+          Il est sortie en version finale et commerciale en début d'année 2023 sur steam, itch io et en version mobile sur android.<br></br>
+          Dans ce jeu vous incarnez un cambrioleur, qui n'ayant plus de quoi nourir son chat est contraint
+          d'aller voler de riches capitalistes.
           </p>
-        </section>
-        <div style={{ maxWidth: "854px" }}>
-          <div className='video-container'>
-            <video controls autoPlay muted >
-              <source src="https://cdn.akamai.steamstatic.com/steam/apps/256926430/movie480_vp9.webm" type="video/mp4"></source>
-              Votre navigateur ne supporte pas la lecture de vidéos.
-            </video>
+          <div style={{ maxWidth: "854px" }}>
+            <figure >
+              <div className='video-container'>
+                <video controls autoPlay muted >
+                  <source src="https://cdn.akamai.steamstatic.com/steam/apps/256926430/movie480_vp9.webm" type="video/mp4"></source>
+                  Votre navigateur ne supporte pas la lecture de vidéos.
+                </video>
+              </div>
+              <figcaption className='teaser-legend' >Teaser de larcin Lazer</figcaption>
+            </figure>
           </div>
-          <h2 className='teaser-legend' > Teaser de larcin Lazer </h2>
-        </div>
+        </section>
+
         <section aria-label='Description de l adaptation du jeu sur le site'>
-          <p> Dans le jeu original, les niveaux sont crée manuellement et que la vitesse d'execution n'importe pas. <br></br>
-            Larcin Challenges vous propose de comparer votre rapidité et fiabilité de mémorisation avec les autres joueur
-            de la comunauté dans des niveau généré quotidiennement.<br></br>
-            Trois mods de jeux sont disponible et il faut compter 5 a 6 min pour tout compléter.<br></br>
-          </p>
+          <h2>Quelles nouveautés dans larcin challenges ?</h2>
+
+          <p>
+          
+            Dans le jeu original, les niveaux sont crée manuellement et la vitesse d'execution n'importe pas. <br></br>
+            Grace a la génération procédurale des niveaux, Larcin Challenges vous propose de comparer votre rapidité et fiabilité de mémorisation avec les autres joueur
+            de la comunauté dans de nouveaux niveaux quotidiennement.<br></br>
+            En outre, Larcin Challenge ne comporte que le la base des niveaux de larcin challenge, 
+            des salle remplie de laser avec une sortie, sans la richesse des mécanisme, piège et créature du jeu original.
+            <br></br>
+            Pour comparer les aptitudes des voleurs du monde entier, 3 modes de jeux ont été inventé chaqu'un favorisant certain profils <strong> ce sont les  
+            3 challenges : précis, mortel et rapide </strong> <br></br>
+            </p>
         </section>
 
-<div className='challenge-box'>
-<img className='lazer-hr' src={lazerImg} alt='lazer deco' aria-describedby='desc-precis'></img>
-<img className='lazer-hr'src={lazerImg} alt='lazer deco' aria-describedby='desc-precis'></img>
-<img className='lazer-hr'src={lazerImg} alt='lazer deco' aria-describedby='desc-precis'></img>
-<h3>Les challenges : </h3>
-        <p>Le but des défis est de passer un maximum de niveau avant le temps imparti. <br></br>
-        Les niveau se complexifient a mesure que vous les traversez 
-        </p>
-</div>
+        <section aria-label='description et navigation vers les challenges'>
+          <div className='challenge-box'>
+            <img className='lazer-hr' src={lazerImg} alt='lazer deco' aria-describedby='desc-precis'></img>
+            <img className='lazer-hr'src={lazerImg} alt='lazer deco' aria-describedby='desc-precis'></img>
+            <img className='lazer-hr'src={lazerImg} alt='lazer deco' aria-describedby='desc-precis'></img>
+            <h2>Les trois challenges : </h2>
+            <p>Dans chacun des challenges, vous devez passer un maximum de tableaux avant le temps imparti. <br></br>
+            Les niveau se complexifient à mesure que vous les traversez 
+            </p>
+          </div>
+          <br></br>
 
-        <br></br>
-
-        <DynamicHR
-        img={larcinImg}>
-        <div className="list-img-run blue" >
-          <img src={precisImg} alt='Challenge : Lazer precis' aria-describedby='desc-precis'></img> <br></br>
-          <div className='list-run'>
-            <ul id='desc-precis'>
-              <li>temps de départ : 1 min 30</li>
-              <li>électrocution fait perdre 10 secondes au compteur </li>
-              <li>finir un niveau fait gagner 2 secondes au compteur </li>
-            </ul>
-            <Link style={{ paddingLeft: "3rem" }} to="/play#">
-              <button className='button button-lazer'
+          <DynamicHR img={larcinImg}>
+            <div className="list-img-run blue" >
+              <img src={precisImg} alt='Challenge : Lazer precis' aria-describedby='desc-precis'></img> <br></br>
+              <div className='list-run'>
+                <ul id='desc-precis'>
+                  <li>temps de départ : 1 min 30</li>
+                  <li>électrocution fait perdre 10 secondes au compteur </li>
+                  <li>finir un niveau fait gagner 2 secondes au compteur </li>
+                </ul>
+                <button className='button button-lazer'
                 aria-label='jouer au mode Lazer précis'
-              > RELEVER LE CHALLENGE </button>
-            </Link>
-          </div>
-        </div>
-        <br></br>
-        <p className='text-center'>Un défi complet, le joueur doit trouver son équilibre entre vitesse et préparation car les
-          erreurs sont pénalisantes.
-        </p>
-        </DynamicHR>
-
-        <DynamicHR
-        img={porteImg}>
-        <div className="list-img-run red"  >
-          <img src={mortelImg} alt='Challenge : Lazer mortel' aria-describedby='desc-mortel'></img> <br></br>
-          <div className='list-run'>
-            <ul id='desc-mortel'>
-              <li>temps de départ : 3min</li>
-              <li>électrocution fait perdre 10 secondes au compteur </li>
-              <li>finir un niveau fait gagner 2 secondes au compteur </li>
-            </ul>
-            <Link style={{ paddingLeft: "3rem" }} to="/play">
-              <button className='button button-lazer'
+                onClick={() => { window.location.href = "/play#"; }}
+                > RELEVER LE CHALLENGE </button>
+              </div>
+            </div>
+            <p className='text-center'>Un défi complet, le joueur doit trouver son équilibre entre vitesse et préparation car les
+            erreurs sont pénalisantes.
+            </p>
+          </DynamicHR>
+          <br></br>
+          <DynamicHR img={porteImg}>
+            <div className="list-img-run red"  >
+              <img src={mortelImg} alt='Challenge : Lazer mortel' aria-describedby='desc-mortel'></img> <br></br>
+              <div className='list-run'>
+                <ul id='desc-mortel'>
+                  <li>temps de départ : 3min</li>
+                  <li>électrocution fait perdre 10 secondes au compteur </li>
+                  <li>finir un niveau fait gagner 2 secondes au compteur </li>
+                </ul>
+                <button className='button button-lazer'
+                onClick={() => { window.location.href = "/play#"; }}
                 aria-label='jouer au mode Lazer mortel'
-              > RELEVER LE CHALLENGE </button>
-            </Link>
-          </div>
-        </div>
-        <br></br>
-        <p className='text-center'>Pas de précipitation ! Trois erreurs sont synonyme de fin pour Larcin.<br></br>
-          la vitesse est secondaire ici, le but est de départager les joueurs au fur et à mesure
-          que les tableaux se complexifient
-        </p>
-        </DynamicHR>
-
-        <DynamicHR
-        img={planteImg}>
-        <div className="list-img-run green"  >
-          <img src={rapideImg} alt='Challenge : Lazer rapide' aria-describedby='desc-rapide' ></img> <br></br>
-          <div className='list-run'>
-            <ul id='desc-rapide'>
-              <li>temps de départ : 30sec</li>
-              <li>les lasers disparaissent automatiquement en une petite seconde</li>
-              <li> +1 sec si le niveau est réussi du premier coup </li>
-              <li>les tableaux commenceront facile et la difficulté à une faible croissance.</li>
-            </ul>
-            <Link style={{ paddingLeft: "3rem" }} to="/play">
-              <button className='button button-lazer'
+                > RELEVER LE CHALLENGE </button>
+              </div>
+            </div>
+            <p className='text-center'>Pas de précipitation ! Trois erreurs sont synonyme de fin pour Larcin.<br></br>
+            la vitesse est secondaire ici, le but est de départager les joueurs au fur et à mesure
+            que les tableaux se complexifient
+            </p>
+          </DynamicHR>
+          <br></br>
+          <DynamicHR img={planteImg}>
+            <div className="list-img-run green"  >
+              <img src={rapideImg} alt='Challenge : Lazer rapide' aria-describedby='desc-rapide' ></img> <br></br>
+              <div className='list-run'>
+                <ul id='desc-rapide'>
+                  <li>temps de départ : 30sec</li>
+                  <li>les lasers disparaissent automatiquement en une petite seconde</li>
+                  <li> +1 sec si le niveau est réussi du premier coup </li>
+                  <li>les tableaux commenceront facile et la difficulté à une faible croissance.</li>
+                </ul>
+                <button className='button button-lazer'
+                onClick={() => { window.location.href = "/play#"; }}
                 aria-label='jouer au mode Lazer rapide'
-              > RELEVER LE CHALLENGE </button>
-            </Link>
-          </div>
-        </div>
-        <br></br>
-        <p className='text-center'>Même sans bouger, les lasers disparaissent au bout d’une petite seconde.<br></br>
-          La mort est peu pénalisante et vous permet de consulter à nouveaux les lasers pendant 1 secondes.<br></br>
-          Les niveaux sont simples et s’enchaîne vite : mode dédié pour les amateurs de speedrun et les mémoires flashs.
-        </p>
-        <br></br>
-        </DynamicHR>
-      </div>
+                > RELEVER LE CHALLENGE </button>
+              </div>
+            </div>
+            <p className='text-center'>Même sans bouger, les lasers disparaissent au bout d’une petite seconde.<br></br>
+            La mort est peu pénalisante et vous permet de consulter à nouveaux les lasers pendant 1 secondes.<br></br>
+            Les niveaux sont simples et s’enchaîne vite : mode dédié pour les amateurs de speedrun et les mémoires flashs.
+            </p>
+          </DynamicHR>
+          <br></br>
+        </section>
+      </main>
       <Footer></Footer>
     </div >
   </>

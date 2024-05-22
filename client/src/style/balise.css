@@ -17,6 +17,7 @@ body {
   background-image: url("../asset/case.png");
   background-attachment: fixed;
   min-height: 100%;
+  font-size: large;
 }
 
 .app {
@@ -77,6 +78,20 @@ footer {
   background-color: #222120;
 }
 
+
+
+.footer-container-2{
+  margin: 1rem;
+
+}
+
+.footer-container {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+
+}
+
 @media screen and (max-width: 850px) {
   .footer-content {
     flex-direction: column;
@@ -88,13 +103,6 @@ footer {
   }
 }
 
-.footer-container {
-  display: flex;
-  align-items: center;
-  margin: 1rem;
-  padding: 1rem;
-}
-
 h1 {
   font-size: 1.8rem;
   font-family: "titleFont";
@@ -104,12 +112,11 @@ h1 {
 }
 
 h2 {
-  padding-right: 1rem;
-  margin: 0;
+  padding-left: 1rem;
 }
 
 a {
-  color: rgb(28, 62, 255);
+  color: rgb(99, 123, 255);
 }
 
 

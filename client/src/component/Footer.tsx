@@ -11,7 +11,7 @@ const Footer = () => {
                 <div className='footer-content'>
                     <div className='footer-container' >
                         <div className='footer-container-2'>
-                            Créateur : <h2> françois BRIAS  </h2>
+                            Créateur : <strong> françois BRIAS  </strong>
                         </div>
                         <div className='footer-container-2'>
                             site internet : <a href="https://francois-brias.xyz"> francois-brias.xyz </a> <br></br>
@@ -20,7 +20,7 @@ const Footer = () => {
                     </div>
                     <div className='footer-container' >
                         <div className='footer-container-2'>
-                            concept original: <h2> Géraud Zuchini (@DrGeraud) </h2>
+                            concept original: <strong> Géraud Zuchini (@DrGeraud) </strong>
                         </div>
                         <div className='footer-container-2'>
                             studio : <a href="https://tambouillestudio.com/"> tambouille studio </a>

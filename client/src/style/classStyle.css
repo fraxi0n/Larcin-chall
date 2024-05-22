@@ -8,11 +8,9 @@
 .list-run {
     display: flex;
     flex-direction: column;
-    padding-left: 2rem
+    padding: 0 2rem;
+    max-width: 22rem;
 }
-
-
-
 
 .hidden {
     display: none;

@@ -5,8 +5,6 @@ import axios from 'axios';
 import './../style/classStyle.css';
 import './../style/balise.css';
 
-import { Link } from 'react-router-dom';
-
 const urlAPI = 'http://127.0.0.1:8000/api/v0/';
 const mapRoute = "maps/"
 const limitScreen = 780
@@ -40,12 +38,16 @@ const NavBar = () => {
     <nav className='nav'>
       {width > limitScreen ?
         <>
-          <Link to="/play#">
-            <button className='button button-lazer nav-element nav-button' > LANCER DEFI </button>
-          </Link>
-          <Link to="/leaderboard"><button className='button button-lazer nav-element nav-button'>
+
+            <button                 
+            onClick={() => { window.location.href = "/play#"; }}
+            className='button button-lazer nav-element nav-button' > LANCER DEFI </button>
+
+          <button 
+          onClick={() => { window.location.href = "/leaderboard#"; }}
+          className='button button-lazer nav-element nav-button'>
             LEADERBOARD
-          </button></Link>
+          </button>
           <button className='button button-lazer nav-element nav-button'
             onClick={() => { newGen() }} >
             NOUVELLE GENERATION
@@ -58,12 +60,15 @@ const NavBar = () => {
             textTitle={'MENU'} 
             >{
               [
-                <Link to="/play">
-                  <button className='button button-lazer nav-element dropdown'> LANCER DEFI </button>
-                </Link>,
-                <Link to="/leaderboard"><button className='button button-lazer nav-element dropdown' >
+                  <button 
+                  onClick={() => { window.location.href = "/play#"; }}
+                  className='button button-lazer nav-element dropdown'> LANCER DEFI </button>
+                ,
+                  <button 
+                  onClick={() => { window.location.href = "/leaderboard"; }}
+                  className='button button-lazer nav-element dropdown' >
                   LEADERBOARD
-                </button></Link>,
+                </button>,
                 <button
                   className='button button-lazer'
                   style={{ alignSelf: "center" }}
