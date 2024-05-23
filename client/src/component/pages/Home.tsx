@@ -37,20 +37,20 @@ const Home = () => {
                   Votre navigateur ne supporte pas la lecture de vidéos.
                 </video>
               </div>
-              <figcaption className='teaser-legend' >Teaser de larcin Lazer</figcaption>
+              <figcaption className='teaser-legend' >Teaser de Larcin Lazer</figcaption>
             </figure>
           </div>
         </section>
 
         <section aria-label='Description de l adaptation du jeu sur le site'>
-          <h2>Quelles nouveautés dans larcin challenges ?</h2>
+          <h2>Quelles nouveautés dans Larcin Challenges ?</h2>
 
           <p>
           
             Dans le jeu original, les niveaux sont crée manuellement et la vitesse d'execution n'importe pas. <br></br>
             Grace a la génération procédurale des niveaux, Larcin Challenges vous propose de comparer votre rapidité et fiabilité de mémorisation avec les autres joueur
             de la comunauté dans de nouveaux niveaux quotidiennement.<br></br>
-            En outre, Larcin Challenge ne comporte que le la base des niveaux de larcin challenge, 
+            En outre, Larcin Challenges ne comporte que le la base des niveaux de Larcin Challenges, 
             des salle remplie de laser avec une sortie, sans la richesse des mécanisme, piège et créature du jeu original.
             <br></br>
             Pour comparer les aptitudes des voleurs du monde entier, 3 modes de jeux ont été inventé chaqu'un favorisant certain profils <strong> ce sont les  

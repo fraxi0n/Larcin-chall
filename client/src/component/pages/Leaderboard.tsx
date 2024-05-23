@@ -149,6 +149,7 @@ const Leaderboard = () => {
         > {">"} </button>
       </div>) : <div style={{ cursor: "wait" }} > please wait </div>
       }
+      <div className='lb-admin-container'>
       <div className='lb-container'>
         {
           table.length ? <table className='leaderboard-table'  >
@@ -183,6 +184,7 @@ const Leaderboard = () => {
         <AdminModale isActive={isModaleActive} mapID={mapID} desactivation={() => setIsModaleActive(false)} ></AdminModale>
       </>
       }
+      </div>
       <Footer></Footer>
     </div >
   );

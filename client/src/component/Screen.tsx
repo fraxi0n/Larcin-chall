@@ -38,7 +38,7 @@ const ScreenComp = ({ widthScreen, mapID }: Props) => {
                 key={iframeKey}
                 className='canvas'
                 src={gameURL + "?lg=" + Math.floor(widthScreen) * 1 + "&mod=1" + mapIdStr}
-                title="larcin précis"
+                title="Lazer Précis"
                 width={widthScreen}
                 height={widthScreen / ratio}
             />
