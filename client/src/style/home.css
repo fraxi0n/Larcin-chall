@@ -28,7 +28,6 @@
 
 figure {
     margin: 0;
-
 }
 
 .custom-hr {
@@ -37,7 +36,6 @@ figure {
     margin: 0;
     position: relative;
 }
-
 
 .teaser-legend {
     font-weight: bold;
@@ -53,7 +51,6 @@ figure {
     scale : 0.5;
     transform: rotate(45deg);
     margin: 0 .5rem 0 .5rem ;
-
 }
 
 /*    animation     */
@@ -65,7 +62,6 @@ figure {
     left: 10%;
     transform: translate(-3rem, 0);
 }
-
 
 .box-hr {
     transition: 0.7s ease-in-out;
@@ -92,9 +88,8 @@ figure {
 .box-hr:hover .green {
     transition: 0.8s;
     background-color: rgb(198, 233, 197);
-    scale: 1.2;
+    scale: 1.15;
 }
-
 
 .box-hr:hover .hr-sprite {
     transform: translate(calc(var(--parent-width) * 0.8), 0);

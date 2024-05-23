@@ -16,6 +16,7 @@ const Play = () => {
   return (<>
     <div className='app' >
       <Header></Header>
+      <h2 style={{textAlign: "center"}}>Lancement du Challenges : Lazer Précis</h2>
       <div style={{ padding: " 1rem 4%" }}>
         <Game type={"rapide"}
           mapID={id ? id : undefined}

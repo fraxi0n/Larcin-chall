@@ -59,20 +59,42 @@ const AdminModale = ({ isActive, mapID, desactivation }: Props) => {
         }
     }
 
-    return (<div className={` ${isActive ? 'delete-map-modale' : 'hidden'}  `} >
-        <div className='login-reg-box'>
+    return (
+        <div className={`${isActive ? 'delete-map-modale' : 'hidden'}`}>
+          <div className='login-reg-box'>
             <h3>Entrez votre profil administrateur :</h3>
-            <label>Pseudo/Email:</label>
-            <input type="text" value={emailValue} onChange={(e) => setEmailValue(e.target.value)}></input>
+            <label htmlFor="emailInput">Pseudo/Email:</label>
+            <input 
+              id="emailInput" 
+              type="text" 
+              value={emailValue} 
+              onChange={(e) => setEmailValue(e.target.value)} 
+            />
             <br />
-            <label >Mot de passe :</label>
-            <input type="password" value={pwValue} onChange={(e) => setPwValue(e.target.value)}></input>
-            <br></br>
-            <input type="submit" value="OK" onClick={adminLogin} className='button' ></input>
-            <button className='button' style={{ margin: ".5rem" }} onClick={desactivation} > Annuler</button>
+            <label htmlFor="passwordInput">Mot de passe :</label>
+            <input 
+              id="passwordInput" 
+              type="password" 
+              value={pwValue} 
+              onChange={(e) => setPwValue(e.target.value)} 
+            />
+            <br />
+            <input 
+              type="submit" 
+              value="OK" 
+              onClick={adminLogin} 
+              className='button' 
+            />
+            <button 
+              className='button' 
+              style={{ margin: ".5rem" }} 
+              onClick={desactivation} 
+            > 
+              Annuler
+            </button>
+          </div>
         </div>
-    </div>
-    );
+      );
 };
 
 export default AdminModale;

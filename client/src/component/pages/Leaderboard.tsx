@@ -135,6 +135,7 @@ const Leaderboard = () => {
   return (
     <div className="app">
       <Header></Header>
+      <h2 style={{textAlign: "center"}}>Classement des plus grands cambrioleurs</h2>
       {mapID ? (<div className='date-container '>
         <button className={` button map-carousel`}
           onClick={() => setMapFetchedIndex(prev => prev + 1)}

@@ -24,7 +24,7 @@ const Home = () => {
         <section aria-label='Description du jeu Larcin Lazer original'>
           <h2>  Larcin Lazer, qu'est ce que c'est? </h2>
           <p> Il s'agit d'un jeu au concept original crée en Game Jam par
-          Géraud Zuchini, alias <a href="https://docgeraud.itch.io/" > doc Géraud</a>.<br></br>
+          Géraud Zuchini, <strong>alias doc Géraud</strong>.<br></br>
           Il est sortie en version finale et commerciale en début d'année 2023 sur steam, itch io et en version mobile sur android.<br></br>
           Dans ce jeu vous incarnez un cambrioleur, qui n'ayant plus de quoi nourir son chat est contraint
           d'aller voler de riches capitalistes.

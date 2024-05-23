@@ -16,6 +16,7 @@ const Dropdown = ({ isDisable, textTitle, children }: Props) => {
     >
       <button
         className='button button-lazer nav-element dropdown'
+        aria-expanded={isOpen}
         disabled={isDisable}
         style={{}}
       >
